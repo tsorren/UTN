@@ -1,5 +1,6 @@
 Parte 1: Lógica - Operaciones y Leyes Lógicas  (06/04 - 13/04):
-	-Ver videos teoricos "lógica proposicional y función proposicional" 
+	-Ver videos teoricos "lógica proposicional y función proposicional"
+        Realizado
 
 	-Leer página 1 - 22
 		+Resumir en carpeta
@@ -10,7 +11,7 @@ Parte 1: Lógica - Operaciones y Leyes Lógicas  (06/04 - 13/04):
 	+Leer Notas
 
 ----Descanso 10m
-	
+
 	-Ver video resumen logica proposicional
 
 ----Descanso 10m
@@ -19,7 +20,7 @@ Parte 2: Razonamientos (14/04 - 20/04):
 
 	-Ver video teórico de razonamientos
 
-	-Leer página 23 - 35. 
+	-Leer página 23 - 35.
 		+Resumir en carpeta
 
 	-Resolver ejercicios: 7.b,  10.a, 11.c.
@@ -33,7 +34,7 @@ Parte 2: Razonamientos (14/04 - 20/04):
 		+Resumir en carpeta
 
 ----Descanso 10m
-	
+
 	-Ver video práctico tipos de razonamientos
 
 	-Ver video práctico razonamiento categórico parte 1 y parte 2
