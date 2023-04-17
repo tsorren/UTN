@@ -24,15 +24,20 @@ int main()
 
     cout << "Suma: " << a + b + c << endl << "Promedio: " << (a+b+c)/3 << endl << "Producto: " << a*b*c << endl;
 
-    float lista[3] = {1, 2, 3};
-    float min = 99999999;
-    float max = 0;
+    float lista[3];
+
+    lista[0] = a;
+    lista[1] = b;
+    lista[2] = c;
+
+    float min = a;
+    float max = a;
     for (int i = 0; i < 3; i++)
     {
-        if(min >= lista[i])
+        if(min > lista[i])
             min = lista[i];
 
-        if(max <= lista[i])
+        if(max < lista[i])
             max = lista[i];
     }
 
