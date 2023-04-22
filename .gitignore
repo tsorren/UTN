@@ -1,6 +1,4 @@
 **/*.exe in .gitignore
 2023/Materias/Algoritmos_y_estructuras_de_datos/.vscode/settings.json
 *.exe
-2023/Materias/Sistemas_y_Procesos_de_Negocio/Libros/Libro_Rosa.pdf
-2023/Materias/Sistemas_y_Procesos_de_Negocio/Libros/Libro_Robbins_y_Libro_Laudon.pdf
-2023/Materias/Sistemas_y_Procesos_de_Negocio/Libros/Libro_Naranja.pdf
+**/*.pdf
