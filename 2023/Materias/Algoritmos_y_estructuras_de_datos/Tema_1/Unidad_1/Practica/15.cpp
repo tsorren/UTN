@@ -1,3 +1,14 @@
+/*
+
+    Dada una serie de caracteres que conforman una oración, donde cada palabra esta
+    separada de la siguiente por un carácter blanco y la oración finaliza con un punto. Se
+    pide informar:
+    cantidad de veces que apareció cada vocal
+    cantidad de palabras que contiene la oración
+    cantidad de letras que posee la palabra mas larga.
+
+*/
+
 #include<iostream>
 
 using namespace std;
@@ -6,11 +17,12 @@ int main()
 {
     char oracion[100] = "___________________________________________________________________________________________________";
 
+    cout << "Ingrese una oración: " << endl;
     cin.getline(oracion, 100, '\n');
     char currentChar = ' ';
     int spaces = 0;
-    int spacePosA = -1;
-    int spacePosB = -1;
+    int spacePosA = 0;
+    int spacePosB = 0;
 
     int maxLength = 0;
     int wordCount = 0;
@@ -21,9 +33,9 @@ int main()
     int vocalO = 0;
     int vocalU = 0;
 
+    int i = 0;
 
-
-    for(int i = 0; ; i++)
+    while(oracion[i] != '\0')
     {
         //cout << currentChar;
         currentChar = oracion[i];
@@ -48,25 +60,22 @@ int main()
             vocalU++;
         }
 
-        if(currentChar == ' ' || currentChar == '\0')
+        if(currentChar == ' ' || currentChar == '.')
         {
             wordCount++;
             spaces++;
 
-            spacePosA = spacePosB;
+            spacePosA = spacePosB + 1;
             spacePosB = i;
             // cout << endl << "Posicion de espacio: " << i << endl;
         }
 
         if(abs(spacePosB - spacePosA) > maxLength)
         {
-            maxLength = abs(spacePosB - spacePosA) - 1;
+            maxLength = abs(spacePosB - spacePosA);
         }
+        i++;
 
-        if(oracion[i] == '\0')
-        {
-            break;
-        }
     }
     cout << "Cantidad de palabras: " << wordCount << endl;
     cout << "Caracteres de la palabra mas larga: " << maxLength << endl;
@@ -75,7 +84,7 @@ int main()
 
     if(vocalA != 0)
         cout << endl << "Cantidad de a's: " << vocalA;
-    
+
     if(vocalE != 0)
         cout << endl << "Cantidad de e's: " << vocalE;
 
@@ -88,7 +97,7 @@ int main()
     if(vocalU != 0)
         cout << endl << "Cantidad de u's: " << vocalU;
 
-    cout << endl;
+    cout << endl << endl;
 
     return 0;
 }

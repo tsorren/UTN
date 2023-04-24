@@ -16,6 +16,7 @@
     varialble máxima se compara con la velocidad[i], si es menor, se le asigna velocidad[i]
 */
 
+/* SOLUCION 1
 #include<iostream>
 
 using namespace std;
@@ -48,4 +49,47 @@ int main()
     return 0;
 }
 
+*/
 
+// SOLUCION 2
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    char nombre[16+1];
+    
+    float tiempo = 0,
+    float velocidad = 0;
+
+    char nombreMasVeloz[16+1];
+    float mayorVel = 0;
+    
+    int i, n;
+
+    cout << "Ingrese la cantidad de participantes: ";
+    cin >> n;
+
+    for(i = 0; i < n; i++)
+    {
+        cout << "Ingrese el nombre del Participante " << i + 1 << " : ";
+        cin >> nombre;
+        cout << "Ingrese cuantos segundos le llevó a " << nombre << " en correr 1500 metros: ";
+        cin >> tiempo;
+
+        velocidad = 1500/tiempo;
+
+        if(mayorVel < velocidad)
+        {
+            mayorVel = velocidad;
+            strcpy(nombreMasVeloz, nombre);
+        }
+        cout << endl;
+
+    }
+    
+    cout << "El participante más velóz fue " << nombreMasVeloz; // << ", con una velocidad de " << mayorVel << " metros por segundo" << endl;
+    
+    return 0;
+}

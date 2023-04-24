@@ -9,6 +9,11 @@
     verificar si cumplen con la condicion para ser triangulo
     imprimir leyenda
 
+    otra manera:
+    a <= b + c
+    b <= a + c
+    c <= b + a
+
 */
 
 #include<iostream>

@@ -15,7 +15,8 @@ int main()
 {
     int acc = 0;
 
-    for(int i = 2; i < 10000; i+=2)
+    int i = 0;
+    for(i = 2; i < 10000; i+=2)
     {
         acc += i;
     }

@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    char nombre[16] = "";
+    char nombre[16+1] = "";
     int fecha_de_nacimiento = 0;
     
     float edad = 0;
@@ -14,10 +14,10 @@ int main()
     int dia = 0;
 
     float mayorEdad = 0;
-    char nombreMayor[16] = "";
+    char nombreMayor[16+1] = "";
 
     float menorEdad = 0;
-    char nombreMenor[16] = "";
+    char nombreMenor[16+1] = "";
 
     bool primeraIteracion = true;
 

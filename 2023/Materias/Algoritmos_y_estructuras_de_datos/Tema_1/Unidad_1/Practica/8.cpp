@@ -10,6 +10,7 @@
 
 */
 
+/* SOLUCIÓN 1
 #include<iostream>
 
 using namespace std;
@@ -58,6 +59,52 @@ int main()
 
     cout << "-  " << mayoresI << " Números son mayores que 100, y su promedio es: " << promedioMayores << endl;
     cout << "-  " << menoresI << " Numeros son menores que -10, y su sumatoria es: " << sumatoriaMenores << endl;
+    
+    return 0;
+}
+
+*/
+
+// SOLUCION 2
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+
+    int numero;
+
+    int mayores = 0;
+    int cMayores = 0;
+
+    int menores = 0;
+    int cMenores = 0;
+
+    cout << "Ingrese 50 enteros: " << endl;
+
+    int i;
+    for(i = 0; i < 50; i++)
+    {
+        cout << " " << i + 1 << ": ";
+        cin >> numero;
+
+        if(numero > 100)
+        {
+            mayores += numero;
+            cMayores++;
+        }
+        else if (numero < -10)
+        {
+            menores += numero;
+            cMenores++;
+        }
+    }
+    
+    int promedioMayores = mayores/cMayores;
+
+    cout << "-  " << cMayores << " Números son mayores que 100, y su promedio es: " << promedioMayores << endl;
+    cout << "-  " << cMenores << " Numeros son menores que -10, y su sumatoria es: " << menores << endl;
     
     return 0;
 }
