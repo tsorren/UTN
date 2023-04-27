@@ -1,0 +1,19 @@
+ACERCA DE LA PLANTILLA UTN
+------------------------------
+
+1- Abrir el archivo utn.doc
+2- En el menú Archivo, haga clic en Guardar como. 
+3- En el cuadro Guardar como tipo, haga clic en Plantilla de documento.
+4- La carpeta predeterminada es Plantillas en el cuadro Guardar en.
+5- En el cuadro Nombre de archivo, escriba el nombre de la nueva plantilla y, a continuación, haga clic en Guardar.
+
+
+Cuando se la quiera utilizar, una vez abierto Word, se debe ir a:
+
+Archivo -> Nuevo
+
+Aparecerá la ventana 'Nuevo', y en la solapa 'General' se mostrarán las distintas plantillas disponibles. 
+Una de ellas debe ser UTN. Se la selecciona, y donde dice: 'Crear nuevo' debe estar seleccionado 'Documento'. 
+Una vez concluidos estos pasos, se presiona Aceptar.
+El resultado de todo esto será un nuevo documento que en lugar de estar en blanco, tendrá la carátula necesaria para los TPs, 
+y las hojas formateadas con el estilo que dicta la cátedra de la materia.
