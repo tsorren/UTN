@@ -70,9 +70,9 @@ int main()
             // cout << endl << "Posicion de espacio: " << i << endl;
         }
 
-        if(abs(spacePosB - spacePosA) > maxLength)
+        if((spacePosB - spacePosA) > maxLength)
         {
-            maxLength = abs(spacePosB - spacePosA);
+            maxLength = spacePosB - spacePosA;
         }
         i++;
 
