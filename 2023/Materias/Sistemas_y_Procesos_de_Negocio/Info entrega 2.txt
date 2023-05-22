@@ -1,0 +1,26 @@
+Consigna:
+-Evolución Histórica.
+-Misión (¿por qué?) y Visión (¿para qué?).
+-Plantas, Fábricas o Unidades de Negocio.
+-Participación en el Mercado.
+-Principales Competidores.
+-Enumeración de cada una de las áreas que la conforman.
+-Funciones de cada una de las áreas.
+
+Aca van las respuestas!!
+1- la empresa comenzo como un hobbie de 2 amigos que conocian desarrolladores que quieran trabajar para estados unidos y empresas que justo buscaban gente que les saliera mas barato, y viendo aue tenia potencial empezaron a cobrar por eso y se convirtio en una empresa (no se si hace referencia a esto)
+2- Mision: conectar al mejor talento de latam con su empleaño deseado en empresas de usa.
+Vision: convertirse en la empresa lider para contrataciones y formacion de equipos de ingeneria en LATAM
+3- no tenemos ni plantas ni fabricas y las unidades de negocio son las distintas areas que menciono mas abajo
+4- no entiendo muy bien esto, pero basicamente ayudamos a las startups a formar equipos de ingenieria en LATAM
+5- austin software, deel, hired
+6- finance, legals, account management, marketing, sales, people experience, recruiting, engineering, technical documentation process.
+7- finance: se encarga de todo lo que es pagos a empleados y cobros a clientes, basicamente todo lo que es gestion de dinero
+Legals: se encarga de todo lo que son contratos con clientes, contratos internos de la empresa, politicas de privacidad, etc.
+Account management: Es basicamente mantener la relacion con los clientes actuales y tener a una persona para lo que necesitan o si necesitan volver a usar nuestros servicios.
+Marketing: hace todo lo que es el nombre de la marca, publicidad, eventos, etc.
+Sales: se encargan de traer nuevos clientes a la empresa.
+People experience: es basicamente recursos humanos, se encarga de que toda la empresa estemos bien, eventos corporativos, comunicados internos, promociones, policitas y beneficios internos, etc.
+Engineering: se encarga de desarrollar producto interno, todas las herramientas que necesitan todos los equipos para trabajar.
+Technical Documentation Process: basicamente se encargan de toda la documentación de la empresa, de hacer bajado tecnico de lo que piden los clientes y de la creacion de todos los perfiles y procesos internos.
+Recruiting: se encargan de encontrar a los candidatos para nuestros clientes.

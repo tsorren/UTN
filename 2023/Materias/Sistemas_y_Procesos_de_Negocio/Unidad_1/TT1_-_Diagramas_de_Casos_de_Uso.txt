@@ -18,6 +18,23 @@ Casos de uso:
 
 	Flujo de Eventos.
 
+Etapas donde más aparecen estos diagramas: 
+	Relevamiento:
+		Se obtiene información:
+			Se crea un boceto .
+			o
+			Se documenta el sistema preexistente.
+
+	Diagnóstico:
+		Se analiza el modelo, con un enfoque a encontrar errores de la organización.
+
+	Diseño:
+		Se modeliza el producto solución.
+
+
+
+
+
 
 
 Relaciones entre actores:
