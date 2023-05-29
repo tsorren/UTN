@@ -20,6 +20,7 @@ int main()
 }
 void Tendencia(int A, int B, char text[])
 {
+    //TODO finish function
     if ((B - A) < 0)
     {
         strcpy(text, "Decreciente");
