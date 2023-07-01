@@ -1,0 +1,30 @@
+Anidación:
+	Para mejorar la legibilidad del código, se recomienda una profundidad máxima de 3 anidaciones.
+
+	Hay diferentes maneras de reducir la anidación / Refactorización:
+		1. Extracción:
+			Se crea una nueva función, tomando lo más profundo de la anidación.
+
+		2. Inversión:
+			Se toma el opuesto no deseado de la condición (else) y se evalua al comienzo, si se cumple se retorna.
+			Luego se continua la ejecución de lo deseado con la seguridad de que no se cumple la condición no deseada.
+			
+
+		Aplicar esto hasta que el código quede limpio.
+
+	Evitar:
+		while(true)
+
+
+Nombrar cosas:
+	1. Sé descriptivo.
+
+	2. No abrevies, a excepción de casos muy claros.
+
+	3. No agregues el tipo de dato al nombre.
+
+	4. Especificá la unidad de una variable, a excepción de tipos de dato que ya la incluyan. Ej (kilometros, metros, segundos, minutos)
+
+	5. No pongas tipos de datos en tus tipos de datos.
+
+	6. Refactorizá (Reestructurar el código fuente) si nombrás algo "Utils".
