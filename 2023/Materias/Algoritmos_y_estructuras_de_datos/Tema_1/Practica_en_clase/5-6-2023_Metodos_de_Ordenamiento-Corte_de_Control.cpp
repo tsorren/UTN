@@ -53,7 +53,7 @@ void Burbuja(int vector[], int N)
 
     for (i = 1; i < N; i++)
     {
-        for (j = 1; j <= N - 1; j++)
+        for (j = 1; j <= N - i; j++)
         {
             // [j-1] > [j] Ordenamiento creciente
             // [j-1] < [j] Ordenamiento decreciente
@@ -74,7 +74,7 @@ void BurbujaStruct(alumno vector[], int N)
 
     for (i = 1; i < N; i++)
     {
-        for (j = 1; j <= N - 1; j++)
+        for (j = 1; j <= N - i; j++)
         {
             // [j-1] > [j] Ordenamiento creciente
             // [j-1] < [j] Ordenamiento decreciente
@@ -95,7 +95,7 @@ void BurbujaAlfabetica(alumno vector[], int N)
 
     for (i = 1; i < N; i++)
     {
-        for (j = 1; j <= N - 1; j++)
+        for (j = 1; j <= N - i; j++)
         {
             // strcmp() == 1 Ordenamiento creciente
             // strcmp() == -1 Ordenamiento decreciente
@@ -116,7 +116,7 @@ void BurbujaCompuesta(alumno vector[], int N)
 
     for (i = 1; i < N; i++)
     {
-        for (j = 1; j <= N - 1; j++)
+        for (j = 1; j <= N - i; j++)
         {
             // strcmp() == 1 Ordenamiento creciente
             // strcmp() == -1 Ordenamiento decreciente
