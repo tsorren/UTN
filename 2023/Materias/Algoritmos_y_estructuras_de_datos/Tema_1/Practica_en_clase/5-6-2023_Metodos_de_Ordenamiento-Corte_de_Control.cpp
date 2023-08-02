@@ -133,7 +133,7 @@ void BurbujaCompuesta(alumno vector[], int N)
 }
 
 void CorteDeControl(alumno vector[], int N) // Para mayor seguridad, "const alumno[]"
-{
+{                                           // Doble while, uno cuenta y el otro muestra
     int i = 0;
 
     int cursoActual;

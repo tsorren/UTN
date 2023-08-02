@@ -1,0 +1,224 @@
+  Legajo: 101
+  Legajo: 102
+  Legajo: 10
+  Legajo: 4
+  Legajo: 105
+  Legajo: 109
+  Legajo: 200
+  Legajo: 203
+  Legajo: 205
+  Legajo: 2006
+  Legajo: 320
+  Legajo: 419
+  Legajo: 501
+  Legajo: 548
+  Legajo: 620
+  Legajo: 659
+  Legajo: 728
+  Legajo: 830
+  Legajo: 930
+  Legajo: 1027
+  Legajo: 1289
+  Legajo: 1530
+  Legajo: 1828
+  Legajo: 1950
+
+  Alumno 1:
+    Legajo: 2
+    Apellido y Nombre: Par
+    Domicilio: Enteros
+    Código Postal: 2
+    Teléfono: 2468101214
+    Año de Ingreso: 2468
+
+Alumno 2:
+    Legajo: 4
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 3:
+    Legajo: 9
+    Apellido y Nombre: Coffee
+    Domicilio: Moreno
+    Código Postal: 1661
+    Teléfono: 1130456082
+    Año de Ingreso: 2009
+
+Alumno 4:
+    Legajo: 10
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 5:
+    Legajo: 101
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 6:
+    Legajo: 105
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 7:
+    Legajo: 109
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 8:
+    Legajo: 200
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 9:
+    Legajo: 201
+    Apellido y Nombre: Rellenito
+    Domicilio: Entre_Medio
+    Código Postal: 1001
+    Teléfono: 2000000002
+    Año de Ingreso: 2002
+
+Alumno 10:
+    Legajo: 203
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 11:
+    Legajo: 205
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 12:
+    Legajo: 320
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 13:
+    Legajo: 501
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 14:
+    Legajo: 548
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 15:
+    Legajo: 620
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 16:
+    Legajo: 659
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 17:
+    Legajo: 728
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 18:
+    Legajo: 830
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 19:
+    Legajo: 930
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 20:
+    Legajo: 1027
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 21:
+    Legajo: 1289
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 22:
+    Legajo: 1530
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 23:
+    Legajo: 1828
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 24:
+    Legajo: 1950
+    Apellido y Nombre: PLACEHOLDER
+    Domicilio: PLACEHOLDER
+    Código Postal: -1
+    Teléfono: PLACEHLDR
+    Año de Ingreso: -1
+
+Alumno 25:
+    Legajo: 2006
+    Apellido y Nombre: Zoomer
+    Domicilio: LA
+    Código Postal: 2009
+    Teléfono: 3562958623
+    Año de Ingreso: 2009
