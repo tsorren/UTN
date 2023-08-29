@@ -16,7 +16,7 @@ struct TipoAl
     int compañerosDeGrupo;
 };
 
-const int N = 1000;
+int N = 1000;
 
 void inicializarVector(TipoAl alumnos[])
 {
@@ -28,7 +28,7 @@ void inicializarVector(TipoAl alumnos[])
     }
 }
 
-void leerArchivo(FILE* f, TipoAl alumnos[], const int CANT)
+void leerArchivo(FILE* f, TipoAl alumnos[], int CANT)
 {
     /*
     int alumnosPorCurso[30];
@@ -54,10 +54,10 @@ void leerArchivo(FILE* f, TipoAl alumnos[], const int CANT)
         gruposPorCurso[k] = alumnosPorCurso[k] / CANT;
     }
     */
-    BurbujeoAlumnos(alumnos, cantAlumnosTotal); // Aclarar tipo de burbujeo sin programar
+    BurbujeoAlumnosPorCursoLegajo(alumnos, cantAlumnosTotal); // Aclarar tipo de burbujeo sin programar
     
 }
-
+/*
 void informarResultados(TipoAl alumnos[])
 {
     int i = 0;
@@ -86,8 +86,40 @@ void informarResultados(TipoAl alumnos[])
     }
     cout << "TOTAL DE GRUPOS: " << cantGruposTotal << endl;
 }
+*/
+void informarResultados(TipoAl alumnos[])
+{
+    int i = 0;
+    int j = 0;
+    int cursoActual = 0;
+    
+    int cantGrupos;
+    int cantGruposTotal = 0;
+    int alPorGrupo = alumnos[0].compañerosDeGrupo;
 
-void BurbujeoAlumnos(TipoAl al[], int N)
+    while(alumnos[i].datos.curso != 0)
+    {
+        cursoActual = alumnos[i].datos.curso;
+        while(cursoActual == alumnos[j+i].datos.curso && alumnos[j+i].datos.curso != 0)
+        {
+            j++;
+        }
+        cantGrupos = j / alPorGrupo;
+        cantGruposTotal += cantGrupos;
+        cout << "CURSO: K" << alumnos[i].datos.curso << endl;
+        cout << "Cantidad de grupos conformados: " << cantGrupos << endl;
+        cout << "Legajos:" << endl;
+        while(cursoActual == alumnos[i].datos.curso && alumnos[i].datos.curso != 0)
+        {
+            cout << "   " << alumnos[i].datos.legajo << endl;
+        }        
+        
+        j = 0;
+        i++;
+    }
+    cout << "TOTAL DE GRUPOS: " << cantGruposTotal << endl;
+}
+void BurbujeoAlumnosPorCursoLegajo(TipoAl al[], int N)
 {
     int i, j;
     TipoAl aux;

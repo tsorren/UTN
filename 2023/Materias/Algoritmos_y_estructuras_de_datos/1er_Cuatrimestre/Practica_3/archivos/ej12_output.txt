@@ -1,0 +1,159 @@
+NUEVA VENTA: 
+    Codigo de articulo: 5
+    Talle: 1
+    Unidades: 5
+Precio de la venta: 114.345
+
+NUEVA VENTA:
+    Codigo de articulo: 6
+    Talle: 3
+    Unidades: 2
+Precio de la venta: 62.92
+
+NUEVA VENTA:
+    Codigo de articulo: 6
+    Talle: 4
+    Unidades: 1
+Precio de la venta: 35.09
+
+NUEVA VENTA:
+    Codigo de articulo: 2 
+    Talle: 3
+    Unidades: 1
+Precio de la venta: 20.449
+
+NUEVA VENTA:
+    Codigo de articulo: 2
+    Talle: 5
+    Unidades: 7
+Precio de la venta: 158.558
+
+NUEVA VENTA:
+    Codigo de articulo: 1
+    Talle: 3
+    Unidades: 7
+Precio de la venta: 118.919
+
+NUEVA VENTA:
+    Codigo de articulo: 4
+    Talle: 1
+    Unidades: 2
+Precio de la venta: 38.72
+
+NUEVA VENTA:
+    Codigo de articulo: 7
+    Talle: 3
+    Unidades: 1
+Precio de la venta: 37.752
+
+NUEVA VENTA:
+    Codigo de articulo: 9
+    Talle: 5
+    Unidades: 4
+Precio de la venta: 181.21
+
+NUEVA VENTA:
+    Codigo de articulo: 12
+    Talle: 2
+    Unidades: 2
+Precio de la venta: 55.66
+
+NUEVA VENTA:
+    Codigo de articulo: 5
+    Talle: 3
+    Unidades: 4
+Precio de la venta: 118.919
+
+NUEVA VENTA:
+    Codigo de articulo: 15
+    Talle: 1
+    Unidades: 5
+Precio de la venta: 83.853
+
+NUEVA VENTA:
+    Codigo de articulo: 1
+    Talle: 3
+    Unidades: 4
+Precio de la venta: 67.9536
+
+NUEVA VENTA:
+    Codigo de articulo: 1
+    Talle: 2
+    Unidades: 1
+Precio de la venta: 16.698
+
+NUEVA VENTA:
+    Codigo de articulo: 1
+    Talle: 5
+    Unidades: 6 
+Precio de la venta: 125.453
+
+NUEVA VENTA:
+    Codigo de articulo: 2
+    Talle: 3
+    Unidades: 2
+Precio de la venta: 40.898
+
+NUEVA VENTA:
+    Codigo de articulo: 2
+    Talle: 2
+    Unidades: 1
+Precio de la venta: 18.0895
+
+NUEVA VENTA:
+    Codigo de articulo: 2
+    Talle: 5
+    Unidades: 3
+Precio de la venta: 75.504
+
+NUEVA VENTA:
+    Codigo de articulo: 5
+    Talle: 3
+    Unidades: 1
+Precio de la venta: 33.033
+
+NUEVA VENTA:
+    Codigo de articulo: -1
+
+RESUMEN DE VENTAS:
+    Codigo de Articulo: 1
+        Ventas de Talle 2: 1
+        Ventas de Talle 3: 12
+        Ventas de Talle 5: 18
+    Unidades vendidas: 31
+
+    Codigo de Articulo: 2
+        Ventas de Talle 2: 1
+        Ventas de Talle 3: 4
+        Ventas de Talle 5: 14
+    Unidades vendidas: 19
+
+    Codigo de Articulo: 4
+        Ventas de Talle 1: 7
+    Unidades vendidas: 7
+
+    Codigo de Articulo: 5
+        Ventas de Talle 3: 7
+    Unidades vendidas: 7
+
+    Codigo de Articulo: 6
+        Ventas de Talle 4: 1
+    Unidades vendidas: 1
+
+    Codigo de Articulo: 7
+        Ventas de Talle 3: 1
+    Unidades vendidas: 1
+
+    Codigo de Articulo: 9
+        Ventas de Talle 5: 4
+    Unidades vendidas: 4
+
+    Codigo de Articulo: 12
+        Ventas de Talle 2: 2
+    Unidades vendidas: 2
+
+    Codigo de Articulo: 15
+        Ventas de Talle 1: 5
+    Unidades vendidas: 5
+
+  VENTAS TOTALES: 77

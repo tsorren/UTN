@@ -28,17 +28,19 @@
 
 using namespace std;
 
+struct fecha
+{
+    int dia;
+    int mes;
+    int año;
+};
+
 struct boleta
 {
     int legajo;
     int codigoDeMateria;
+    fecha fecha;
 
-    struct fecha
-    {
-        int dia;
-        int mes;
-        int año;
-    } fecha;
 
     char nombreCompleto[25+1];
 };

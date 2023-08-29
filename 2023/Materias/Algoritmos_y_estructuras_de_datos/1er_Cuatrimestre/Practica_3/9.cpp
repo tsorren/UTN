@@ -19,9 +19,8 @@
     Total alumnos ausentes (1..20) 
     Total alumnos aprobados (1..20) 
     Total alumnos desaprobados (1..20)
-
-
 */
+
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cstring>

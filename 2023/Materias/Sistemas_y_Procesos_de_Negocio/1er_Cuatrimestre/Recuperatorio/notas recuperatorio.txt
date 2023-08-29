@@ -1,0 +1,304 @@
+¿Qué hace un Ingeniero en Sistemas de Información?:
+	Un ISI construye artefactos o mecanismos, cuyo buen uso, resuelve problemas (desvios) en el ámbito de los Sistemas de Información.
+	Siguiendo una metodología con técnicas y herramientas basadas en las ciencias básicas.
+
+Sistemas y Organizaciones:
+	Organizacion:
+		Conjunto de personas relacionadas que realizan actividades con un objetivo en común.
+
+		Tipos de Organizaciones:
+			Con Fines de lucro 		(Comercial, Financiera, Industral o de Servicios)
+			Sin fines de lucro		(Cultural, Religiosa, Asistencial, Deportiva o de Beneficiencia)
+
+			Formales 		(Lineal, Funcional, de Staff o Comités)
+			Informales
+
+			Centralizadas
+			Descentralizadas
+			
+			Mecanicista	
+			Organica
+
+		Gerente:
+			Coordina y supervisa el trabajo de otras personas de manera que se
+			realice de forma eficiente y eficaz para lograr los objetivos de la Organización.
+
+			Realizan gran cantidad de tareas, con actividades fragmentadas. Utilizando información
+			actual, específica y adecuada. Comunicandose principalmente de manera oral
+			con los integrantes de la organización, utilizando una red diversa y compleja de contactos
+
+			Eficiencia: Uso minimo de recursos para lograr objetivo
+			Eficacia: Lograr grandes objetivos
+
+			Funciones Administrativas:   (Casi igual que subsistema corporativo)
+				Planeación
+				Organización
+				Dirección
+				Control
+
+			Roles Gerenciales:
+				Interpersonales: Son 3
+				De Información:	Son 3
+				De Decisión:	
+					Emprendedor
+					Mediador
+					Negociador
+					Asignador de Recursos
+
+
+			Administración:
+				Ciencia del manejo de recursos,
+				esforzandose por desperdiciar pocos recursos y lograr grandes objetivos
+
+			Niveles gerenciales y habilidades:	(Todos los niveles requieren habilidades blandas/humanas)
+				Alto nivel 		Conceptuales > Técnicas
+				Nivel medio 	Conceptuales = Técnicas
+				Primera Linea	Técnicas > Conceptuales
+				-------------
+				Empleados no gerenciales
+
+			Tipos de enfoques en el trabajo gerencial:
+				En el Cliente
+				En la Tecnología
+				En Redes Sociales
+				En Innovación
+				En Sustentabilidad
+				En el Empleado
+
+	Sistema:
+		Conjunto de elementos interrelacionados con un objetivo en común. 
+		Teoria General de Sistemas:
+			Tipos de sistemas:
+				Abstractos
+				Reales
+
+				Abiertos
+				Cerrados
+				Aislados
+
+				Estructuras Estáticas
+				Dinamicas simples
+				Ciberneticos
+				Abiertos
+				Nivel Genetico
+				Nivel Animal
+				Nivel Humano
+				Nivel Social
+				Trascendentales
+
+				Determinista Simple
+				Determinista Complejo
+				Determinista Excesivamente Complejo
+				Probabilista Simple
+				Probabilista Complejo
+				Probabilista Excesivamente Complejo
+
+				Mantienen su estado / Estáticos
+				Persiguen una o varias metas
+				Tienen un proposito
+				Tienen voluntad
+
+			Conceptos Fundamentales:
+				Sinergia
+				Homeostásis
+				Entropía
+				Interrelación
+				Retroalimentación
+				Isomorfismo
+				Equifinalidad
+				Frontera-Límite
+				Ambiente o Contexto
+				Permeabilidad
+				Subsistema
+				Suprasistema
+				Rango
+				Recursividad
+				Entrada o Input
+				Procesamiento o Throughput
+				Salida o Output
+
+	Sistema de Información:
+		Cumple la función de recolectar, almacenar, procesar y distribuir información
+		en tiempo y forma para la toma de decisiones de una Organización.
+
+
+
+Ciencia, disciplina, tecnología, informática e información:
+	Ciencia:
+		Conjunto sistematizado de conocimientos adquiridos mediante un riguroso método.
+
+	Disciplina: 
+		saber que abarca un conjunto de conocimientos de un	ámbito específico, agrupado de modo sistemático.
+
+	Tecnología: 
+		Conjunto de conocimientos y técnicas que, aplicados de forma lógica y ordenada,
+		permiten al ser humano modificar su entorno material o virtual para satisfacer sus necesidades.
+
+	Informática: 
+		Ciencia que se ocupa del tratamiento automático y racional de la información.
+
+	Información:
+		Dato -> Noticia -> Conocimiento -> Sabiduría
+
+		Dato:
+			Representación formal de un hecho o concepto
+
+		Noticia:
+			Carga de significancia puesta en el dato
+
+		Conocimiento:
+			Sintesis de noticias que forman enlaces relevantes
+
+		Sabiduría:
+			Conocimientos sometidos a juicios de valor (etica, moral y experiencia)
+
+
+
+Subsistema Corporativo:
+	Combina en un solo cuerpo los sectores y funciones de la empresa, para coordinar y aprovechar los esfuerzos de sus integrantes.
+
+	Está compuesto por 4 ...:
+		-Planificación
+		-Decisión
+		-Información / Comunicación
+		-Control
+
+		Planificación:
+			La Planificación otorga dirección a gerentes y empleados, reduce indertidumbre,
+			minimiza el desperdicio y la redundacia y establece estandares a utilizar en el control
+
+			Planes según:
+			 	Alcance:
+			   		Estratégicos
+			   		Operativos
+
+				Marco temporal:
+					De Largo Plazo
+			   		De Corto Plazo
+
+		 		Especificidad:
+			   		Direccionales
+			   		Especificos
+
+			 	Frecuencia de uso:
+			   		Únicos
+			   		Permanentes
+
+			Objetivos:
+			 	Estado futuro deseado para la organización
+
+			 	SMART: Especificos, medibles, alcanzables, relevantes, temporales
+
+			 	Tipos de objetivos según:
+					Alcance:
+				    	Generales
+				    	Especificos
+
+			  		Caracter:
+			    		Estratégico
+			    		Financiero
+
+			  		Naturaleza:
+			    		Establecido
+			    		Real
+
+			Metas:
+			 	Objetivos puestos en marcha
+
+			Estrategia:
+			 	Definición de rumbo de una organización. Determina la forma en la que la org alcanzará sus objetivos
+
+		Decisión:
+			7 Pasos para la toma de decisiones:			Inteligencia -> Diseño -> Elección -> Implementación
+				1: Identificar el problema a resolver
+				2: Recopilar toda información necesaria
+				3: Identificar Alternativas
+				4: Analizar Alternativas
+				5: Escoger una Alternativa
+				6: Poner en práctica
+				7: Evaluar la decisión tomada
+
+			Tipos de decisiones:
+				Estructuradas 				Primera Linea
+				Semiestructuradas			Nivel Medio
+				No estructuradas 			Alto Nivel
+
+		Comunicación de la Información:
+			Circuito de la comunicación:
+
+					  	   Código
+			|--> Emisor -> Mensaje -> Receptor -|
+			|		       Canal				|
+			|---- <-- Retroalimentación <-------|	
+
+
+		Tipos de flujo de la comunicación organizacional:
+			Hacia arriba	Hacia un superior
+			Hacia abajo		Hacia subordinados
+			Horizontal		Dentro del mismo nivel jerarquico
+			Diagonal		Trasversal a toda la jerarquia
+
+		Control:
+			Medir, Comparar y Corregir
+
+			Tipos de control:
+				Preventivo
+				Concurrente
+				De Retroalimentación
+
+
+
+Ciclos de vida de Software:
+	Estadíos intermedios que atraviesa un objeto/elemento
+	desde que nace hasta que muere
+
+	Desarrollo SW + Mantenimiento + Sustitución = Ciclo de vida de SW
+
+	Ciclo de vida del Desarrollo SW:
+		Gestión del Proyecto
+		Gestión de Configuración
+		Gestión de Calidad (del proceso y del producto)
+
+	Tipos:
+		Lineal
+		En Espiral
+		Prototipado
+
+	Requerimientos:
+		Percepciones externas
+
+	Requisitos:
+		Caracteristicas inherentes de un objeto para que sea considerado como tal
+
+		Tipos de Requisitos según...
+			Fuente:
+				Usuario
+				Grupo de Desarrollo
+
+			Utilidad:
+				Funcional
+				No Funcional
+
+			Obligatoriedad:
+				Obligatorios
+				No Obligatorios
+
+
+Técnicas de Recolección de Información:
+	Muestreo:
+		Obtener información del universo de estudio
+		a través del análisis de los elementos más representativos de la población
+
+
+	Entrevista:
+		Conversación o sucesión de preguntas y respuestas para
+		obtener la información que posee el entrevistado
+
+
+	Cuestionarios:
+		Documento eje para toda entrevista, de vocabulario riguroso.
+		Es útil para analizar una población numerosa y/o dispersa geográficamente
+
+	Encuestas:
+		Buscan obtener opiniones concretas. Predominan las preguntas cerradas.
+		Gran cantidad de encuestados

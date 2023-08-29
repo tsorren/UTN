@@ -269,10 +269,3 @@ void MostrarVuelos(vuelo vuelos[], int vuelosTam, short int mCodigos[], int mPas
     
     return;
 }
-/*
-    TODO 
-    Crear las funciones de carga y lectura de archivo -> Facil
-    Crear la funcion de mostrar ventas -> Iterar vector ventas, utilizando las dos matrices de codigos y pasajes
-    Crear la funcion de mostrar vuelos -> Iterar vector vuelos, utilizando las dos matrices de codigos y pasajes
-    Ver como aplicar la teoría de Corte de Control a este caso, repasar lo necesario.
-*/
