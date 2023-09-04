@@ -2,6 +2,16 @@
 	Un ISI construye artefactos o mecanismos, cuyo buen uso, resuelve problemas (desvios) en el ámbito de los Sistemas de Información.
 	Siguiendo una metodología con técnicas y herramientas basadas en las ciencias básicas.
 
+	Funciones del Ingeniero:
+		Empresarial / Administrativa
+		Académicas
+		Resolución de Problemas
+
+	Responsabilidades del ISI:
+		Construir artefacto solución
+		Instruir al usuario en el buen uso del artefacto
+		Monitorear que el artefacto construido funcione
+
 Sistemas y Organizaciones:
 	Organizacion:
 		Conjunto de personas relacionadas que realizan actividades con un objetivo en común.
@@ -37,13 +47,21 @@ Sistemas y Organizaciones:
 				Control
 
 			Roles Gerenciales:
-				Interpersonales: Son 3
-				De Información:	Son 3
+				Interpersonales:
+					Representante
+					Lider
+					Enlace
+
+				De Información:	
+					Monitor
+					Portavoz
+					Difusor
+
 				De Decisión:	
 					Emprendedor
 					Mediador
-					Negociador
 					Asignador de Recursos
+					Negociador
 
 
 			Administración:
@@ -80,7 +98,7 @@ Sistemas y Organizaciones:
 				Dinamicas simples
 				Ciberneticos
 				Abiertos
-				Nivel Genetico
+				Nivel Genético Social
 				Nivel Animal
 				Nivel Humano
 				Nivel Social
@@ -265,14 +283,14 @@ Ciclos de vida de Software:
 		Prototipado
 
 	Requerimientos:
-		Percepciones externas
+		Percepciones externas del cliente
 
 	Requisitos:
-		Caracteristicas inherentes de un objeto para que sea considerado como tal
+		Caracteristicas inherentes de un objeto para que sea considerado como tal, condición necesaria, características del objetivo deseado
 
 		Tipos de Requisitos según...
 			Fuente:
-				Usuario
+				Cliente
 				Grupo de Desarrollo
 
 			Utilidad:

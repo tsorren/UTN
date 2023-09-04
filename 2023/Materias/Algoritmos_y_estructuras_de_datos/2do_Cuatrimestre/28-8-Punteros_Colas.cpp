@@ -18,18 +18,18 @@ int main()
 
 void queue(nodo* &fte, nodo* &fin, int val)
 {
-    nodo* p = new nodo();
+    nodo* n = new nodo();
 
-    p->info = val;
-    p->sgte = NULL;
+    n->info = val;
+    n->sgte = NULL;
 
     if(fte == NULL)
-        fte = p;
+        fte = n;
     
     else
-        fin->sgte = p;
+        fin->sgte = n;
 
-    fin = p;
+    fin = n;
 
     return;
 }

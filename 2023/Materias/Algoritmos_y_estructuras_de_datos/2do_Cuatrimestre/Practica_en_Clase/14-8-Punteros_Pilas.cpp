@@ -114,15 +114,20 @@ char CargarEnPosicion(nodo* &pila, int val, int pos)
     return 'S';
 }
 
-void MostrarPila(nodo* &pila)
+
+void MostrarPila(nodo* &p)
 {
+    nodo* aux = NULL;
     int i = 0;
-    int val;
-    while(pila != NULL)
+    int vActual;
+
+    while(p != NULL)
     {
-        val = Pop(pila);
-        cout << i << ": " << val << endl;
+        vActual = Pop(p);
+        cout << "Pos " << i << ": " << vActual << endl;
+        Push(aux, vActual);
         i++;
     }
-}
 
+    cout << endl;
+}
