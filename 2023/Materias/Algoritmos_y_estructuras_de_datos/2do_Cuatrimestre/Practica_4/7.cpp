@@ -76,13 +76,22 @@ void OrdenarPila(nodo* &pila) // Creciente
     nodo* aux = NULL;
 
     int valorAux;
+    int valorAux2;
 
     while(pila != NULL)
     {
         valorAux = Pop(pila);
-        while(aux != NULL && aux->info < valorAux)
+        while(aux != NULL )
         {
-            Push(pila, Pop(aux));
+            valorAux2 = Pop(aux);
+            if(valorAux2 < valorAux)
+            {
+                Push(pila, valorAux2);
+            }
+            else 
+            {
+                Push(aux, valorAux2);
+            }
         }
         Push(aux, valorAux);
     }

@@ -16,7 +16,7 @@ int main()
 
 }
 
-void queue(nodo* &fte, nodo* &fin, int val)
+void Queue(nodo* &fte, nodo* &fin, int val)
 {
     nodo* n = new nodo();
 
@@ -34,7 +34,7 @@ void queue(nodo* &fte, nodo* &fin, int val)
     return;
 }
 
-int unqueue(nodo* &fte, nodo* &fin)
+int Unqueue(nodo* &fte, nodo* &fin)
 {
     int x;
     nodo* p = fte;
