@@ -27,7 +27,7 @@ int main()
 {
     nodo* lista = CargarLista();
 
-    if(CantidadDeNodos(lista) > 100)
+    if(CantidadDeNodos(lista) < 100)
         InvertirOrden(lista);
     MostrarLista(lista);
 

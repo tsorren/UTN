@@ -1,0 +1,11 @@
+dudas:
+	definir todas las Estructuras de datos ¿Son structs nada mas? o hay que definir:
+		structs
+		archivos
+		arrays
+		estructuras dinamicas
+
+		RTA: hay que declarar/definir TODO: structs, archivos, arrays, estructuras dinamicas
+
+	puedo cambiar el prototipo de una funcion de biblioteca/cambiar el nombre?
+	Si le cambias el nombre tenés que desarrollarla, pero las mayusculas no importan

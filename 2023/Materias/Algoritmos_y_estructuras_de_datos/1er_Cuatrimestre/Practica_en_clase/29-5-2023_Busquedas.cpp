@@ -19,7 +19,7 @@ int busquedaSecuencial(int vector[], int N, int buscado)
 }
 
 // esta funcion devuelve la pos o -1 si no esta
-int busquedaBinaria(int vector[], int buscado, int N)
+int busquedaBinaria(int vector[], int N, int buscado)
 {
     int primero = 0;
     int ultimo = N - 1;

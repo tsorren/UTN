@@ -39,15 +39,19 @@ int main()
     colaFinal.fte = NULL;
     colaFinal.fin = NULL;
 
-    for(int i = 0; i < 30; i++)
+    int N;
+    cout << "Ingrese la cantidad de colas: ";
+    cin >> N;
+
+    for(int i = 0; i < N; i++)
     {
         vec[i].fte = NULL;
         vec[i].fin = NULL;
     }
 
-    CargarColas(vec, 30);
-    OrdenarColas(vec, 30);
-    colaFinal = GenerarColaFinal(vec, 30);
+    CargarColas(vec, N);
+    OrdenarColas(vec, N);
+    colaFinal = GenerarColaFinal(vec, N);
     MostrarCola(colaFinal);
 
 
