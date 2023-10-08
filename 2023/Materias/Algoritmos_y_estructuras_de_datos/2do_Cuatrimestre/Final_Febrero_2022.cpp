@@ -57,7 +57,8 @@ int obtenerPosColumnaEnMatriz(electrodomestico electrodomesticos[], char codigoE
 /*
     3)
     Desarrolle el procedimiento cargarMatriz que debe cumplir con lo siguiente:
-    - Recibe 3 parámetros: el archivo de ventas ya abierto, el array de electrodomésticos y la matriz (cada una de sus celdas ya se encuentra inicializada: cantidad vendida en 0 y lista de clientes en NULL).
+    - Recibe 3 parámetros: el archivo de ventas ya abierto, el array de electrodomésticos y la matriz
+    (cada una de sus celdas ya se encuentra inicializada: cantidad vendida en 0 y lista de clientes en NULL).
     - Se debe leer secuencialmente el archivo de ventas.
 */
 nodo* InsertarOrdenado(nodo* &, regNodo);
