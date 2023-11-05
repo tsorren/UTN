@@ -57,8 +57,11 @@ void MostrarLista(nodo*);
 void MostrarListaBorrando(nodo* &);
 void MostrarListaDeListas(nodoLP*);
 
+nodo* f();
+
 int main()
 {
+    /*
     FILE* f = fopen("lista.dat", "rb+");
     nodoLP* LP = NULL;
 
@@ -84,8 +87,18 @@ int main()
     }
 
     MostrarListaDeListas(LP);
+    */
+    nodo* l = f();
+    cout << l->info;
 
     return 0;    
+}
+
+nodo* f()
+{
+    nodo* l = NULL;
+    InsertarOrdenado(l, 3);
+    return l;
 }
 
 void CargarArchivo(FILE* f)

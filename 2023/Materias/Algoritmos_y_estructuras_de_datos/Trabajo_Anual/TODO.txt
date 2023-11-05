@@ -1,0 +1,35 @@
+Sistema de consulta de atención médica 
+    Se dispone de 3 archivos: 
+    Pacientes: 
+    - Id de paciente (secuencia), nombre, apellido, fecha de nacimiento, dni,teléfono 
+
+    Medicos: 
+    - Id de medico(secuencia), nombre, apellido, matricula, especialidad 
+
+    Atenciones:
+    - idAtencion (secuencia), Fecha, idmedico, idpaciente, diagnostico , idmedicamento 
+
+    Vector de medicamentos (200): 
+    - Idmedicamento, descripción, presentacion
+
+Se solicita: 
+    • Realizar un menú para administrar los informes: 
+    o Consulta de pacientes por dni con todos sus datos 
+    o Consulta de Medicos por Apellido y nombre mostrando sus datos 
+    o Consulta de Atenciones por paciente dado el dni del paciente detallando 
+    diagnósticos y medicamentos recetados (puede no haber ninguno o varios en 
+    cada consulta) ordenadas por idAtencion
+
+HACER:
+    STRUCTS
+    FUNCIONES
+    MENU
+    ARCHIVOS
+
+    Caratula
+    Codigo
+    Ejecutable
+    Resolucion del problema explicada
+    Manual de usuario
+    Screenshots
+    Archivos anexos

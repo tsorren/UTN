@@ -1,4 +1,7 @@
 Leer
+Libro Naranja "PLS"
+	69 - 116 DONE
+	
 Libro rosa parte 5 "Circuitos administrativos" | 
 	209 - 221 DONE
 	221 - 290
@@ -7,6 +10,7 @@ Laudon & Laudon Capitulo 2
 	40 - 58 DONE
 	59 - 64 DONE
 	64 - 78 DONE
+	
 Laudon & Laudon Capitulo 12.2 "Inteligencia de Negocios"
 
 Libro Rosa Capitulo 9 "Intercambio comercial electrónico"
@@ -14,7 +18,7 @@ Libro Rosa Capitulo 10 "Cloud Computing"
 
 TO DO:
 Ejercicios Unidad 8 Discreta "Teoria de Numeros"
-
+	DONE
 Ejercicios Unidad 6 Algebra "Autovectores y Autovalores"
 	DONE
 
