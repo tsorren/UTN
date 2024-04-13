@@ -1,5 +1,0 @@
-Protagonista: Juan González
-Problema: Juan necesitaba entregar las láminas para aprobar la materia, pero no tenía tiempo para hacerlas.
-Causa: Entrenar dos veces por semana y trabajar no le dejaba tiempo para hacer las laminas.
-Solución: Contratar a un estudiante de arquitectura para que haga los dibujos, así eliminando el problema de raiz.
-Tipo de Pensamiento: Juan aplicó pensamiento lineal para resolver su problema, ya que, contratando a un tercero para que haga los dibujos, se elimina el problema 
