@@ -1,6 +1,0 @@
-**/*.exe in .gitignore
-2023/Materias/Algoritmos_y_estructuras_de_datos/.vscode/settings.json
-*.exe
-# **/*.pdf
-
-**/.vscode
