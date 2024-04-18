@@ -1,0 +1,22 @@
+Como parte de la bibliografía del curso
+
+Versión en inglés
+The ANSI C Programming Language, 2nd Ed (Brian W Kernighan, Dennis M Ritchie)
+
+Versión en castellano (pero el pdf está armado con imágenes, no con texto)
+El Lenguaje De Programacion C (Ansi C) 2 Ed Kernighan - Ritchie Spanish.pdf
+
+------------------------------------------------------------------------------
+Otros Libros
+
+Lenguaje-C.pdf
+De la Universidad de Valencia, entiendo que usa ANSI C, es corto y conciso
+
+Introducción a la programación en C.pdf
+De la Universitat Politècnica de Catalunya, usa ANSI C, habla del lenguaje y otros aspectos relacionados
+
+Aprenda lenguaje ANSI C como si estuviera en primero.pdf
+De la Universidad de navarra, breve, solo presenta el lenguaje con una mirada parecida al de nuestra materia.
+
+Prácticas Para Aprender Aprogramar En Lenguaje C.pdf
+De la Universidad Politécnica de Cartagena, es un libro completo, para recomendar en la matería algoritmos si fuese en C.
