@@ -53,10 +53,6 @@ resto dividendo divisor = dividendo - divisor * div dividendo divisor
 divisionEntera :: (Integral a) => a -> a -> a
 divisionEntera x y = fromInteger (toInteger x `Prelude.quot` toInteger y)
 
--- lista de prueba
-listaAux :: [Integer]
-listaAux = [1 .. 5]
-
 -- flip
 voltear :: (a -> b -> c) -> b -> a -> c
 voltear f x y = f y x
