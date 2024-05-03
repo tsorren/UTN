@@ -68,4 +68,3 @@ stan = UnPersonaje "Stan" 10 35
 
 butters :: Personaje
 butters = UnPersonaje "Butters" 20 50
-
