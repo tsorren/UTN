@@ -1,6 +1,7 @@
 /**
 
 !.gitignore
+!Apuntes/**
 !/2023/Algoritmos_y_estructuras_de_datos/**
 !/2024/Paradigmas_de_Programacion/**
 !/2024/Sintaxis_y_Semantica_de_Lenguajes/**
