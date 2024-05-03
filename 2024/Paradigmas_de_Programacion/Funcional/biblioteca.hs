@@ -68,11 +68,12 @@ contadorAuxiliar acumulador lista
 
 -- head
 primerElemento :: [a] -> a
-primerElemento = (!! 0)
+primerElemento (cabeza:cola) = cabeza
 
 -- last
 ultimoElemento :: [a] -> a
-ultimoElemento lista = ((lista !!) . anterior . length) lista
+ultimoElemento [x] = x
+ultimoElemento (cabeza:cola) = ultimoElemento(cola)
 
 anterior :: (Num a) => a -> a
 anterior num = num - 1
@@ -158,3 +159,8 @@ todosCumplen criterio lista = filter criterio lista == lista
 -- any
 algunoCumple :: (Eq a) => (a -> Bool) -> [a] -> Bool
 algunoCumple criterio  = not . null . filter criterio
+
+aplicarR :: (a -> b -> a) -> a -> [b] -> a
+aplicarR operador elemento [] = elemento
+aplicarR operador elemento (x:xs) = aplicarR operador (operador elemento x) xs
+
