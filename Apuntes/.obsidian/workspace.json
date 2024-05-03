@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/Sintaxis/Expresiones Regulares Matemáticas.md",
+                "file": "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "30a1b21add391850",
@@ -110,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024/Sintaxis/Expresiones Regulares Matemáticas.md",
+                "file": "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024/Sintaxis/Expresiones Regulares Matemáticas.md",
+                "file": "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024/Sintaxis/Expresiones Regulares Matemáticas.md"
+                "file": "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md"
               }
             }
           }
@@ -172,9 +173,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "b4a9a79db337c290",
+  "active": "45c11be412642413",
   "lastOpenFiles": [
     "2024/Sintaxis/Autómatas.md",
+    "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
+    "2024/Paradigmas",
     "Excalidraw/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
     "2024/Sintaxis/Expresiones Regulares Matemáticas.md",
     "2024/Tutorial.md",
