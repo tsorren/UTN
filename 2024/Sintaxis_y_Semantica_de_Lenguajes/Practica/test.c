@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <Windows.h>
 
 void draw(char c)
 {
@@ -12,7 +11,6 @@ void draw(char c)
 }
 int main(void)
 {
-    printf("\x1b[2J");
-    draw('o');
+    printf("2");
     return 0;
 }

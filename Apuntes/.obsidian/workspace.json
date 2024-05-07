@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/Sintaxis/Autómatas.md",
+                "file": "2024/Sintaxis/Expresiones Regulares.md",
                 "mode": "source",
                 "source": false
               }
@@ -43,8 +43,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,8 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "30a1b21add391850",
@@ -111,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
+                "file": "2024/Sintaxis/Expresiones Regulares.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
+                "file": "2024/Sintaxis/Expresiones Regulares.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md"
+                "file": "2024/Sintaxis/Expresiones Regulares.md"
               }
             }
           }
@@ -170,26 +168,34 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "obsidian-regex-pipeline:Regex Rulesets": false
     }
   },
-  "active": "45c11be412642413",
+  "active": "2965630d5e60e144",
   "lastOpenFiles": [
+    "regex-rulesets/index.txt",
+    "regex-rulesets/Test",
+    "/regex-rulesets/Test",
+    "regex-rulesets/Greek",
+    "/regex-rulesets/Greek",
+    "regex-rulesets/Untitled.md",
+    "2024/Sintaxis/Expresiones Regulares.md",
+    "/regex-rulesets/index.txt",
+    "/regex-rulesets",
+    "regex-rulesets",
     "2024/Sintaxis/Autómatas.md",
     "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
-    "2024/Paradigmas",
-    "Excalidraw/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
-    "2024/Sintaxis/Expresiones Regulares Matemáticas.md",
     "2024/Tutorial.md",
+    "Excalidraw/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
+    "2024/Paradigmas",
     "Excalidraw/Drawing 2024-04-29 22.41.07.excalidraw.md",
     "2024/Sintaxis",
     "Untitled",
-    "2024",
     "Excalidraw/Drawing 2024-04-29 22.41.42.excalidraw.md",
     "Excalidraw/Drawing 2024-04-29 22.32.13.excalidraw.md",
     "Excalidraw/Untitled 2024-04-29 22.39.16.excalidraw.md",
     "Untitled.md",
-    "Excalidraw/Drawing 2024-04-29 22.24.40.excalidraw.md",
-    "Excalidraw"
+    "Excalidraw/Drawing 2024-04-29 22.24.40.excalidraw.md"
   ]
 }
