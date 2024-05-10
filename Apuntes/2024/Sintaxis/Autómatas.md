@@ -27,22 +27,22 @@ El término Finito se refiere a la cantidad de Estados
 0 -> c -> 1 -> a -> 7 ACEPTA
 ### Definición Matemática:
 Un Autómata es una 5-upla:
-M = (Q, Sigma, T, q0, F)
+M = (Q, Σ, T, q0, F)
 Donde:
 - Q es el conjunto de Estados
-- Sigma es el Alfabeto del lenguaje a reconocer
-- T: Q x Sigma -> Q, es la Función de Transición
+- Σ es el Alfabeto del lenguaje a reconocer
+- T: Q x Σ -> Q, es la Función de Transición
 - q0 perteneciente a Q, es el Estado Inicial
 - F incluído en Q, es el conjunto de Estados Finales o Aceptores
 - Se muestra con Tabla de Transición, Filas = Estados, Columnas = Caracteres
 
 ### Autómata Finito Determinístico (ADF)
 - La Función de Transición, recibiendo un estado y carácter, determina unívocamente el nuevo estado al que pasa el autómata
-- La Función de Transición no tiene por que estar definida para todo par de QxSigma
+- La Función de Transición no tiene por que estar definida para todo par de QxΣ
 - Si durante el análisis de una cadena, el par a aplicar resulta no estar definido, se detiene el análisis y se rechaza la cadena
 - Los Estados suelen identificarse con números y letras
 - T(2, c) = 4 Significa que si el Autómata está en el Estado *2* y el próximo carácter es *c*, entonces el Autómata pasará al Estado *4*
-- Se agrega un nuevo Estado, llamado Estado de Error, y se completa la Función de Transición con este Estado, el cual vuelve a si mismo con cualquier carácter de Sigma (Asigna un Estado Error para los pares que no estaban definidos)
+- Se agrega un nuevo Estado, llamado Estado de Error, y se completa la Función de Transición con este Estado, el cual vuelve a si mismo con cualquier carácter de Σ (Asigna un Estado Error para los pares que no estaban definidos)
 
 |  TT   |   a   |   b   |
 | :---: | :---: | :---: |
@@ -53,13 +53,13 @@ Donde:
 | **4** | **4** | **4** |
 
 ### Autómata Finito No Determinístico (AFN)
-- No determinístico indica que ante un par Q x Sigma en la entrada, para la cual la Función está definida, la salida puede ser más de un Estado (La salida es un conjunto de Estados)
+- No determinístico indica que ante un par Q x Σ en la entrada, para la cual la Función está definida, la salida puede ser más de un Estado (La salida es un conjunto de Estados)
 - Son más lentos que los AFD, ocupan menos memoria
 
 Matemáticamente es una 5-upla
-M = (Q, Sigma, T, q0, F)
+M = (Q, Σ, T, q0, F)
 Donde:
-- T: Q x Sigma -> P(Q), la Función de Transición cambia su imagen al Conjunto de Partes de Q (todos los posibles subconjuntos de Q)
+- T: Q x Σ -> P(Q), la Función de Transición cambia su imagen al Conjunto de Partes de Q (todos los posibles subconjuntos de Q)
 - Lo demás es igual que en ADF
 
 | TT  |   a    |   b    |
@@ -69,16 +69,16 @@ Donde:
 | 2+  |  {3}   | {0, 1} |
 | 3+  |  {3}   |   -    |
 
-### Autómata Finito No Determinístico con Epsilon (AFN-Epsilon)
+### Autómata Finito No Determinístico con ε (AFN-ε)
 - Permite cambiar de Estado sin consumir ningún Carácter de la cadena que se analiza
-- Permite comenzar de otro Carácter (Salto desde el inicio, con Epsilon, al Estado Deseado)
-- Estos cambios se etiquetan con Epsilon
-- A la Tabla de Transición se le agrega una columna más, etiquetada con Epsilon
+- Permite comenzar de otro Carácter (Salto desde el inicio, con ε, al Estado Deseado)
+- Estos cambios se etiquetan con ε
+- A la Tabla de Transición se le agrega una columna más, etiquetada con ε
 - La mayoria de las veces se utiliza este AFN
 La Función de Transición pasa a ser:
-- T: Q x (Sigma u {Epsilon}) -> P(Q)
+- T: Q x (Σ u {ε}) -> P(Q)
 
-| TT  |  a  |  b  | Epsilon |
+| TT  |  a  |  b  | ε |
 | :-: | :-: | :-: | :-----: |
 | 0-  | {0} | {0} |   {1}   |
 |  1  | {1} |  -  | {2, 3}  |
@@ -87,7 +87,7 @@ La Función de Transición pasa a ser:
 
 ---
 ### Ejercicios: 
-- Sigma = {a, b} y L = {ab, bb, ba}. Expresar TT del AFD correspondiente
+- Σ = {a, b} y L = {ab, bb, ba}. Expresar TT del AFD correspondiente
 
 | TT  |  a  |  b  |
 | :-: | :-: | :-: |

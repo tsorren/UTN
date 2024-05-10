@@ -8,6 +8,8 @@
 !*/
 
 **/tempCodeRunnerFile.*
+
 **/*.pdf
-**/*.exe
 **/*.docx
+**/*.exe
+**/*.o
