@@ -24,14 +24,14 @@ El término Finito se refiere a la cantidad de Estados
 
 #### Ejemplo:
 ![[Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw|200]]
-0 -> c -> 1 -> a -> 7 ACEPTA
+0 → c → 1 → a → 7 ACEPTA
 ### Definición Matemática:
 Un Autómata es una 5-upla:
 M = (Q, Σ, T, q0, F)
 Donde:
 - Q es el conjunto de Estados
 - Σ es el Alfabeto del lenguaje a reconocer
-- T: Q x Σ -> Q, es la Función de Transición
+- T: Q 𝑥 Σ → Q, es la Función de Transición
 - q₀ ∈ Q, es el Estado Inicial
 - F incluído en Q, es el conjunto de Estados Finales o Aceptores
 - Se muestra con Tabla de Transición, Filas = Estados, Columnas = Caracteres
@@ -53,13 +53,13 @@ Donde:
 | **4** | **4** | **4** |
 
 ### Autómata Finito No Determinístico (AFN)
-- No determinístico indica que ante un par Q x Σ en la entrada, para la cual la Función está definida, la salida puede ser más de un Estado (La salida es un conjunto de Estados)
+- No determinístico indica que ante un par Q 𝑥 Σ en la entrada, para la cual la Función está definida, la salida puede ser más de un Estado (La salida es un conjunto de Estados)
 - Son más lentos que los AFD, ocupan menos memoria
 
 Matemáticamente es una 5-upla
 M = (Q, Σ, T, q0, F)
 Donde:
-- T: Q x Σ -> P(Q), la Función de Transición cambia su imagen al Conjunto de Partes de Q (todos los posibles subconjuntos de Q)
+- T: Q 𝑥 Σ → P(Q), la Función de Transición cambia su imagen al Conjunto de Partes de Q (todos los posibles subconjuntos de Q)
 - Lo demás es igual que en ADF
 
 | TT  |   a    |   b    |
@@ -76,7 +76,7 @@ Donde:
 - A la Tabla de Transición se le agrega una columna más, etiquetada con ε
 - La mayoria de las veces se utiliza este AFN
 La Función de Transición pasa a ser:
-- T: Q x (Σ u {ε}) -> P(Q)
+- T: Q 𝑥 (Σ u {ε}) → P(Q)
 
 | TT  |  a  |  b  |   ε    |
 | :-: | :-: | :-: | :----: |
@@ -111,10 +111,10 @@ Función de Transición:
 | 2+  |  -  |  -  |
 | 3+  |  3  |  -  |
 - Mostrar la Actividad para las siguientes cadenas:
-1. ab: 0 -> a -> 1 -> b -> 3 ACEPTA
-2. a: 0 -> a -> 1 RECHAZA
-3. aba: 0 -> a -> 1 -> b -> 3 -> b RECHAZA
-4. aab: 0 -> 1 -> 2 -> b RECHAZA
+1. ab: 0 → a → 1 → b → 3 ACEPTA
+2. a: 0 → a → 1 RECHAZA
+3. aba: 0 → a → 1 → b → 3 → b RECHAZA
+4. aab: 0 → 1 → 2 → b RECHAZA
 
 - Armar TT y TTC:
 
