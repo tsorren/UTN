@@ -7,6 +7,7 @@ Las Expresiones Regulares se forman con:
 	- Unión - Conmutativa
 	- Concatenación - No conmutativa
 	- Estrella de Kleene (loop ó potencia infinita, potencia finita no)
+	- No existe clausura positiva → aa*
 - Paréntesis para agrupar o cambiar precedencias
 - Precedencia:
 	1. Potenciación (Estrella de Kleene)
@@ -36,10 +37,12 @@ Factorización:
 - La Concatenación no es conmutativa, entonces tendremos factorizaciones a izquierda y a derecha
 	- a(a+b) = aa + ab
 	- aab + abb = a(ab + bb) = a(a+b)b
+	
 Clausura Positiva
 - Como la de Kleene pero sin potencia cero
 	- a* = {ε, a, aa, aaa...}
 	- a⁺ = aa* = a\*a
+
 Igualdades Útiles:
 - a\*a\* = a*
 - ε* = ε
@@ -72,7 +75,7 @@ Hay distintos tipos de extensiones, pero las más comunes son las siguientes:
 | Metacaracter |    Descripción    |                                           Comentario                                            |
 | :----------: | :---------------: | :---------------------------------------------------------------------------------------------: |
 |      .       |       Punto       | Cualquier caracter (generico), salvo \\n dado que los programas de ER suelen analizar por línea |
-|      \|      |       Pipe        |                            Operador de unión (corresponde a + en ER)                            |
+|      \|      |       π pe        |                            Operador de unión (corresponde a + en ER)                            |
 |     \[ ]     |     Corchete      |                    Enumera conjunto de caracteres (alternativa a usar unión)                    |
 |    \[ ^ ]    |  Con Circunflejo  |                               Complemento del conjunto enumerado                                |
 |    \[ - ]    |     Con Guión     |             Da un rango de caracteres \[ 0 - 9 ], es la unión de todos los dígitos              |
