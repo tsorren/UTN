@@ -7,7 +7,7 @@ Las Expresiones Regulares se forman con:
 	- Unión - Conmutativa
 	- Concatenación - No conmutativa
 	- Estrella de Kleene (loop ó potencia infinita, potencia finita no)
-- Paréntesis para agrupar o cambiar presedencias
+- Paréntesis para agrupar o cambiar precedencias
 - Precedencia:
 	1. Potenciación (Estrella de Kleene)
 	2. Concatenación
@@ -49,14 +49,14 @@ Igualdades Útiles:
 - (R* + S*)* = (R\*S\*) = (R+S)*
 
 #### Definición formal de Expresión Regular:
-1. Vacio es la ER que representa el conjunto vacío
+1. ∅ es la ER que representa el conjunto vacío
 2. ε es una ER que representa al lenguaje L={ε}
-3. x perteneciente a Σ (Alfabeto) es la ER que representa el Lenguaje L = {x}
-4. s perteneciente a Σ* es la ER que representa el Lenguaje = {s}. Por ej: *s* = *abf* (palabra)
-5. R1 y R2 son ER -> R1 + R2 es también una ER
-6. R1 y R2 son Er entonces R1.R2 es también una ER
-7. R es ER entonces R* es también una ER
-8. R es ER entonces (R) es también una ER
+3. 𝑥 ∈ Σ (Alfabeto) es la ER que representa el Lenguaje L = {x}
+4. s ∈ Σ* es la ER que representa el Lenguaje = {s}. Por ej: *s* = *abf* (palabra)
+5. R1 y R2 son ER → R1 + R2 es también una ER
+6. R1 y R2 son Er ⇒ R1.R2 es también una ER
+7. R es ER ⇒ R* es también una ER
+8. R es ER ⇒ (R) es también una ER
 
 #### Expresión Regular Universal (ERU)
 Aquella que representa todas las cadenas que se pueden formar con un alfabeto dado (es Σ*)
@@ -78,7 +78,7 @@ Hay distintos tipos de extensiones, pero las más comunes son las siguientes:
 |    \[ - ]    |     Con Guión     |             Da un rango de caracteres \[ 0 - 9 ], es la unión de todos los dígitos              |
 |     { }      |      Llaves       |                         Indica potenciación. *b{3}* corresponde a *bbb*                         |
 |    { , }     |     Con Coma      |       Unión de todas las potencias entre la primera y la última. *b{2, 3}* es *bb + bbb*        |
-|      ?       | Signo de Pregunta |                       Indica opción (cero o una vez). *b?* es (b+ε)                       |
+|      ?       | Signo de Pregunta |                          Indica opción (cero o una vez). *b?* es (b+ε)                          |
 |      *       |     Asterisco     |                                       Clausura de Kleene                                        |
 |      +       |        Más        |                                        Clausura Positiva                                        |
 |     ( )      |    Paréntesis     |                             Se utiliza para agrupar subexpresiones                              |

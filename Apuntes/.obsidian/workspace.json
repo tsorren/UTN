@@ -13,18 +13,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/Sintaxis/Expresiones Regulares.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0dd0527daf8783d6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "2024/Sintaxis/Autómatas.md",
                 "mode": "source",
                 "source": false
@@ -37,13 +25,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
+                "file": "2024/Sintaxis/Expresiones Regulares.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -172,11 +161,13 @@
       "obsidian-regex-pipeline:Regex Rulesets": false
     }
   },
-  "active": "2965630d5e60e144",
+  "active": "45c11be412642413",
   "lastOpenFiles": [
     "2024/Sintaxis/Autómatas.md",
-    "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
     "2024/Sintaxis/Expresiones Regulares.md",
+    "2024/Sintaxis/test.md",
+    "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
+    "regex-rulesets/Symbols",
     "regex-rulesets/Greek",
     "/regex-rulesets/Greek",
     "regex-rulesets/test2",
@@ -186,7 +177,6 @@
     "regex-rulesets/TEST",
     "/regex-rulesets",
     "regex-rulesets/index.txt",
-    "regex-rulesets/Test",
     "regex-rulesets/Untitled.md",
     "2024/Tutorial.md",
     "Excalidraw/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",

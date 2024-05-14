@@ -9,7 +9,7 @@ Reconocer:
 | :-------: | :------------------------------: | :------------------------------: | :----------------------------------------: |
 |  Tipo 0   | Recursivamente Enumerable (LRE)  |        Irrestricta (GIR)         |             Máquina de Turing              |
 |  Tipo 1   |    Sensible al Contexto (LSC)    |    Sensible al Contexto (GSC)    |        Autómata Linealmente Acotado        |
-|  Tipo 2   | Independiente del Contexto (LIC) | Independiente del Contexto (GIC) | Autómata Finito con Pila NO DETERMINISTICO |
+|  Tipo 2   | Independiente del Contexto (LIC) | Independiente del Contexto (GIC) | Autómata Finito con πla NO DETERMINISTICO |
 |  Tipo 3   |           Regular (LR)           |           Regular (GR)           |              Autómata Finito               |
 Estos problemas son computables
 ### Definición formal:
@@ -32,7 +32,7 @@ Donde:
 - Q es el conjunto de Estados
 - Σ es el Alfabeto del lenguaje a reconocer
 - T: Q x Σ -> Q, es la Función de Transición
-- q0 perteneciente a Q, es el Estado Inicial
+- q₀ ∈ Q, es el Estado Inicial
 - F incluído en Q, es el conjunto de Estados Finales o Aceptores
 - Se muestra con Tabla de Transición, Filas = Estados, Columnas = Caracteres
 
@@ -78,12 +78,12 @@ Donde:
 La Función de Transición pasa a ser:
 - T: Q x (Σ u {ε}) -> P(Q)
 
-| TT  |  a  |  b  | ε |
-| :-: | :-: | :-: | :-----: |
-| 0-  | {0} | {0} |   {1}   |
-|  1  | {1} |  -  | {2, 3}  |
-| 2+  | {3} | {3} |    -    |
-| 3+  |  -  | {3} |    -    |
+| TT  |  a  |  b  |   ε    |
+| :-: | :-: | :-: | :----: |
+| 0-  | {0} | {0} |  {1}   |
+|  1  | {1} |  -  | {2, 3} |
+| 2+  | {3} | {3} |   -    |
+| 3+  |  -  | {3} |   -    |
 
 ---
 ### Ejercicios: 
