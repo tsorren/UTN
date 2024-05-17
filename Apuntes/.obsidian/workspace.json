@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C.md",
+                "file": "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
                 "mode": "source",
                 "source": true
               }
@@ -25,13 +25,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
+                "file": "2024/Sintaxis/Autómatas.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C.md",
+                "file": "2024/Sintaxis/Autómatas.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C.md",
+                "file": "2024/Sintaxis/Autómatas.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C.md"
+                "file": "2024/Sintaxis/Autómatas.md"
               }
             }
           }
@@ -160,11 +161,12 @@
       "obsidian-regex-pipeline:Regex Rulesets": false
     }
   },
-  "active": "0dd0527daf8783d6",
+  "active": "45c11be412642413",
   "lastOpenFiles": [
     "2024/Sintaxis/Expresiones Regulares.md",
-    "2024/Sintaxis/Autómatas.md",
     "2024/Sintaxis/Lenguaje C.md",
+    "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
+    "2024/Sintaxis/Autómatas.md",
     "antics",
     "regex-rulesets/Symbols",
     "regex-rulesets/index.txt",
@@ -176,7 +178,6 @@
     "/regex-rulesets/index.txt",
     "/regex-rulesets",
     "regex-rulesets",
-    "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
     "2024/Tutorial.md",
     "Excalidraw/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
     "Excalidraw/Drawing 2024-04-29 22.41.07.excalidraw.md",
