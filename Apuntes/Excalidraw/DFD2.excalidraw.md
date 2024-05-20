@@ -23,8 +23,6 @@ Carta_Invit ^gOltQe2Q
 
 Rta_Invit ^Q39l8xPr
 
-Equipo_Asignado ^5Th2eyeQ
-
 Aceptado ^dW9AUcOF
 
 d ^GkGUI6aV
@@ -57,8 +55,8 @@ Cuotas_Pagadas ^fNS34El7
 	"elements": [
 		{
 			"type": "rectangle",
-			"version": 411,
-			"versionNonce": 1980970699,
+			"version": 413,
+			"versionNonce": 1891278763,
 			"isDeleted": false,
 			"id": "YtDWoh4VtN7zf2_tfKZry",
 			"fillStyle": "solid",
@@ -81,10 +79,6 @@ Cuotas_Pagadas ^fNS34El7
 			},
 			"boundElements": [
 				{
-					"id": "Boys0CPOIXyuHksl3d6K4",
-					"type": "arrow"
-				},
-				{
 					"id": "FWqjCWwccAsxNCqk8A_6d",
 					"type": "arrow"
 				},
@@ -103,9 +97,13 @@ Cuotas_Pagadas ^fNS34El7
 				{
 					"id": "fw8srORxAgsc7l8T85w97",
 					"type": "arrow"
+				},
+				{
+					"id": "cqbHQwZT2QDoF0VBv9f2B",
+					"type": "arrow"
 				}
 			],
-			"updated": 1716210886833,
+			"updated": 1716211624969,
 			"link": null,
 			"locked": false
 		},
@@ -299,8 +297,8 @@ Cuotas_Pagadas ^fNS34El7
 		},
 		{
 			"type": "arrow",
-			"version": 629,
-			"versionNonce": 2010540971,
+			"version": 644,
+			"versionNonce": 912783627,
 			"isDeleted": false,
 			"id": "cqbHQwZT2QDoF0VBv9f2B",
 			"fillStyle": "solid",
@@ -309,8 +307,8 @@ Cuotas_Pagadas ^fNS34El7
 			"roughness": 1,
 			"opacity": 100,
 			"angle": 0,
-			"x": 79.97833256035634,
-			"y": -20.28870076786921,
+			"x": 82.08359571825102,
+			"y": 29.18498344265712,
 			"strokeColor": "#1e1e1e",
 			"backgroundColor": "transparent",
 			"width": 227.05473376573434,
@@ -322,10 +320,14 @@ Cuotas_Pagadas ^fNS34El7
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1716210886834,
+			"updated": 1716211624969,
 			"link": null,
 			"locked": false,
-			"startBinding": null,
+			"startBinding": {
+				"elementId": "YtDWoh4VtN7zf2_tfKZry",
+				"focus": -0.40983980102506745,
+				"gap": 2.0078983492473412
+			},
 			"endBinding": null,
 			"lastCommittedPoint": null,
 			"startArrowhead": null,
@@ -347,8 +349,8 @@ Cuotas_Pagadas ^fNS34El7
 		},
 		{
 			"type": "arrow",
-			"version": 1323,
-			"versionNonce": 1960735301,
+			"version": 1338,
+			"versionNonce": 591360587,
 			"isDeleted": false,
 			"id": "VbW5XhdcfKLKnWXC_7CSC",
 			"fillStyle": "solid",
@@ -357,8 +359,8 @@ Cuotas_Pagadas ^fNS34El7
 			"roughness": 1,
 			"opacity": 100,
 			"angle": 6.198496345126493,
-			"x": 302.1566594751853,
-			"y": 38.44064276889647,
+			"x": 304.26192263307996,
+			"y": 87.9143269794228,
 			"strokeColor": "#1e1e1e",
 			"backgroundColor": "transparent",
 			"width": 225.87595073228695,
@@ -370,13 +372,13 @@ Cuotas_Pagadas ^fNS34El7
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1716210887093,
+			"updated": 1716211624969,
 			"link": null,
 			"locked": false,
 			"startBinding": {
 				"elementId": "Ejwf8O9sJYpPTfgvVc7T5",
-				"focus": 0.5679604127652893,
-				"gap": 2.6868201407663435
+				"focus": 0.29877781849794327,
+				"gap": 1
 			},
 			"endBinding": null,
 			"lastCommittedPoint": null,
@@ -398,57 +400,9 @@ Cuotas_Pagadas ^fNS34El7
 			]
 		},
 		{
-			"type": "arrow",
-			"version": 897,
-			"versionNonce": 1665261989,
-			"isDeleted": false,
-			"id": "Boys0CPOIXyuHksl3d6K4",
-			"fillStyle": "solid",
-			"strokeWidth": 2,
-			"strokeStyle": "solid",
-			"roughness": 1,
-			"opacity": 100,
-			"angle": 0,
-			"x": 85.13866741866838,
-			"y": 148.85125106204518,
-			"strokeColor": "#1e1e1e",
-			"backgroundColor": "transparent",
-			"width": 224.91270797549151,
-			"height": 8.001193518469163,
-			"seed": 893031557,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
-			"boundElements": [],
-			"updated": 1716210887094,
-			"link": null,
-			"locked": false,
-			"startBinding": {
-				"elementId": "YtDWoh4VtN7zf2_tfKZry",
-				"focus": 0.13673685289793028,
-				"gap": 5.062970049664699
-			},
-			"endBinding": null,
-			"lastCommittedPoint": null,
-			"startArrowhead": null,
-			"endArrowhead": "arrow",
-			"points": [
-				[
-					0,
-					0
-				],
-				[
-					224.91270797549151,
-					-8.001193518469163
-				]
-			]
-		},
-		{
 			"type": "text",
-			"version": 384,
-			"versionNonce": 1402529675,
+			"version": 398,
+			"versionNonce": 697233157,
 			"isDeleted": false,
 			"id": "gOltQe2Q",
 			"fillStyle": "solid",
@@ -457,8 +411,8 @@ Cuotas_Pagadas ^fNS34El7
 			"roughness": 1,
 			"opacity": 100,
 			"angle": 0,
-			"x": 133.33424769913097,
-			"y": -80.46015251196175,
+			"x": 135.43951085702565,
+			"y": -30.986468301435423,
 			"strokeColor": "#1e1e1e",
 			"backgroundColor": "transparent",
 			"width": 131.04900776186867,
@@ -468,7 +422,7 @@ Cuotas_Pagadas ^fNS34El7
 			"frameId": null,
 			"roundness": null,
 			"boundElements": [],
-			"updated": 1716210886834,
+			"updated": 1716211624670,
 			"link": null,
 			"locked": false,
 			"fontSize": 21.420257902427764,
@@ -483,8 +437,8 @@ Cuotas_Pagadas ^fNS34El7
 		},
 		{
 			"type": "text",
-			"version": 468,
-			"versionNonce": 1187626539,
+			"version": 482,
+			"versionNonce": 1313130085,
 			"isDeleted": false,
 			"id": "Q39l8xPr",
 			"fillStyle": "solid",
@@ -493,8 +447,8 @@ Cuotas_Pagadas ^fNS34El7
 			"roughness": 1,
 			"opacity": 100,
 			"angle": 0,
-			"x": 145.79694320599793,
-			"y": 1.6183811777955697,
+			"x": 147.90220636389262,
+			"y": 51.0920653883219,
 			"strokeColor": "#1e1e1e",
 			"backgroundColor": "transparent",
 			"width": 108.27929583719735,
@@ -504,7 +458,7 @@ Cuotas_Pagadas ^fNS34El7
 			"frameId": null,
 			"roundness": null,
 			"boundElements": [],
-			"updated": 1716210886834,
+			"updated": 1716211624670,
 			"link": null,
 			"locked": false,
 			"fontSize": 21.420257902427764,
@@ -515,42 +469,6 @@ Cuotas_Pagadas ^fNS34El7
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Rta_Invit",
-			"lineHeight": 1.25
-		},
-		{
-			"type": "text",
-			"version": 497,
-			"versionNonce": 1457963211,
-			"isDeleted": false,
-			"id": "5Th2eyeQ",
-			"fillStyle": "solid",
-			"strokeWidth": 2,
-			"strokeStyle": "solid",
-			"roughness": 1,
-			"opacity": 100,
-			"angle": 0.029246738715968945,
-			"x": 95.07985261083061,
-			"y": 97.25771072143309,
-			"strokeColor": "#1e1e1e",
-			"backgroundColor": "transparent",
-			"width": 172.56139632408474,
-			"height": 26.77532237803471,
-			"seed": 326459685,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": null,
-			"boundElements": [],
-			"updated": 1716210886834,
-			"link": null,
-			"locked": false,
-			"fontSize": 21.420257902427764,
-			"fontFamily": 1,
-			"text": "Equipo_Asignado",
-			"rawText": "Equipo_Asignado",
-			"textAlign": "left",
-			"verticalAlign": "top",
-			"containerId": null,
-			"originalText": "Equipo_Asignado",
 			"lineHeight": 1.25
 		},
 		{
@@ -1242,6 +1160,90 @@ Cuotas_Pagadas ^fNS34El7
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Cuotas_Pagadas",
+			"lineHeight": 1.25
+		},
+		{
+			"type": "arrow",
+			"version": 898,
+			"versionNonce": 474623685,
+			"isDeleted": true,
+			"id": "Boys0CPOIXyuHksl3d6K4",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 85.13866741866838,
+			"y": 148.85125106204518,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 224.91270797549151,
+			"height": 8.001193518469163,
+			"seed": 893031557,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1716211616825,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "YtDWoh4VtN7zf2_tfKZry",
+				"focus": 0.13673685289793028,
+				"gap": 5.062970049664699
+			},
+			"endBinding": null,
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					224.91270797549151,
+					-8.001193518469163
+				]
+			]
+		},
+		{
+			"type": "text",
+			"version": 498,
+			"versionNonce": 1959314123,
+			"isDeleted": true,
+			"id": "5Th2eyeQ",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0.029246738715968945,
+			"x": 95.07985261083061,
+			"y": 97.25771072143309,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 172.56139632408474,
+			"height": 26.77532237803471,
+			"seed": 326459685,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1716211614651,
+			"link": null,
+			"locked": false,
+			"fontSize": 21.420257902427764,
+			"fontFamily": 1,
+			"text": "Equipo_Asignado",
+			"rawText": "Equipo_Asignado",
+			"textAlign": "left",
+			"verticalAlign": "top",
+			"containerId": null,
+			"originalText": "Equipo_Asignado",
 			"lineHeight": 1.25
 		},
 		{
