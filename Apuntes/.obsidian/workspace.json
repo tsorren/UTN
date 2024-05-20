@@ -30,9 +30,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "06a13546e286435a",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/DFD2.excalidraw.md"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024/Sintaxis/Autómatas.md",
+                "file": "Excalidraw/DFD2.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024/Sintaxis/Autómatas.md",
+                "file": "Excalidraw/DFD2.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024/Sintaxis/Autómatas.md"
+                "file": "Excalidraw/DFD2.excalidraw.md"
               }
             }
           }
@@ -157,16 +167,20 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
-      "obsidian-regex-pipeline:Regex Rulesets": false
+      "obsidian-regex-pipeline:Regex Rulesets": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "45c11be412642413",
+  "active": "06a13546e286435a",
   "lastOpenFiles": [
-    "2024/Sintaxis/Expresiones Regulares.md",
     "2024/Sintaxis/Lenguaje C.md",
-    "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
+    "Excalidraw/DFD2.excalidraw.md",
+    "Excalidraw/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
+    "Excalidraw/DFD1.excalidraw.md",
+    "Untitled.md",
     "2024/Sintaxis/Autómatas.md",
+    "2024/Sintaxis/Expresiones Regulares.md",
+    "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
     "antics",
     "regex-rulesets/Symbols",
     "regex-rulesets/index.txt",
@@ -179,12 +193,10 @@
     "/regex-rulesets",
     "regex-rulesets",
     "2024/Tutorial.md",
-    "Excalidraw/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
     "Excalidraw/Drawing 2024-04-29 22.41.07.excalidraw.md",
     "Excalidraw/Drawing 2024-04-29 22.41.42.excalidraw.md",
     "Excalidraw/Drawing 2024-04-29 22.32.13.excalidraw.md",
     "Excalidraw/Untitled 2024-04-29 22.39.16.excalidraw.md",
-    "Untitled.md",
     "Excalidraw/Drawing 2024-04-29 22.24.40.excalidraw.md"
   ]
 }
