@@ -51,11 +51,8 @@ objetosCrafteables objetos personaje = filter (\x -> puedeConstruirObj ((fst.rec
 crafteosSucesivos :: [Material] -> Personaje -> Personaje
 crafteosSucesivos recetas personaje = foldr construirObjeto personaje recetas
 
-mayorPuntaje :: [Material] -> Personaje -> String
-mayorPuntaje recetas personaje
-    | puntaje (crafteosSucesivos recetas personaje) > puntaje (crafteosSucesivos (reverse recetas) personaje) = "Es mayor con orden normal"
-    | puntaje (crafteosSucesivos recetas personaje) == puntaje (crafteosSucesivos (reverse recetas) personaje) = "Es lo mismo con los dos ordenes"
-    | otherwise = "Es mayor con orden inverso"
+ordenNormalEsMayor :: [Material] -> Personaje -> Bool
+ordenNormalEsMayor recetas personaje = puntaje (crafteosSucesivos recetas personaje) > puntaje (crafteosSucesivos (reverse recetas) personaje) 
 
 -- Pruebas
 steve = UnPersonaje "Steve Stevenson" 1000 [sueter, fogata, fogata, pollo, pollo]
@@ -69,7 +66,35 @@ pollo = Material "Pollo"
 lana = Material "Lana"
 agujas = Material "Agujas"
 tintura = Material "Tintura"
+hielo = Material "Hielo"
+iglu = Material "Iglu"
+lobo = Material "Lobo"
 
 fogata = Objeto "Fogata" ([madera, fosforo], 10)
 polloAsado = Objeto "Pollo Asado" ([fogata, pollo], 300)
 sueter = Objeto "Sueter" ([lana, agujas, tintura], 600)
+
+artico = UnBioma [hielo, iglu, lobo] sueter
+
+
+hacha :: Herramienta
+hacha = init.materiales
+
+espada :: Herramienta
+espada = head.materiales
+
+picoDePrecision :: Int -> Herramienta
+picoDePresicion indice = (indice !!) . materiales
+
+-- Mine
+data Bioma = UnBioma {materiales :: [Material], requisito :: Material}
+
+type Herramienta = Bioma -> Material
+
+puedeMinar :: Bioma -> Personaje -> Bool
+puedeMinar bioma personaje = requisito bioma `elem` inventario personaje
+
+minar :: Bioma -> Herramienta -> Personaje -> Personaje
+minar bioma herramienta personaje 
+    | puedeMinar bioma personaje herramienta = (modificarPuntos 50 . añadirObjeto (herramienta bioma)) personaje
+    | otherwise = personaje

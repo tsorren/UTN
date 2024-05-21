@@ -23,5 +23,13 @@
       ],
       "key": "F"
     }
+  ],
+  "editor:insert-codeblock": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "C"
+    }
   ]
 }
