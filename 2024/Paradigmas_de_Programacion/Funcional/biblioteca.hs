@@ -125,7 +125,7 @@ perteneceA elemento lista = lista `any` (== elemento)
 
 -- !!
 posicionLista :: [a] -> Int -> a
-posicionLista  = recorrerHasta 
+posicionLista  = recorrerHasta
 
 recorrerHasta :: [a] -> Int -> a
 recorrerHasta lista indice
