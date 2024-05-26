@@ -11,11 +11,9 @@
             "id": "06a13546e286435a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C.md",
-                "mode": "source",
-                "source": false
+                "file": "Excalidraw/DFD1.excalidraw.md"
               }
             }
           }
@@ -69,8 +67,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "30a1b21add391850",
@@ -86,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C.md",
+                "file": "Excalidraw/DFD1.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C.md",
+                "file": "Excalidraw/DFD1.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C.md"
+                "file": "Excalidraw/DFD1.excalidraw.md"
               }
             }
           }
@@ -152,8 +149,8 @@
   "active": "06a13546e286435a",
   "lastOpenFiles": [
     "2024/AdS/DFD.md",
-    "2024/Sintaxis/Autómatas.md",
     "2024/Sintaxis/Lenguaje C.md",
+    "2024/Sintaxis/Autómatas.md",
     "2024/AdS",
     "Excalidraw/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
     "2024/Sintaxis/Expresiones Regulares.md",

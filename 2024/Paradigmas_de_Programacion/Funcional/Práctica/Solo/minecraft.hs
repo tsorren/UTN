@@ -126,7 +126,4 @@ Si se intenta minar un bioma con infinitos materiales, se plantean los siguiente
 
     No posee el requisito del bioma:
         La evaluación diferida hace que se ignore la lista infinita de materiales y simplemente no pueda minar, por lo que devuelve al personaje como estaba
-
-
-
 -}
