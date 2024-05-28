@@ -84,7 +84,7 @@ irAlGimnasio :: Int -> Nomus -> Nomus
 irAlGimnasio tiempo nomus = nomus {fuerza = fuerza nomus + tiempo}
 
 entrenarGrupo :: Int -> [Nomus] -> [Nomus]
-entrenarGrupo tiempo grupo = map (irAlGimnasio tiempo) grupo
+entrenarGrupo tiempo = map (irAlGimnasio tiempo)
 
 tienenAlas :: [Nomus] -> [Nomus]
 tienenAlas = filter alas

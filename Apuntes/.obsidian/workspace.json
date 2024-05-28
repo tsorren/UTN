@@ -4,16 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "019a784e5c65295c",
+        "id": "dc4f8745bdab317b",
         "type": "tabs",
         "children": [
           {
-            "id": "06a13546e286435a",
+            "id": "b67447b136719810",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/DFD1.excalidraw.md"
+                "file": "2024/Sintaxis/Lenguaje C/Compilador.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -67,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 281.51103591918945
   },
   "right": {
     "id": "30a1b21add391850",
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Excalidraw/DFD1.excalidraw.md",
+                "file": "2024/Sintaxis/Lenguaje C/Compilador.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Excalidraw/DFD1.excalidraw.md",
+                "file": "2024/Sintaxis/Lenguaje C/Compilador.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,11 +125,20 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Excalidraw/DFD1.excalidraw.md"
+                "file": "2024/Sintaxis/Lenguaje C/Compilador.md"
               }
             }
+          },
+          {
+            "id": "fa8c13bea91e53c3",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -142,32 +153,43 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
       "obsidian-regex-pipeline:Regex Rulesets": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "06a13546e286435a",
+  "active": "b67447b136719810",
   "lastOpenFiles": [
-    "2024/AdS/DFD.md",
-    "2024/Sintaxis/Lenguaje C.md",
-    "2024/Sintaxis/Autómatas.md",
-    "2024/AdS",
-    "Excalidraw/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
+    "Excalidraw/SSL/Etapas - Compilador.excalidraw.md",
+    "2024/Sintaxis/Lenguaje C/Compilador.md",
+    "Excalidraw/SSL/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
+    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/Biblioteca Estándar.md",
     "2024/Sintaxis/Expresiones Regulares.md",
-    "Excalidraw/DFD2.excalidraw.md",
-    "Excalidraw/DFD1.excalidraw.md",
-    "Untitled.md",
+    "2024/Sintaxis/Autómatas.md",
+    "Excalidraw/AdS/DFD1.excalidraw.md",
+    "Excalidraw/PdP",
+    "Excalidraw/SSL",
+    "Excalidraw/AdS",
+    "2024/Sintaxis/Lenguaje C/Lenguaje C.md",
+    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/ctype.h.md",
+    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/stdlib.h.md",
+    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/stdio.h.md",
+    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar",
+    "2024/Sintaxis/Lenguaje C",
+    "Excalidraw/AdS/DFD5.excalidraw.md",
+    "Excalidraw/AdS/DFD4.excalidraw.md",
+    "Excalidraw/AdS/DFD3.excalidraw.md",
+    "Excalidraw/AdS/DFD2.excalidraw.md",
+    "2024/AdS/DFD.md",
     "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
+    "Excalidraw/Drawing 2024-05-27 11.27.27.excalidraw.md",
+    "2024/AdS",
+    "Untitled.md",
     "antics",
     "regex-rulesets/Symbols",
     "regex-rulesets/index.txt",
     "regex-rulesets/Test",
-    "/regex-rulesets/Test",
-    "regex-rulesets/Greek",
-    "/regex-rulesets/Greek",
     "regex-rulesets/Untitled.md",
-    "/regex-rulesets/index.txt",
-    "/regex-rulesets",
     "2024/Tutorial.md",
     "Excalidraw/Drawing 2024-04-29 22.41.07.excalidraw.md",
     "Excalidraw/Drawing 2024-04-29 22.41.42.excalidraw.md",

@@ -1,4 +1,7 @@
 [
   "obsidian-excalidraw-plugin",
-  "obsidian-regex-pipeline"
+  "obsidian-regex-pipeline",
+  "table-editor-obsidian",
+  "note-refactor-obsidian",
+  "obsidian-relative-line-numbers"
 ]
