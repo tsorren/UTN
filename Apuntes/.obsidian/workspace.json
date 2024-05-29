@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "dc4f8745bdab317b",
+        "id": "5f0e2851875a63e2",
         "type": "tabs",
         "children": [
           {
-            "id": "b67447b136719810",
+            "id": "b16dfe90bb902824",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C/Compilador.md",
+                "file": "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C/Compilador.md",
+                "file": "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C/Compilador.md",
+                "file": "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C/Compilador.md"
+                "file": "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md"
               }
             }
           },
@@ -158,19 +158,22 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "b67447b136719810",
+  "active": "b16dfe90bb902824",
   "lastOpenFiles": [
-    "Excalidraw/SSL/Etapas - Compilador.excalidraw.md",
+    "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
+    "2024/Paradigmas/Lógico",
+    "2024/Paradigmas/Funcional",
+    "2024/Sintaxis/Lenguaje C.md",
     "2024/Sintaxis/Lenguaje C/Compilador.md",
+    "Excalidraw/SSL/Etapas - Compilador.excalidraw.md",
     "Excalidraw/SSL/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
-    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/Biblioteca Estándar.md",
+    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar.md",
     "2024/Sintaxis/Expresiones Regulares.md",
     "2024/Sintaxis/Autómatas.md",
     "Excalidraw/AdS/DFD1.excalidraw.md",
     "Excalidraw/PdP",
     "Excalidraw/SSL",
     "Excalidraw/AdS",
-    "2024/Sintaxis/Lenguaje C/Lenguaje C.md",
     "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/ctype.h.md",
     "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/stdlib.h.md",
     "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/stdio.h.md",
@@ -181,20 +184,16 @@
     "Excalidraw/AdS/DFD3.excalidraw.md",
     "Excalidraw/AdS/DFD2.excalidraw.md",
     "2024/AdS/DFD.md",
-    "2024/Paradigmas/Recursión, Listas Infinitas y Eval Diferida.md",
+    "2024/Paradigmas/Funcional/Recursión, Listas Infinitas y Eval Diferida.md",
     "Excalidraw/Drawing 2024-05-27 11.27.27.excalidraw.md",
     "2024/AdS",
     "Untitled.md",
     "antics",
     "regex-rulesets/Symbols",
-    "regex-rulesets/index.txt",
-    "regex-rulesets/Test",
     "regex-rulesets/Untitled.md",
     "2024/Tutorial.md",
     "Excalidraw/Drawing 2024-04-29 22.41.07.excalidraw.md",
     "Excalidraw/Drawing 2024-04-29 22.41.42.excalidraw.md",
-    "Excalidraw/Drawing 2024-04-29 22.32.13.excalidraw.md",
-    "Excalidraw/Untitled 2024-04-29 22.39.16.excalidraw.md",
-    "Excalidraw/Drawing 2024-04-29 22.24.40.excalidraw.md"
+    "Excalidraw/Drawing 2024-04-29 22.32.13.excalidraw.md"
   ]
 }
