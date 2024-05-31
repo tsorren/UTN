@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
+                "file": "2024/Paradigmas/Logico/Logico.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
+                "file": "2024/Paradigmas/Logico/Logico.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
+                "file": "2024/Paradigmas/Logico/Logico.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md"
+                "file": "2024/Paradigmas/Logico/Logico.md"
               }
             }
           },
@@ -161,6 +161,8 @@
   "active": "b16dfe90bb902824",
   "lastOpenFiles": [
     "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
+    "2024/Paradigmas/Logico/Logico.md",
+    "2024/Paradigmas/Logico",
     "2024/Paradigmas/Lógico",
     "2024/Paradigmas/Funcional",
     "2024/Sintaxis/Lenguaje C.md",
@@ -189,7 +191,6 @@
     "2024/AdS",
     "Untitled.md",
     "antics",
-    "regex-rulesets/Symbols",
     "regex-rulesets/Untitled.md",
     "2024/Tutorial.md",
     "Excalidraw/Drawing 2024-04-29 22.41.07.excalidraw.md",
