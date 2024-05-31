@@ -8,7 +8,6 @@ void func(char c, ...)
 
 int main(void)
 {
-
     func('a');
     return 0;
 }
