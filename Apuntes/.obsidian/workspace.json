@@ -8,18 +8,39 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b16dfe90bb902824",
+            "id": "ee706bf64d61fda4",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/AdS/DS2.excalidraw.md"
+              }
+            }
+          },
+          {
+            "id": "f97d34d8515ee299",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/AdS/DS3.excalidraw.md"
+              }
+            }
+          },
+          {
+            "id": "3c7a29f4aa9af306",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/AdC/Desplazamiento y Rotaciones.md",
+                "file": "2024/AdS/DFD.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024/AdC/Desplazamiento y Rotaciones.md",
+                "file": "Excalidraw/AdS/DS3.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024/AdC/Desplazamiento y Rotaciones.md",
+                "file": "Excalidraw/AdS/DS3.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024/AdC/Desplazamiento y Rotaciones.md"
+                "file": "Excalidraw/AdS/DS3.excalidraw.md"
               }
             }
           },
@@ -158,43 +179,43 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "b16dfe90bb902824",
+  "active": "f97d34d8515ee299",
   "lastOpenFiles": [
     "2024/AdS/DFD.md",
+    "Excalidraw/AdS/DS3.excalidraw.md",
+    "Excalidraw/AdS/DS2.excalidraw.md",
+    "Excalidraw/AdS/DC5.excalidraw.md",
+    "Excalidraw/AdS/DC1.excalidraw.md",
+    "Excalidraw/AdS/DC2.excalidraw.md",
+    "2024/Tutorial.md",
     "2024/AdC/Desplazamiento y Rotaciones.md",
-    "2024/AdC",
     "2024/Paradigmas/Logico/Logico.md",
+    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/stdio.h.md",
+    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/ctype.h.md",
+    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar.md",
     "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
+    "2024/Sintaxis/Lenguaje C/Compilador.md",
+    "2024/Sintaxis/Lenguaje C.md",
+    "2024/AdC",
     "2024/Paradigmas/Logico",
     "2024/Paradigmas/Lógico",
     "2024/Paradigmas/Funcional",
-    "2024/Sintaxis/Lenguaje C.md",
-    "2024/Sintaxis/Lenguaje C/Compilador.md",
     "Excalidraw/SSL/Etapas - Compilador.excalidraw.md",
     "Excalidraw/SSL/Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw.md",
-    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar.md",
     "2024/Sintaxis/Expresiones Regulares.md",
     "2024/Sintaxis/Autómatas.md",
-    "Excalidraw/AdS/DFD1.excalidraw.md",
     "Excalidraw/PdP",
     "Excalidraw/SSL",
     "Excalidraw/AdS",
-    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/ctype.h.md",
     "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/stdlib.h.md",
-    "2024/Sintaxis/Lenguaje C/Biblioteca Estándar/stdio.h.md",
     "2024/Sintaxis/Lenguaje C/Biblioteca Estándar",
     "2024/Sintaxis/Lenguaje C",
-    "Excalidraw/AdS/DFD5.excalidraw.md",
-    "Excalidraw/AdS/DFD4.excalidraw.md",
-    "Excalidraw/AdS/DFD3.excalidraw.md",
-    "Excalidraw/AdS/DFD2.excalidraw.md",
+    "Excalidraw/AdS/DC4.excalidraw.md",
+    "Excalidraw/AdS/DC3.excalidraw.md",
     "2024/Paradigmas/Funcional/Recursión, Listas Infinitas y Eval Diferida.md",
     "Excalidraw/Drawing 2024-05-27 11.27.27.excalidraw.md",
     "2024/AdS",
     "Untitled.md",
-    "regex-rulesets/Untitled.md",
-    "2024/Tutorial.md",
-    "Excalidraw/Drawing 2024-04-29 22.41.07.excalidraw.md",
-    "Excalidraw/Drawing 2024-04-29 22.41.42.excalidraw.md"
+    "regex-rulesets/Untitled.md"
   ]
 }
