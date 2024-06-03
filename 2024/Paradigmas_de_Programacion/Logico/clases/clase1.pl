@@ -44,24 +44,45 @@ puedeEntrarAlBar(Nombre, Edad, Vestimenta) :-
 
 */
 %---------------------------------------------------
-% FAMILIA
-
+% FAMILIARES
+% Hijos - Padres
 padreDe(jorge, daniel).
 padreDe(julian, daniel).
 
-%padreDe(daniel, carlos).
-%padreDe(raul, carlos).
+padreDe(camila, raul).
 
-hermanos(Hermano1, Hermano2) :- 
+% Padres - Abuelos
+padreDe(daniel, carlos).
+padreDe(raul, carlos).
+
+% Abuelos - Tatarabuelos
+padreDe(carlos, pablo).
+padreDe(cesar, pablo).
+
+% RELACIONES
+hermanos(Persona1, Persona2) :- 
     padreDe(Persona1, Padre),
     padreDe(Persona2, Padre),
     Persona1 \= Persona2.
-/*
+
 tioDe(Persona, Tio) :-
     padreDe(Persona, Padre),
-    hermanos(Padre, Tio).
+    hermanos(Padre, Tio),
+    Padre \= Tio.
+
+primos(Persona1, Persona2) :-
+    padreDe(Persona1, Padre1),
+    padreDe(Persona2, Padre2),
+    hermanos(Padre1, Padre2).
 
 abueloDe(Persona, Abuelo) :-
     padreDe(Persona, Padre),
     padreDe(Padre, Abuelo).
-*/
+
+tioAbueloDe(Persona, TioAbuelo) :-
+    abueloDe(Persona, Abuelo),
+    hermanos(Abuelo, TioAbuelo).
+
+tatarabueloDe(Persona, Tatarabuelo) :-
+    padreDe(Persona, Padre),
+    abueloDe(Padre, Tatarabuelo).

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/Paradigmas/Logico/Logico.md",
+                "file": "2024/AdC/Desplazamiento y Rotaciones.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024/Paradigmas/Logico/Logico.md",
+                "file": "2024/AdC/Desplazamiento y Rotaciones.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024/Paradigmas/Logico/Logico.md",
+                "file": "2024/AdC/Desplazamiento y Rotaciones.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024/Paradigmas/Logico/Logico.md"
+                "file": "2024/AdC/Desplazamiento y Rotaciones.md"
               }
             }
           },
@@ -138,7 +138,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -160,8 +160,11 @@
   },
   "active": "b16dfe90bb902824",
   "lastOpenFiles": [
-    "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
+    "2024/AdS/DFD.md",
+    "2024/AdC/Desplazamiento y Rotaciones.md",
+    "2024/AdC",
     "2024/Paradigmas/Logico/Logico.md",
+    "2024/Sintaxis/Lenguaje C/Manejar Proyectos.md",
     "2024/Paradigmas/Logico",
     "2024/Paradigmas/Lógico",
     "2024/Paradigmas/Funcional",
@@ -185,16 +188,13 @@
     "Excalidraw/AdS/DFD4.excalidraw.md",
     "Excalidraw/AdS/DFD3.excalidraw.md",
     "Excalidraw/AdS/DFD2.excalidraw.md",
-    "2024/AdS/DFD.md",
     "2024/Paradigmas/Funcional/Recursión, Listas Infinitas y Eval Diferida.md",
     "Excalidraw/Drawing 2024-05-27 11.27.27.excalidraw.md",
     "2024/AdS",
     "Untitled.md",
-    "antics",
     "regex-rulesets/Untitled.md",
     "2024/Tutorial.md",
     "Excalidraw/Drawing 2024-04-29 22.41.07.excalidraw.md",
-    "Excalidraw/Drawing 2024-04-29 22.41.42.excalidraw.md",
-    "Excalidraw/Drawing 2024-04-29 22.32.13.excalidraw.md"
+    "Excalidraw/Drawing 2024-04-29 22.41.42.excalidraw.md"
   ]
 }
