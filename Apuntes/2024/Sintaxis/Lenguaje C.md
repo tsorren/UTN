@@ -3,8 +3,8 @@
 
 
 # Detalles
-[[Biblioteca Estándar]]
+![[Biblioteca Estándar]]
 
-[[Compilador]]
+![[Compilador]]
 
-[[Manejar Proyectos]]
+![[Manejar Proyectos]]
