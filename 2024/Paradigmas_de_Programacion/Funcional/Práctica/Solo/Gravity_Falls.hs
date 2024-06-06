@@ -111,15 +111,21 @@ abecedario = ['a' .. 'z']
 
 -- b
 desencriptarLetra :: Char -> Char -> Char
-desencriptarLetra letraClave letraEncriptada
-    | esLetra letraEncriptada = head . drop distanciaEquivalente . abecedarioDesde $ letraClave
-    | otherwise = letraEncriptada
+desencriptarLetra letraClave letraEncriptada = desencriptarDeluxe (abecedarioDesde letraClave) abecedario letraEncriptada
     where
-        distanciaEquivalente = length . takeWhile (/= letraEncriptada) . reverse . abecedarioDesde $ letraClave
+        desencriptarDeluxe :: [Char] -> [Char] -> Char -> Char
+        desencriptarDeluxe (x:xs) (y:ys) letraEncriptada
+          | x == letraEncriptada = y
+          | otherwise = desencriptarDeluxe xs ys letraEncriptada
+
+desencriptarLetra' :: Char -> Char -> Char
+desencriptarLetra' letraClave letraEncriptada = head . drop distanciaEquivalente $ abecedario
+  where
+    distanciaEquivalente = length . takeWhile (/= letraEncriptada)  . abecedarioDesde $ letraClave
 
 -- c.
 cesar :: Char -> String -> String
-cesar clave = map (desencriptarLetra clave)
+cesar = zipWithIf desencriptarLetra esLetra . repeat 
 
 esLetra :: Char -> Bool
 esLetra =  (`elem` ['a'..'z'])
@@ -131,13 +137,8 @@ esLetra =  (`elem` ['a'..'z'])
 --- Punto 3 ---
 ---------------
 vigenere :: String -> String -> String
-vigenere textoClave textoEncriptado = zipWithIf desencriptarLetra esLetra (alinearClave textoClave textoEncriptado) textoEncriptado
+vigenere textoClave textoEncriptado = zipWithIf desencriptarLetra esLetra (alinear textoClave textoEncriptado) textoEncriptado
 
--- Función para repetir la clave hasta la longitud del mensaje
-alinearClave :: String -> String -> String
-alinearClave clave mensaje = zipWith (cambiarPorClave clave) [0 ..] mensaje
-  where
-    claveLength = length clave
-    cambiarPorClave :: String -> Int -> Char -> Char
-    cambiarPorClave _ _ c | not (c `elem` ['a' .. 'z'] ++ ['A' .. 'Z']) = c
-    cambiarPorClave clave index _ = clave !! (index `mod` claveLength)
+-- Función auxiliar
+alinear :: String -> String -> String
+alinear textoClave textoEncriptado = take (length textoEncriptado) . cycle $ textoClave
