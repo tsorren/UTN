@@ -25,13 +25,27 @@ Conjunción:
 	a y b
 	a, b
 ###### Consultas:
+Particularización Existencial
 Le ocurrió tal cosa a pepito?
 	cosa(pepito).
-	
+
+Cuantificacion Existencial
 Le ocurrió tal cosa a alguién?
 	cosa(\_).
-	
-Le ocurrió tal cosa a alguién? A quién?
+
+Inversibilidad - Cuantificación Existencial
+Le ocurrió tal cosa a alguién? A quién? 
 	cosa(Generico).
 
-###### Predicado is
+###### Aridad:
+Cantidad de parámetros que tiene un predicado
+
+###### Backtracking:
+Prolog prueba todas las combinaciones posibles para hallar las soluciones
+
+###### Predicados Inversibles:
+Se puede consultar con una variable
+
+###### Declaratividad:
+Separacion entre el código y los algoritmos que se aplican
+El orden no importa
