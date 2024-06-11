@@ -78,20 +78,30 @@ enum keypress getKey(uint8_t buf[])
     return N;
 }
 
+void wait()
+{
+    int framerate = 10;
+    usleep(1000 / framerate * 1000);
+    return;
+}
+
+
 void *readInputFunction(void *vargp)
 {
-    enum keypress *key = (enum *)vargp;
+    enum keypress *key = (enum keypress*)vargp;
 
     uint8_t buf[20];
     ssize_t bytes;
     bytes = read(STDIN_FILENO, buf, 20);
-    *key = getKey(bytes);
+    *key = getKey(buf);
     
     while(*key != Q)
     {
+        wait();
         bytes = read(STDIN_FILENO, buf, 20);
-        *key = getKey(bytes);
+        *key = getKey(buf);
     }
+
     return NULL;
 }
 
@@ -199,7 +209,6 @@ int main(int argc, char **argv)
 
     int board[boardH + 1][boardW + 1];
     float time = 0;
-    int framerate = 10;
     int posX = 0;
     int posY = 0;
 
@@ -222,9 +231,8 @@ int main(int argc, char **argv)
 
         printf("%d\n", key);
         showPiece(bag[key]);
-        printf("\n\n");
-        time += 1.0 / framerate;
-        usleep(1000 / framerate * 1000);
+        printf("\n");
+        wait();
         /* Show key pressed
 
         for (size_t i = 0; i < bytes; i++) {
