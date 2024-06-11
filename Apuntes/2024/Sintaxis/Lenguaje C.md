@@ -1,6 +1,8 @@
 # Algoritmos
 
 
+# Básico:
+![[Variables y Funciones]]
 
 # Detalles
 ![[Biblioteca Estándar]]
