@@ -34,6 +34,7 @@ int main(void)
     pthread_create(&wait_thread, NULL, waitFunc, (void*) &condition);
     pthread_create(&modify_thread, NULL, modifyFunc, (void*) &condition);
 
+    printf("■■\n■■");
 
     pthread_join(wait_thread, NULL);
     pthread_join(modify_thread, NULL);
