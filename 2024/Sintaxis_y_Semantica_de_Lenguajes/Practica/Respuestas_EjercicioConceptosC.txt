@@ -1,0 +1,63 @@
+Ejercicio Conceptos de C:
+1.  Hay algún error en la línea 05?
+	Si, ya que se está utilizando el mismo nombre para la definición del nuevo tipo de estructura y de la variable de tipo struct.
+	-- No. El posible conflicto sería el identificador registro, pero la primera vez aparece dentro del espacio de nombres de tags, en tanto que la segunda vez lo hace en el espacio ordinario.
+
+2. Hay algún error en la línea 12?
+	Si, ya que el identificador registro ya fue declarado previamente (nombre ya utilizado) en un ámbito de archivo.
+	-- No. El identificador registro en línea 12 está en un ámbito más interno que el de la variable definida en línea 5, y por lo tanto la oculta sin provocar conflicto.
+
+3.  Hay algún error en la línea 13?
+	No, ya que el segundo campo se inicializa en 0.
+
+4. Hay algún error en la línea 20?
+	Si, ya que el identificador registro ya fue declarado previamente, en un ámbito de archivo y segunda es parte del enum variantes.
+	-- Si. Porque estoy definiendo una variable, es decir en el espacio de nombres ordinario, con el identificador segunda, el cual ya se había usado en el mismo espacio, y ámbito, en la línea 19 como constante de enumeración.
+
+5. Hay algún error en la línea 21?
+	No, ya que se respeta la sintaxis para la definición con union.
+	-- Si. Hay dos, el primero es con el identificador variantes, usado como tag de union, pero ya se había utilizado en la línea 19 como tag de enun, es decir en el mismo espacio y ámbito. El segundo es el identificador primera, que perteneciendo al espacio de nombres ordinario colisiona con la constante de enumeración de mismo nombre definida en la línea 19.
+
+6. Diga cuál es el ámbito del identificador factor.
+	El ámbito del identificador factor es de archivo (7 - 29).
+
+7. Diga cuál es el ámbito del identificador registro definido en línea 12.
+	El ámbito del identificador registro es de bloque (10 - 15).
+
+8. Diga cuál es el ámbito del identificador printf.
+	El ámbito de printf es de archivo (1 - 29).
+
+9. Diga cuál es el ámbito del identificador i definido en línea 23.
+	El ámbito del identificador i es de bloque (23 - 26).
+
+10. Diga cuál es el ámbito del identificador final.
+	El ámbito del identificador final es de bloque (27 - 29).
+	-- Por ser etiqueta (18 - 29).
+
+11. Indique cuál es la duración del identificador valor.
+	La duración del identificador valor es determinística, hasta que finalice la ejecución.
+
+12. Indique cuál es la duración del identificador abrir definido en línea 11.
+	La duración del identificador valor es determinística, hasta que la función retorne un valor.
+
+13. Indique cuál es la duración del identificador registro definido en línea 12.
+	La duración del identificador valor es determinística, hasta que la función retorne un valor.
+
+14. Indique cuál es la duración del identificador i definido en línea 23.
+	La duración del identificador i es determinística, hasta que se termine el for.
+
+15. Indique cuál es la duración del identificador param.
+	La duración del identificador param es determinística, hasta que la función retorne un valor.
+	
+16. Cuál es el valor inicial del identificador valor?
+	El valor inicial del identificador valor es 3.2f.
+
+17. Cuál es el valor inicial del identificador registro definido en línea 12?
+	El identificador registro definido en línea 12 no posee valor inicial (basura en memoria).
+	-- 0 por ser estática y no haber sido inicializada explicitamente
+
+18. Cuál es el valor inicial del identificador reg (para cada miembro) en f1?
+	El valor inicial del identificador reg es {3, 0f}.
+
+19. Cuál es el valor inicial del identificador abrir en f1?
+	El identificador abrir en f1 no posee valor inicial, ya que es una variable automática solamente declarada.
