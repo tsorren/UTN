@@ -1,3 +1,5 @@
+% LISTAS
+
 pais(america, uruguay).
 pais(america, brasil).
 pais(america, argentina).
@@ -40,3 +42,21 @@ append(Lista1, Lista2, Resultado) % Resultado = Lista1 + Lista2
 findall(Elem, Condicion, Resultado) % Genera lista por comprensión
 
 */
+
+/* TUPLAS - FUNCTORES
+Se utilizan hechos/predicados comunes que agrupan datos
+Polimorfismo - Flexibilidad - Abarca distintos casos y situaciones
+
+*/
+
+persona(juan, bsas, fecha(20, 1, 2020)).
+persona(carlitos, cba, fecha(2, 2, 1905)).
+persona(maria, mdq, dia(190, 2000)).
+
+edad(fecha(_, _, A), E) :- E is 2024 - A.
+edad(dia(_, A), E) :- E is 2024 - A.
+
+esMayor(Persona) :- 
+    persona(Persona, _, Fecha),
+    edad(Fecha, Edad),
+    Edad >= 18.
