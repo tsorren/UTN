@@ -44,7 +44,7 @@ Cantidad de parámetros que tiene un predicado
 Prolog prueba todas las combinaciones posibles para hallar las soluciones
 
 ###### Predicados Inversibles:
-Se puede consultar con una variable
+Se puede hacer todo tipo de consultas (Con Variables / Incógnita) que dan resultados totalmente definidos
 
 ###### Declaratividad:
 Separacion entre el código y los algoritmos que se aplican
