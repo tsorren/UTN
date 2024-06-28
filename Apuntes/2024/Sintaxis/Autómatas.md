@@ -9,7 +9,7 @@ Reconocer:
 | :-------: | :------------------------------: | :------------------------------: | :----------------------------------------: |
 |  Tipo 0   | Recursivamente Enumerable (LRE)  |        Irrestricta (GIR)         |             Máquina de Turing              |
 |  Tipo 1   |    Sensible al Contexto (LSC)    |    Sensible al Contexto (GSC)    |        Autómata Linealmente Acotado        |
-|  Tipo 2   | Independiente del Contexto (LIC) | Independiente del Contexto (GIC) | Autómata Finito con πla NO DETERMINISTICO |
+|  Tipo 2   | Independiente del Contexto (LIC) | Independiente del Contexto (GIC) | Autómata Finito con pila NO DETERMINISTICO |
 |  Tipo 3   |           Regular (LR)           |           Regular (GR)           |              Autómata Finito               |
 Estos problemas son computables
 ### Definición formal:

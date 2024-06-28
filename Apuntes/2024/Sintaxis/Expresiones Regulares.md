@@ -75,7 +75,7 @@ Hay distintos tipos de extensiones, pero las más comunes son las siguientes:
 | Metacaracter |    Descripción    |                                           Comentario                                            |
 | :----------: | :---------------: | :---------------------------------------------------------------------------------------------: |
 |      .       |       Punto       | Cualquier caracter (generico), salvo \\n dado que los programas de ER suelen analizar por línea |
-|      \|      |       π pe        |                            Operador de unión (corresponde a + en ER)                            |
+|      \|      |       pipe        |                            Operador de unión (corresponde a + en ER)                            |
 |     \[ ]     |     Corchete      |                    Enumera conjunto de caracteres (alternativa a usar unión)                    |
 |    \[ ^ ]    |  Con Circunflejo  |                               Complemento del conjunto enumerado                                |
 |    \[ - ]    |     Con Guión     |             Da un rango de caracteres \[ 0 - 9 ], es la unión de todos los dígitos              |
