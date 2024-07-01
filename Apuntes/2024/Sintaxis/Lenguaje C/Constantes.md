@@ -5,7 +5,7 @@
 | Decimales   | 0-9       | No puede comenzar con 0 |
 | Octales     | 0-7       | Comienza con 0          |
 | Hexadecimal | 0-9a-zA-Z | Comienza con 0x         |
-Sufijos: 
+Sufijos: l, L, u, U, ll, LL. Pueden combinarse en cualquier orden, salvo L con LL, pueden ser mayúsculas o minúsculas
 
 ### Constantes numéricas Reales
 Decimales:
