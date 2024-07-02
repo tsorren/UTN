@@ -4,21 +4,16 @@
 | ----------- | --------- | ----------------------- |
 | Decimales   | 0-9       | No puede comenzar con 0 |
 | Octales     | 0-7       | Comienza con 0          |
-| Hexadecimal | 0-9a-zA-Z | Comienza con 0x         |
+| Hexadecimal | 0-9a-zA-Z | Comienza con 0x ó 0X    |
 Sufijos: l, L, u, U, ll, LL. Pueden combinarse en cualquier orden, salvo L con LL, pueden ser mayúsculas o minúsculas
 
 ### Constantes numéricas Reales
-Decimales:
-- Debe tener la parte fraccionaria o el exponente obligatoriamente
- - El exponente comienza con e o E, signo optativo
- Hexadecimales:
- 
 
 | Tipo          | Descripción                                                                                                                                                                    |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Decimales     | <br>                                                                                                                                                                           |
+| Decimales     | Debe tener la parte fraccionaria (1. ó 1.2 ó .2) o el exponente (7E0) obligatoriamente<br>El exponente comienza con e o E<br>El signo es optativo, no es parte de la constante |
 | Hexadecimales | Comienza con 0x, se escribe en hexa<br>Debe tener la parte fraccionaria o el exponente obligatoriamente<br>El exponente comienza con p o P y se escribe en decimal, con base 2 |
-| Ambos         | El punto de la parte fraccionaria no puede tener digitos adelante o atrás                                                                                                      |
+| Ambos         | El punto de la parte fraccionaria puede no tener digitos adelante o atrás                                                                                                      |
 Sufijos: l, L, f, F (F es float, L es long double, sin sufijo es double)
 
 ### Constantes de Carácter:
