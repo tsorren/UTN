@@ -8,6 +8,7 @@ vacaciones(dodain, playasDoradas).
 vacaciones(alf, bariloche).
 vacaciones(alf, sanMartin).
 vacaciones(alf, elBolson).
+
 vacaciones(nico, marDelPlata).
 
 vacaciones(vale, calafate).
@@ -76,7 +77,30 @@ esDestinoGasolero(Lugar) :-
     costoDeVida(Lugar, Costo),
     Costo < 160.
 
+permutacion([], []).
+permutacion(Lista, [Cabeza | Cola]) :-
+    quitar(Cabeza, Lista, ListaAux),
+    permutacion(ListaAux, Cola).
+
+quitar(Elem, [Elem | Cola], Cola).
+quitar(Elem, [Cabeza | Cola], [Cabeza |ListaAux]) :-
+    quitar(Elem, Cola, ListaAux).
+
 itinerarioPosible(Persona, Itinerario) :-
     vacaciones(Persona, _),
     findall(Lugar, vacaciones(Persona, Lugar), Lugares),
-    permutation(Lugares, Itinerario).
+    permutacion(Lugares, Itinerario). % Permutation
+
+combinacion(Lista, Combinacion) :-
+    separar(Lista, _, SubLista),
+    SubLista = [_ | _],
+    permutacion(SubLista, Combinacion).
+
+%separar(Entrada, Auxiliar, Salida), Alterna la distribucion de elementos
+separar([], [], []). % Caso Base 
+
+separar([Cabeza | Cola], [Cabeza | Cola2], ListaSeparada) :- % Quitamos la cabeza de Entrada y la añadimos a Auxiliar (Acortamos la lista)
+    separar(Cola, Cola2, ListaSeparada).
+
+separar([Cabeza | Cola], Lista, [Cabeza | ListaSeparada]) :- % Quitamos la cabeza de Entrada y la añadimos a Salida
+    separar(Cola, Lista, ListaSeparada).
