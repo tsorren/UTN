@@ -1,0 +1,8 @@
+import example.*
+
+describe "Tests de Tom y Jerry" {
+	
+	test "energía inicial" {
+		assert.equals(100, tom.energia())
+	}
+}

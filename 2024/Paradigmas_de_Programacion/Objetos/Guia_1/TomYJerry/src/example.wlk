@@ -5,7 +5,7 @@ object tom {
 
 	method velocidad() = velocidad
 
-	method energia() = velocidad
+	method energia() = energia
 
 	method comerRaton(raton) {
 		energia += self.energiaQueBrindaComerRaton(raton)

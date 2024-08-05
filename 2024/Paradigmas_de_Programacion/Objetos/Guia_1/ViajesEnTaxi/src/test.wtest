@@ -1,0 +1,24 @@
+import example.*
+
+describe "tests de daniel" {
+
+	method crearPasajero(esJoven) = object {
+		method esJoven() = esJoven
+	}
+
+	test "Daniel no lleva pasajero joven" {
+		const pasajeroJoven = self.crearPasajero(true)
+		assert.notThat(daniel.llevaA(pasajeroJoven))
+	}
+
+	test "Daniel lleva pasajero viejo" {
+		const pasajeroViejo = self.crearPasajero(false)
+		assert.that(daniel.llevaA(pasajeroViejo))
+	}
+	
+	test "Daniel no lleva a alguien que piensa que es joven" {
+		assert.notThat(daniel.llevaA(magali))
+	}
+
+}
+
