@@ -5,14 +5,14 @@ Reconocer:
 
 ### Jerarquía de Chomsky
 
-| Jerarquía |     Tipo de lenguaje formal      |     Grámatica que lo genera      |        Autómata mínimo que reconoce        |
-| :-------: | :------------------------------: | :------------------------------: | :----------------------------------------: |
-|  Tipo 0   | Recursivamente Enumerable (LRE)  |        Irrestricta (GIR)         |             Máquina de Turing              |
-|  Tipo 1   |    Sensible al Contexto (LSC)    |    Sensible al Contexto (GSC)    |        Autómata Linealmente Acotado        |
+| Jerarquía | Tipo de lenguaje formal          | Grámatica que lo genera          | Autómata mínimo que reconoce               |
+| :-------: | :------------------------------- | :------------------------------- | :----------------------------------------- |
+|  Tipo 0   | Recursivamente Enumerable (LRE)  | Irrestricta (GIR)                | Máquina de Turing                          |
+|  Tipo 1   | Sensible al Contexto (LSC)       | Sensible al Contexto (GSC)       | Autómata Linealmente Acotado               |
 |  Tipo 2   | Independiente del Contexto (LIC) | Independiente del Contexto (GIC) | Autómata Finito con pila NO DETERMINISTICO |
-|  Tipo 3   |           Regular (LR)           |           Regular (GR)           |              Autómata Finito               |
+|  Tipo 3   | Regular (LR)                     | Regular (GR)                     | Autómata Finito                            |
 Estos problemas son computables
-### Definición formal:
+#### Definición formal:
 Está formado por:
 - Un conjunto de Estados
 - Un Estado Inicial, que es único. Comienza a analizar las cadenas en este Estado
@@ -22,10 +22,10 @@ Está formado por:
 
 El término Finito se refiere a la cantidad de Estados
 
-#### Ejemplo:
+##### Ejemplo:
 ![[Ejemplo - Autómatas 2024-04-30 09.40.35.excalidraw|200]]
 0 → c → 1 → a → 7 ACEPTA
-### Definición Matemática:
+#### Definición Matemática:
 Un Autómata es una 5-upla:
 M = (Q, Σ, T, q0, F)
 Donde:
@@ -85,48 +85,59 @@ La Función de Transición pasa a ser:
 | 2+  | {3} | {3} |   -    |
 | 3+  |  -  | {3} |   -    |
 
----
-### Ejercicios: 
-- Σ = {a, b} y L = {ab, bb, ba}. Expresar TT del AFD correspondiente
+### Autómata Finito con Pila:
+La diferencia fundamental con un AF es justamente la pila, que es una pila abstracta de capacidad infinita.
+En la pila se almacenan caracteres de un alfabeto distinto al del lenguaje que reconoce el autómata.
 
-| TT  |  a  |  b  |
-| :-: | :-: | :-: |
-| 0-  |  1  |  2  |
-|  1  |  -  |  3  |
-|  2  |  3  |  3  |
-| 3+  |  -  |  -  |
-| 4+  |  -  |  -  |
-- De el automata correspondiente. Armar Función de Transicion para cada par ordenado y luego la TT
-M = ({0, 1, 2, 3}, {a, b}, T, 0, {2, 3})
-Función de Transición:
-- T(0, a) = 1
-- T(1, a) = 2
-- T(1, b) = 3
-- T(3, a) = 3
+Por convención al escribir la secuencia de caracteres almacenados en la pila, lo hago comenzando por el tope de la misma. 
+Si digo que en la pila tengo ABC significa que A está al tope y C en el fondo de la misma
 
-| TT  |  a  |  b  |
-| :-: | :-: | :-: |
-| 0-  |  1  |  -  |
-|  1  |  2  |  3  |
-| 2+  |  -  |  -  |
-| 3+  |  3  |  -  |
-- Mostrar la Actividad para las siguientes cadenas:
-1. ab: 0 → a → 1 → b → 3 ACEPTA
-2. a: 0 → a → 1 RECHAZA
-3. aba: 0 → a → 1 → b → 3 → b RECHAZA
-4. aab: 0 → 1 → 2 → b RECHAZA
+Las transiciones tienen en cuenta el estado del autómata, el carácter siguiente de la cadena a reconocer y el carácter en el tope de la pila
+Para que el autómata "vea" el tope de la pila, debe hacer pop.
+Luego se puede volver a hacer push con el mismo caracter, dejando sin alterar la pila, o hacer push de epsilon (nada)
 
-- Armar TT y TTC:
+##### Definicion Formal:
+Un AFP es una 7-upla
+M = (Q, Σ, Γ, T, e₀, p₀, F)
 
-| TT  |  a  |  b  |
-| :-: | :-: | :-: |
-| 0-  |  1  |  2  |
-|  1  |  -  |  2  |
-| 2+  |  2  |  -  |
+Donde:
+- Q es el conjunto de estados
+- Σ es el alfabeto de entrada
+- Γ es el alfabeto de π la (Algunos enfatizan: Σ ∩ Γ = ∅)
+- T función: Q x (Σ {ε}) x Γ → P(Q x Γ*),  describe la Tabla de Movimientos
+- e₀ perteneciente a  Q, estado inicial
+- p₀ perteneciente a Γ, Símbolo inicial en pila que indica pila vacía, suele ser el símbolo $
+- F conjunto de estados finales
 
-| TTC |  a  |  b  |
-| :-: | :-: | :-: |
-| 0-  |  1  |  2  |
-|  1  |  3  |  2  |
-| 2+  |  2  |  3  |
-|  3  |  3  |  3  |
+Nota, el libro de la cátedra usa como notación M = (E, A, A', T, e0, p0, F)
+
+##### Función de Transición:
+Notar que la función de transición toma como entrada
+una terna dada por:
+– El estado en que se encuentra el autómata
+– Un carácter de Σ o ε
+	Esto significa que puede haber un cambio de estado sin necesidad de consumir un carácter de la cadena analizada
+– Un carácter de Γ
+
+Y como salida
+– Un nuevo estado del autómata
+– Un cadena sobre el alfabeto Γ (eventualmente vacía)
+	Se considera que en cada transición se elimina el carácter que estaba al tope de pila, por tanto, si quiero conservarlo debo volver a introducirlo
+
+Un modo de explicar cada transición es pensarla a cada una con los siguientes pasos:
+1. Pop: se saca (siempre) del tope de pila el elemento que allí se encuentre
+2. Push: se insertan en la pila los elementos que indique la transición
+3. Cambio al estado que indique la transición 
+4. Si el carácter que indica la transición no es ε, entonces avanzar al próximo en la cadena que está siendo analizada
+
+###### Para que un AFP sea determinístico (AFPD) es necesario que se cumplan 2 condiciones:
+Para cualquier terna de entrada el conjunto de salida de tiene a lo sumo un elemento
+∀ e ∊ Q, a ∊ (Σ U {ε}), x ∊ Γ: |T(e,a,x)| ≤ 1
+
+Si está definida la función para ε entonces no debe	estar definida para ningún elemento de Σ y viceversa
+∀ e ∊ Q, x ∊ Γ:
+T(e, ε, x) ≠ ∅ ⇒ T(e, a, x) = ∅( ∀a ∊ Σ)
+
+∀ e ∊ Q, x ∊ Γ:
+Si ∃ a ∊ Σ tq: T(e, a, x) ≠ ∅ ⇒ T(e, ε, x) = ∅
+	

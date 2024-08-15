@@ -72,23 +72,23 @@ La ER a(b+c)\*a representa todas las cadenas que comienzan y terminan exactament
 Permite usar otros operadores que hacen más facil armar las ER
 Hay distintos tipos de extensiones, pero las más comunes son las siguientes:
 
-| Metacaracter |    Descripción    |                                           Comentario                                            |
-| :----------: | :---------------: | :---------------------------------------------------------------------------------------------: |
+| Metacaracter |    Descripción    | Comentario                                                                                      |
+| :----------: | :---------------: | :---------------------------------------------------------------------------------------------- |
 |      .       |       Punto       | Cualquier caracter (generico), salvo \\n dado que los programas de ER suelen analizar por línea |
-|      \|      |       pipe        |                            Operador de unión (corresponde a + en ER)                            |
-|     \[ ]     |     Corchete      |                    Enumera conjunto de caracteres (alternativa a usar unión)                    |
-|    \[ ^ ]    |  Con Circunflejo  |                               Complemento del conjunto enumerado                                |
-|    \[ - ]    |     Con Guión     |             Da un rango de caracteres \[ 0 - 9 ], es la unión de todos los dígitos              |
-|     { }      |      Llaves       |                         Indica potenciación. *b{3}* corresponde a *bbb*                         |
-|    { , }     |     Con Coma      |       Unión de todas las potencias entre la primera y la última. *b{2, 3}* es *bb + bbb*        |
-|      ?       | Signo de Pregunta |                          Indica opción (cero o una vez). *b?* es (b+ε)                          |
-|      *       |     Asterisco     |                                       Clausura de Kleene                                        |
-|      +       |        Más        |                                        Clausura Positiva                                        |
-|     ( )      |    Paréntesis     |                             Se utiliza para agrupar subexpresiones                              |
-|      ^       |    Circunflejo    |        La expresión debe estar al principio de la linea. *\^R* es una regex al principio        |
-|      $       |       Pesos       |            La expresión debe estar al final de la linea. *\$R* es una regex al final            |
-|     \\w      |  Expresion Perl   |                Matchear palabras (mayúsculas, minúsculas, números y guión bajo)                 |
-|      \W      |  Expresion Perl   |                                     Complemento de palabras                                     |
+|      \|      |       pipe        | Operador de unión (corresponde a + en ER)                                                       |
+|     \[ ]     |     Corchete      | Enumera conjunto de caracteres (alternativa a usar unión)                                       |
+|    \[ ^ ]    |  Con Circunflejo  | Complemento del conjunto enumerado                                                              |
+|    \[ - ]    |     Con Guión     | Da un rango de caracteres \[ 0 - 9 ], es la unión de todos los dígitos                          |
+|     { }      |      Llaves       | Indica potenciación. *b{3}* corresponde a *bbb*                                                 |
+|    { , }     |     Con Coma      | Unión de todas las potencias entre la primera y la última. *b{2, 3}* es *bb + bbb*              |
+|      ?       | Signo de Pregunta | Indica opción (cero o una vez). *b?* es (b+ε)                                                   |
+|      *       |     Asterisco     | Clausura de Kleene                                                                              |
+|      +       |        Más        | Clausura Positiva                                                                               |
+|     ( )      |    Paréntesis     | Se utiliza para agrupar subexpresiones                                                          |
+|      ^       |    Circunflejo    | La expresión debe estar al principio de la linea. *\^R* es una regex al principio               |
+|      $       |       Pesos       | La expresión debe estar al final de la linea. *\$R* es una regex al final                       |
+|     \\w      |  Expresion Perl   | Matchear palabras (mayúsculas, minúsculas, números y guión bajo)                                |
+|      \W      |  Expresion Perl   | Complemento de palabras                                                                         |
 #### Ejemplo:
 Regex: \[a-zA-Z]\[a-zA-Z0-9_-]{3, 11} 
 - Cadena que comienza con una letra y continúa con letras o dígitos o guión bajo o guión medio en cantidad de 3 a 11

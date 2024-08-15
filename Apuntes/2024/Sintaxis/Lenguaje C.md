@@ -4,6 +4,7 @@
 # Básico:
 ![[Variables y Funciones]]
 
+![[Constantes]]
 # Detalles
 ![[Biblioteca Estándar]]
 
