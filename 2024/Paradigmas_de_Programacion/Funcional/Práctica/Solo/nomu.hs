@@ -93,10 +93,10 @@ esPoderoso :: Nomus -> Bool
 esPoderoso = (35 <=) . fuerza
 
 todosSonPoderosos :: [Nomus] -> Bool
-todosSonPoderosos = all ((35 <=).fuerza)
+todosSonPoderosos = all esPoderoso
 
 losQueTienenBrazosSonPoderosos :: [Nomus] -> Bool
 losQueTienenBrazosSonPoderosos = all esPoderoso . filter ((1 <=) . brazos)
 
 poderososDespuesDelGimnasio :: Int -> [Nomus] -> [Nomus]
-poderososDespuesDelGimnasio tiempo = filter esPoderoso . entrenarGrupo tiempo
+poderososDespuesDelGimnasio tiempo = filter esPoderoso . entrenarGrupo tiempo 

@@ -1,7 +1,7 @@
 Al incluir un header, damos direcciones al preprocesador para que lo haga una sola vez
 header.h
 ```c
-#ifnded HEADER_H_INCLUDED
+#ifndef HEADER_H_INCLUDED
 #define HEADER_H_INCLUDED
 
 ...header
