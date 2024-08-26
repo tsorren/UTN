@@ -152,6 +152,16 @@ typedef double velocidad;
 // Token, valor
 ```
 
+###### Centinelas:
+En centinela es un carácter “espurio” que indica el final del lexema que se está reconociendo. Es decir, es un carácter que NO puede formar parte de ese lexema
+- Por ejemplo, si está reconociendo un identificador y encuentra un espacio en blanco
+- En general: si encuentra un carácter que no es parte de token que se está reconociendo
+
+Los LR infinitos SIEMPRE necesitan de un centinela.
+Los LR finitos pueden necesitar o no un centinela
+- No necesitan si los lexemas del LR no comparten prefijos
+- Si hay prefijos iguales el lexema más corto necesita de centinela: P.ej: + puede seguir como ++ o encontrar una letra que forma parte de un identificador, esa letra sería el centinela
+- Si bien las palabras reservadas son finitas igual necesitan centinela porque pueden ser prefijo de un identificador. P.ej: for es prefijo de forense
 ### Sintaxis y BNF
 Motivación: Lenguajes de programación usan LR para
 - Identificadores
