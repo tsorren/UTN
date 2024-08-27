@@ -103,7 +103,7 @@ M = (Q, Σ, Γ, T, e₀, p₀, F)
 Donde:
 - Q es el conjunto de estados
 - Σ es el alfabeto de entrada
-- Γ es el alfabeto de π la (Algunos enfatizan: Σ ∩ Γ = ∅)
+- Γ es el alfabeto de pila (Algunos enfatizan: Σ ∩ Γ = ∅)
 - T función: Q 𝑥 (Σ {ε}) 𝑥 Γ → P(Q 𝑥 Γ*),  describe la Tabla de Movimientos
 - e₀ perteneciente a  Q, estado inicial
 - p₀ perteneciente a Γ, Símbolo inicial en pila que indica pila vacía, suele ser el símbolo $
