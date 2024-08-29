@@ -23,13 +23,10 @@ Segundos Recuperatorios: 20/2 Aprox
 ##### Forma de evaluación:
 Peso ponderado
 Parciales: Multiple choice y preguntas a desarrollar
-Competencias blandas: Trabajos Prácticos, exposiciones, 
-
+Competencias blandas: Trabajos Prácticos, exposiciones,
 No se puede promocionar con recuperatorio, pero se puede complementar
 
 ##### Asistencia:
 Se requiere un 75% de asistencia
 
 Se requiere camara en la virtualidad
-
-

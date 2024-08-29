@@ -16,8 +16,7 @@ Para que un conocimiento sea considerado científico, debe seguir el método cie
 | sistemático (consistencia lógica) |                asistémico                |
 |      "objetivo" (minimizar)       | "subjetivo" (no se da cuenta del sesgoA) |
 
-Las demostraciones solo pueden ser matemáticas o lógicas, en todos los demás ámbitos 
-
+Las demostraciones solo pueden ser matemáticas o lógicas, en todos los demás ámbitos
 ## Lógica:
 ##### Concepto:
 Unidad del signo linguístico, forma parte del código del lenguaje
@@ -39,7 +38,6 @@ Pueden ser válidos / deductivos o inválidos / no deductivos / inductivos (gene
 - Tecnología
 
 ## Clasificación de las ciencias:
-
 |                        | Formales                                             | Fácticas                               |
 | ---------------------- | ---------------------------------------------------- | -------------------------------------- |
 | Division               | lógica, matemática                                   | naturales, sociales                    |
