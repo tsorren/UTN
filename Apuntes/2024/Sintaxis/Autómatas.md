@@ -8,7 +8,7 @@ Reconocer:
 | Jerarquía | Tipo de lenguaje formal          | Grámatica que lo genera          | Autómata mínimo que reconoce               |
 | :-------: | :------------------------------- | :------------------------------- | :----------------------------------------- |
 |  Tipo 0   | Recursivamente Enumerable (LRE)  | Irrestricta (GIR)                | Máquina de Turing                          |
-|  Tipo 1   | Sensible al Contexto (LSC)       | Sensible al Contexto (GSC)       | Autómata Linealmente Acotado               |
+|  Tipo 1   | Sensible al Contexto (LSC)       | Sensible al Contexto (GSC)       | Autómata Linealmente Acotado (MT)          |
 |  Tipo 2   | Independiente del Contexto (LIC) | Independiente del Contexto (GIC) | Autómata Finito con pila NO DETERMINISTICO |
 |  Tipo 3   | Regular (LR)                     | Regular (GR)                     | Autómata Finito                            |
 Estos problemas son computables
@@ -103,8 +103,8 @@ M = (Q, Σ, Γ, T, e₀, p₀, F)
 Donde:
 - Q es el conjunto de estados
 - Σ es el alfabeto de entrada
-- Γ es el alfabeto de π la (Algunos enfatizan: Σ ∩ Γ = ∅)
-- T función: Q x (Σ {ε}) x Γ → P(Q x Γ*),  describe la Tabla de Movimientos
+- Γ es el alfabeto de pila (Algunos enfatizan: Σ ∩ Γ = ∅)
+- T función: Q 𝑥 (Σ {ε}) 𝑥 Γ → P(Q 𝑥 Γ*),  describe la Tabla de Movimientos
 - e₀ perteneciente a  Q, estado inicial
 - p₀ perteneciente a Γ, Símbolo inicial en pila que indica pila vacía, suele ser el símbolo $
 - F conjunto de estados finales
@@ -112,8 +112,7 @@ Donde:
 Nota, el libro de la cátedra usa como notación M = (E, A, A', T, e0, p0, F)
 
 ##### Función de Transición:
-Notar que la función de transición toma como entrada
-una terna dada por:
+Notar que la función de transición toma como entrada una terna dada por:
 – El estado en que se encuentra el autómata
 – Un carácter de Σ o ε
 	Esto significa que puede haber un cambio de estado sin necesidad de consumir un carácter de la cadena analizada
@@ -132,12 +131,44 @@ Un modo de explicar cada transición es pensarla a cada una con los siguientes p
 
 ###### Para que un AFP sea determinístico (AFPD) es necesario que se cumplan 2 condiciones:
 Para cualquier terna de entrada el conjunto de salida de tiene a lo sumo un elemento
-∀ e ∊ Q, a ∊ (Σ U {ε}), x ∊ Γ: |T(e,a,x)| ≤ 1
+∀ e ∊ Q, a ∊ (Σ U {ε}), 𝑥 ∊ Γ: |T(e,a,x)| ≤ 1
 
 Si está definida la función para ε entonces no debe	estar definida para ningún elemento de Σ y viceversa
-∀ e ∊ Q, x ∊ Γ:
+∀ e ∊ Q, 𝑥 ∊ Γ:
 T(e, ε, x) ≠ ∅ ⇒ T(e, a, x) = ∅( ∀a ∊ Σ)
 
-∀ e ∊ Q, x ∊ Γ:
+∀ e ∊ Q, 𝑥 ∊ Γ:
 Si ∃ a ∊ Σ tq: T(e, a, x) ≠ ∅ ⇒ T(e, ε, x) = ∅
-	
+
+##### Notacion Alternativa:
+
+### Máquina de Turing:
+Dado un problema, responde si se puede resolver o no, reconoce los lenguajes de tipo 0
+
+Es un autómata que se define como una 7-upla
+(Q, Σ, Γ, T, q₀, B, F) Donde:
+- Q: Conjunto de estados
+- Σ: Alfabeto terminal
+- Γ: Alfabeto de cinta (array infinita)
+	Γ = Σ ∪ B ∪ Alfabeto auxiliar (“no terminal”)
+	Alfabeto auxiliar ∩ Σ = ∅
+- T: Q 𝑥 Γ → Q 𝑥 Γ 𝑥 {I,D}
+- Q₀: Estado Inicial
+- B: Caracter Blanco ∈ Γ
+- F: Conjunto de estados aceptores
+
+##### Descripción del programa
+Tipo actividad (como en el libro de la cátedra):
+- Estado actual – carácter leído, carácter escrito, dirección – Nuevo estado
+- Ejemplo: e0 – a,X,R - e1
+
+Tipo tabla:
+- Una fila por cada estado
+- Un elemento de Γ por cada columna (carácter leído)
+- En la intersección:
+	El nuevo estado
+	El carácter a escribir
+	El movimiento
+
+Descripción Instantanea:
+Se hace mostrando el estado a la izquierda del próximo carácter a leer

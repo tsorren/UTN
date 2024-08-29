@@ -152,6 +152,16 @@ typedef double velocidad;
 // Token, valor
 ```
 
+###### Centinelas:
+En centinela es un carácter “espurio” que indica el final del lexema que se está reconociendo. Es decir, es un carácter que NO puede formar parte de ese lexema
+- Por ejemplo, si está reconociendo un identificador y encuentra un espacio en blanco
+- En general: si encuentra un carácter que no es parte de token que se está reconociendo
+
+Los LR infinitos SIEMPRE necesitan de un centinela.
+Los LR finitos pueden necesitar o no un centinela
+- No necesitan si los lexemas del LR no comparten prefijos
+- Si hay prefijos iguales el lexema más corto necesita de centinela: P.ej: + puede seguir como ++ o encontrar una letra que forma parte de un identificador, esa letra sería el centinela
+- Si bien las palabras reservadas son finitas igual necesitan centinela porque pueden ser prefijo de un identificador. P.ej: for es prefijo de forense
 ### Sintaxis y BNF
 Motivación: Lenguajes de programación usan LR para
 - Identificadores
@@ -330,3 +340,55 @@ Según el estándar las implementaciones deben distinguir los identificadores al
 Por ejemplo para describir el formato de datos:
 - JSON (JavaScript Object Notation)
 - W3C (World Wide Consortium) define a XML con una EBNF
+
+### Semántica:
+###### Conceptos previos:
+Al usar una notación BNF para documentar un Lenguaje de programación, podemos:
+- Determinar con precisión las categorías léxicas (tokens) que lo componen
+- Determinar las categorías sintácticas del lenguaje, pero con algunas restricciones.
+Las restricciones se deben a:
+- No complicar la gramática demasiado
+- Limitaciones de las GIC, ya que hay reglas que en realidad corresponden a una GSC
+
+#### Semántica estática:
+Son las restricciones no representadas en la BNF pero aclaradas en la documentación del lenguaje.
+Si se incumplen, pueden ser detectados al compilar.
+Los errores de este tipo, reportados por el compilador, se clasifican como errores semánticos.
+
+Casos:
+- Compatibilidad de tipos entre operadores y operandos
+- Que los identificadores hayan sido declarados (ámbito y alcance)
+- Que no se declare más de una vez un identificador (redeclaración) dentro de un mismo espacio de nombre
+- Que las funciones se llamen con la cantidad y tipo correcto de parámetros
+
+#### Semántica o Semántica Dinámica:
+La semántica (significado) de un constructo sintáctico es "que hace".
+Implica lo que ocurre en la ejecución del programa
+Este enfoque se llama semántica operacional.
+Otros pueden ser la semántica denotacional (funciones) o la semántica axiomática (relaciones).
+
+Guía el código que se va a generar
+Se puede hablar de la semántica de sentencias, o por ejemplo de la definición de variables:
+- Zona de memoria donde se alojará
+- Valor inicial por defecto
+- Interpretación del patrón de bits
+El estándar de C define la semántica y habla de comportamiento para definirla operacionalmente, pero hay casos donde no queda totalmente definido.
+
+#### Comportamiento:
+Apariencia externa de la acción
+
+###### Comportamiento no especificado:
+El estándar da un conjunto de posibilidades (todas intercambiables), y la implementación (el compilador) elige una o varias de ellas en diferentes partes del programa.
+- Por ejemplo: El orden de evaluación de los argumentos de una función
+Esta "omisión" por parte del estándar tiene por objetivo permitir hacer optimizaciones al compilador
+
+###### Comportamiento dependiente de la implementación:
+Comportamiento no especificado en el estándar que cada implementación debe decidir y documentar, haciendo luego siempre lo mismo.
+- Por ejemplo: el tamaño de un int, desplazamiento de bits a derecha en enteros con signo
+
+###### Comportamiento específico local (o regional):
+Depende de la configuración regional
+- Por ejemplo: islower puede devolver verdadero para algunos caracteres no pertenecientes al ascii básico
+
+###### Comportamiento no definido:
+El estándar no lo define, y puede ocurrir que el compilador lo resuelva de alguna manera, compilando y dando una advertencia.
