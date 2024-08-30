@@ -1,0 +1,92 @@
+import clase2.*
+
+test "Al iniciar pepita no está cansada" {
+    assert.notThat(pepita.estaCansada())
+}
+
+test "Si hacemos que pepita vuele 9 metros, se cansa" {
+    pepita.volar(9)
+    assert.that(pepita.estaCansada())
+}
+
+test "Si come tres alpistes, se recupera" {
+    pepita.volar(9)
+    assert.that(pepita.estaCansada())
+    pepita.comer(alpiste)
+    pepita.comer(alpiste)
+    pepita.comer(alpiste)
+    assert.notThat(pepita.estaCansada())
+}
+
+// DESAFIO Manzana
+
+test "Inicialmente la manzana otorga 50 calorías." {
+    assert.equals(50, manzana.energia())
+}
+test "La maduración se da de a saltos de 10%, hasta llegar al 100% de maduración en el que la manzana otorga 100 calorías." {
+    assert.equals(0, manzana.maduracion())
+    manzana.madurar()
+    assert.equals(10, manzana.maduracion())
+    manzana.madurar()
+    assert.equals(20, manzana.maduracion())
+    manzana.madurar()
+    assert.equals(30, manzana.maduracion())
+    manzana.madurar()
+    assert.equals(40, manzana.maduracion())
+    manzana.madurar()
+    assert.equals(50, manzana.maduracion())
+    manzana.madurar()
+    assert.equals(60, manzana.maduracion())
+    manzana.madurar()
+    assert.equals(70, manzana.maduracion())
+    manzana.madurar()
+    assert.equals(80, manzana.maduracion())
+    manzana.madurar()
+    assert.equals(90, manzana.maduracion())
+    manzana.madurar()
+    assert.equals(100, manzana.maduracion())
+    assert.equals(100, manzana.energia())
+}
+test "Luego, la manzana comienza a pudrirse, y cada vez que recibe el mensaje madurar debe perder 20 calorías." {
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    assert.equals(100, manzana.maduracion())
+    assert.that(manzana.estaPudriendose())
+
+    manzana.madurar()
+    assert.equals(80, manzana.energia())
+    manzana.madurar()
+    assert.equals(60, manzana.energia())
+}
+test "En ningún caso la manzana podrida puede otorgar menos de 0 calorías." {
+    
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    assert.equals(100, manzana.maduracion())
+    assert.that(manzana.estaPudriendose())
+
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    manzana.madurar()
+    assert.equals(0, manzana.energia())
+    manzana.madurar()
+    assert.equals(0, manzana.energia())
+}
