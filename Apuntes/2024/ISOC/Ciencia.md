@@ -17,7 +17,7 @@ Para que un conocimiento sea considerado científico, debe seguir el método cie
 |      "objetivo" (minimizar)       | "subjetivo" (no se da cuenta del sesgoA) |
 
 Las demostraciones solo pueden ser matemáticas o lógicas, en todos los demás ámbitos
-## Lógica:
+## Definiciones:
 ##### Concepto:
 Unidad del signo linguístico, forma parte del código del lenguaje
 Significado y Significante (palabra)
@@ -32,6 +32,75 @@ Parte de premisas (proposiciones tomadas como verdaderas)
 Se busca una conclusión
 Pueden ser válidos / deductivos o inválidos / no deductivos / inductivos (generalizaciones)
 
+#### Consecuencia Contrastable:
+Deducción y predicción a partir de la hipótesis.
+Luego se diseñará un experimento para evaluar la predicción.
+
+#### Marco teórico:
+Conocimiento previo de la comunidad cientifica.
+Por ejemplo:
+	Qué es una hormona
+	Qué es una glándula
+
+#### Tipos de procedimiento:
+Observación (Cualitativo, comportamiento / conducta, etc)
+Experimentación
+Medición (Variables Cuantitativas)
+
+#### Clasificación de Conceptos según función en un texto:
+Individiales
+	Identificar un individuo
+	Juan
+	
+Clase
+	Predicados monádicos (de una variable)
+	Clasificar, sustantivar adjetivos, conjunto universal
+	Alumno
+
+Relacionales - Función de 2+ variables
+- Comparativos
+	Ordenan un conjunto
+	No hay métrica o unidad
+	No se pueden aplicar operaciones matemáticas
+	x es más que y
+	
+- No comparativos
+	Igual
+	Debajo
+	Alrededor
+	hijo de
+
+Cuantitativos
+	Expresa orden con sentido
+	Se puede medir
+	Tienen carácter predictivo
+
+#### Hipótesis:
+Respuesta a la pregunta que inició la investigación,  son inventadas previamente a la experimentación
+
+#### Paradigma:
+Etimológicamente significa modelo
+Apoyo para construír conocimiento
+Son inconmensurables entre si
+
+Está formado por:
+- Teorías
+- Prescripciones metodológicas / técnicas (rechaza las demás)
+- Presupuestos filosóficos
+
+Ciencia normal:
+- enigmas
+- resolución
+- progreso
+
+Estructura de las revoluciones científicas:
+- anomalías (no puede ser explicado dentro del conocimiento vigente)
+- hipotesis ad hoc 
+- perdida de fe del paradigma
+- crisis 
+- revolución
+
+Los ingenieros son los sacerdotes de los nuevos paradigmas tecnológicos
 ## Campos de Investigación:
 - Ciencias
 - Filosofía
@@ -58,3 +127,21 @@ Pasos:
 7. Estimar la pretensión de verdad de las conjeturas y la fidelidad de las técnicas
 8. Determinar los dominios en los cuales valen las conjeturas y las técnicas, y formular los nuevos problemas originados por la investigación.
 
+#### Resolver el problema de fútbol con un marco científico:
+Se deben evaluar diferentes parámetros con un estimador asociado.
+Hay que definir la escala del sistema, y la función que relaciona el estimador con el parámetro.
+Se debe normalizar los valores
+
+
+| Parámetros                                 | Estimadores             |
+| ------------------------------------------ | ----------------------- |
+| Resistencia                                | Tiempo o Cant en tiempo |
+| Velocidad máxima                           | Tiempo (-)              |
+| Control                                    | Porcentaje              |
+| Gambeta                                    | Velocidad               |
+| Puntería                                   | Porcentaje              |
+| Estadísticas<br>de los ultimos<br>partidos |                         |
+|                                            |                         |
+
+Se debe seguír la metodología para realizar mediciones teniendo en cuenta los siguientes criterios:
+- Las pruebas deben ser repetibles y iguales para todos
