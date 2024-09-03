@@ -392,3 +392,262 @@ Depende de la configuración regional
 
 ###### Comportamiento no definido:
 El estándar no lo define, y puede ocurrir que el compilador lo resuelva de alguna manera, compilando y dando una advertencia.
+Es algo que no debería ocurrir.
+
+#### Sintaxis y Semántica (estática):
+Error sintáctico: Cuando la cadena analizada no puede ser derivada de la BNF
+Error semántico: Cuando es derivable (sintácticamente correcta), pero no cumple con las restricciones del lenguaje (semántica estática)
+
+Ejemplo en C:
+```c
+if (var) i++;
+// Es sintácticamente correcto
+// Semánticamente correcto si var fue definida como un tipo escalar (numérico o puntero)
+```
+##### Distinta Sintaxis e Igual Semántica:
+La misma temántica se puede implementar en diferentes lenguajes con sintáxis distintas.
+Por ejemplo la asignación, en todos los ejemplos siguientes se asigna el valor 15 a la variable nro
+```c
+nro = 15; // En lenguajes C, C++, Java y otros
+```
+
+```pascal
+nro := 15; // Pascal, Algol y otros
+```
+
+```R
+nro <- 15 # En R, S, y quizas otros
+```
+C y C++ divergieron con el tiempo, por ejemplo:
+```c
+sizeof('a'); 
+// El valor numérico en C++ es 1, y en C depende de la implementación
+// En C++ el tipo de dato de una constante de carácter es tipo char
+// En C es de tipo int, y el tamaño de int depende de la implementación
+
+++a;
+// En C devuelve un valorR (algo constante)
+// En C++ un valorL (referencia)
+```
+
+#### Categorías Gramaticales:
+Son los Lenguajes Independientes del Contexto que se usan en la sintaxis del lenguajes
+Se dividen en:
+- Expresiones
+- Declaraciones y Definiciones
+- Sentencias
+Todas se completan con restricciones, sean sintácticas o semánticas
+Por ejemplo: El if se engancha con el else más cercano
+
+#### Expresiones
+Son secuencias de operadores y operandos que:
+- Producen un valor
+- Designan un objeto o función
+- Generan un efecto lateral
+- Combinan los anteriores
+Las constantes, variables y llamados a funciones forman parte de las expresiones primarias o elementales
+
+##### Tipos de datos de una expresión
+Booleanos:
+	No forman parte del lenguaje C en el sentido estricto
+	Forman parte de los tipos enteros (standard unsigned integer types)
+	Se considera 0 como falso, distinto de 0 como verdadero
+	Las operaciones booleanas retornan 0 ó 1
+	Para conveniencia de uso se definen en el encabezado stdbool.h bool como alias de \_Bool y los valores true y false
+	Desde C23 si hay tipo bool
+
+Operadores aritméticos:
+	Necesitan tipos iguales
+	Si no lo son se aplican "conversiones aritméticas habituales" 
+	Hacen un casting implicito para llevar al tipo con mayor capacidad de representación de valores
+
+##### Evaluación de expresiones
+Las precedencias quedan definidas en la gramática (por la cercanía o lejanía del operador con respecto al axioma)
+La asociatividad está dada por la recursividad (a izquierda o a derecha) de la producción
+El agrupamiento es la precedencia junto con la asociatividad
+
+##### Efecto lateral o secundario (side effect)
+Las funciones o expresiones deberían solo calcular un valor e idealmente no hacer nada más.
+Un efecto lateral es todo cambio adicional al entorno de ejecución. Por ejemplo:
+- Modificación de una variable estática (global) o cualquier otra variable
+- Modificar un argumento real de una función
+- Leer o Escribir en un archivo
+
+Estos efectos son comunes en el paradigma imperativo
+Hay que tener en cuenta como ocurren en el tiempo.
+El estándar de C define la secuenciación como el orden de los efectos secundarios
+
+#### Secuenciación
+Establece una línea de tiempo (en qué orden suceden los eventos)
+Tomando en cuenta un solo hilo de ejecución tenemos:
+- A está secuenciada antes que B si la ejecución de A ocurre antes que la de B
+- A y B no están secuenciados significa que puede ejecutarse primero A y luego B o al revés, pero no se especifica
+
+Punto de secuencia:
+- Es un instante estable que divide dos ejecuciones 
+##### Secuenciación de operandos
+La ejecución de operandos (los efectos laterales y los cálculos de valores de subexpresiones) salvo en algunos casos, no está secuenciada.
+
+Hay cuatro operadores que te garantizan secuenciación, mediante puntos de secuencia:
+- Los operadores && y || aseguran la evaluación de izquierda a derecha. Detienen la evaluación en cuanto el resultado esté definido
+- El operador ternario ? asegura evaluar el primer operando, luego el segundo o tercero según corresponda
+- El operador , (coma) garantiza que las expresiones (operandos de coma) se evalúan de izquierda a derecha. Todas menos la ultima son evaluadas como void, el resultado es del tipo al que evalúe la última expresión
+Ejemplo de operador coma:
+```c
+a++, b = c + 2;
+//Es igual a
+a++;
+b = c + 2;
+
+for(int a = 0, b = 1; a < 10; a++); // En el estado inical setea a = 0 y b = 1
+```
+##### Puntos de secuencia
+Divide dos ejecuciones y define secuenciación
+- El punto y coma ;
+- Luego de evaluar todos los argumentos reales, antes de invocar a la función
+- Luego de evaluar la expresión de un return, antes de resumir la ejecución de la función invocante
+- Luego de cada expresión completa (full expression)
+	La expresión que controla un if, switch, while, do-while
+	Cualquiera de las expresiones de un for
+	Una sentencia expresión
+
+#### ValorL y ValorR
+Objeto: Zona de memoria que contiene un valor de un tipo dado
+Valor: Significado preciso del contenido de un objeto, según su tipo
+ValorL (Left value or Locator value):
+- Expresión (no void) que potencialmente designa un objeto (comportamiento no definido si no lo hace)
+- El modo más habitual es el identificador de una variable, pero puede ser una expresión como vector\[i\] o ptr->miembro
+- Aparece a izquierda de una asignación
+ValorL Modificable: ValorL que no está calificado como constante, no es de tipo arreglo y no es incompleto (struct incompleto)
+ValorR: Es un valor, según nuestra definición anterior, surgido de una expresión (tira de bits que forman el valor)
+
+#### Operadores de incremento y decremento
+Postfijo:
+- El operando debe ser un valorL modificable
+- El resultado es el valor (valorR)
+- Como efecto lateral se suma o resta 1 al operando
+- Se obtiene el valor, previo a el efecto lateral (Primero se usa luego se modifica)
+```c
+b = 2; c = 3;
+a = b++ * c; // a vale 6 y b vale 3
+```
+Prefijo:
+- Primero se aplica el efecto lateral
+- Luego se obtiene el valor modificado
+
+#### Expresiones BNF
+En el estándar, en lugar de comenzar con el axioma e ir alejándose, lo hace en orden inverso.
+Comienza con:
+```
+primary-expression:
+	identifier
+	constant
+	string-literal
+	( expression )
+	generic-selection
+
+```
+Luego introduce los operadores de más alta precedencia, baja a primary expression:
+```
+postfix-expression:
+	primary-expression
+	postfix-expression [ expression ]
+	postfix-expression ( argument-expression )
+	postfix-expression . identifier
+	postfix-expression -> identifier
+	postfix-expression ++
+	postfix-expression --
+	( type-name ) { initializer-list }
+	( type-name ) {initializer-list , }
+```
+```
+multiplicative-expression:
+	cast-expression
+	multiplicative-expression * cast-expression
+	multiplicative-expression / cast-expression
+	multiplicative-expression % cast-expression
+	
+```
+###### multiplicative-expression:
+Restricciones:
+- Los operandos deben ser de tipo aritmético
+- Pero para el operador % deben ser de tipo entero
+
+Semántica:
+- Se aplican a los operandos las conversiones aritméticas usuales
+- Para los operadores / y % si el segundo operando es cero, el comportamiento es no definido
+
+```
+assignment-expression:
+	conditional-expression
+	unary-expression assig-operator assignment-expression
+
+assig-operator:
+ = *= /= etc
+```
+
+#### Declaraciones y Definiciones
+Declarar es dar a conocer, especificando la interpretación y atributos, un  identificador
+Definir es un declarar y:
+- Si es un objeto, reservar espacio en memoria
+- Si es una función, dar el código de la misma
+Para los typedef y las constantes de enumeración, la declaración es definición
+Decimos que los tag los declaramos, pero en estructuras y uniones definimos su contenido (sus miembros)
+
+#### Modificadores:
+Storage Class: Altera donde se almacena
+- extern: Nada, se resuelve en otra unidad de traducción
+- static: En heap en lugar de en stack
+- register: Si se puede, en registro del CPU
+
+Type-qualifier: Califican un comportamiento particular
+- const: No puede alterarse su valor
+- restrict: Es el único puntero para acceder a la memoria apuntada
+- volatile: Otro programa o hilo puede modificar su valor
+
+Function-specifier:
+- inline: Se incrusta su lógica en cada lugar que es invocada
+- _ Noreturn: No se genera código para resumir al ejecución de la función que la invoque
+
+#### Nombres de Tipos
+Referencia adicional: https://cdecl.org
+Se lee de derecha a izquierda
+```c
+int id // int -> entero
+int *id // int * -> puntero a entero
+int *id[3] // int *[3] -> arreglo de 3 punteros a entero
+int (*id)[3] // int (*)[3] -> puntero a arreglo de 3 enteros
+int *id(void) // int *(void) -> funcion sin parámetros que devuelve puntero a entero
+int (*id)(void) // int (*)(void) -> puntero a función sin parámetros que devuelve entero
+int (*id[])(double) // int (*[])(double) -> arreglo de punteros a funciónes con un parámetro double que devuelven enteros
+```
+
+#### Sentencias
+BNF de Sentencias (C17)
+```
+statement:
+	labeled-statement
+	compound-statement
+	expression-statement
+	selection-statement
+	iteration-statement
+	jump-statement
+```
+En C23 se complica un poco por los atributos, pero conceptualmente es lo mismo
+
+Sentencia etiquetada:
+- identifier : statement
+- case constant-expression : statement
+- default : statement
+Los casos de case y default deben estar dentro de un switch. No es obligatorio que switch contenga algún case o default
+El primer modo es para usar en goto
+
+Sentencia compuesta:
+- Entre { }, puede que solo estén las llaves
+- Define un nuevo ámbito
+
+Sentencia expresión:
+- Expresión con ; al final. En general de una asignación
+- El ; marca un punto de secuencia
+- Puede ser nula ( solo ; )
+- Si ponés algo como a+b; compila, pero da warning unused value
