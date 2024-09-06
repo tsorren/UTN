@@ -1,5 +1,5 @@
 # Reconocimiento:
-Juego: Tetrainer
+Juego: Teris Trainer
 
 Requisitos:
 	Tetris singleplayer
@@ -25,7 +25,6 @@ Investigar si wollok tiene cosas como:
 	Realizar animaciones (puede ser implementado a mano)
 	
 Números: 
-    Implementar usando imágenes de los dígitos 
     Countdown en cada inicio
     Timer
     Lineas limpiadas / borradas

@@ -132,3 +132,70 @@ test "nombre de test" {
 
 # wollok test nombre_test_sin_extension
 ```
+
+#### Bloques
+Se parecen a las lambdas de funcional, yo decido que hacer, otro objeto decide cuando se hace
+
+```python
+{pepita.position(pepita.position().right(1))}
+```
+
+## Wollok Game
+Permite observar nuestro código, brindando una representación de los objetos en una interfaz gráfica
+
+Par poder hacer un juego, debe haber un programa. Se ejecuta usando "wollok run -g nombreArchivo.nombreProgram"
+```python
+program juego { # Se parece al main de c, se ejecuta al inicial el programa
+	
+}
+```
+
+Para que el juego pueda interactuar con los objetos, se deben respetar los contratos
+Game procesa la entrada y salida del usuario, 
+
+Los objetos deben entender los siguientes mensajes:
+	position() 
+	image() -> Pueden sobrepasar el cellSize,
+
+#### Ciclos de Juego:
+Procesamiento de Eventos
+
+Rendering
+	Consulta cuál es la imagen de cada objeto cada vez
+
+#### Objeto Game
+Entiende los mensajes:
+	game.title(str)
+	game.height(celdas)
+	game.width(celdas)
+	game.boardGround(imagen)
+	game.start()
+	game.stop()
+	game.position()
+	game.addVisual(objeto)
+	game.addVisualCharacter(objeto) - Permite los movimientos para los costados
+	game.say(objeto, texto)
+	game.onTick(milisegundos, nombreDeEvento, accion)
+	game.schedule(milisegundos, accion)
+	
+#### Objeto Position
+Se crean usando game.at(x, y)
+
+var property position crea una referencia que entiende los mensajes position
+
+Entiende los mensajes:
+	position.x()
+	position.y()
+	position.right(cant)
+	position.left(cant)
+	position.down(cant)
+	position.up(cant)
+#### Objeto Keyboard
+Entiende los mensajes:
+	keyboard.right().onPressDo(action)
+	keyboard.left()
+	keyboard.space()
+
+No entiende los mensajes:
+	mantener apretado -> al recibir ctrl, el siguiente movimiento es con DAS
+	

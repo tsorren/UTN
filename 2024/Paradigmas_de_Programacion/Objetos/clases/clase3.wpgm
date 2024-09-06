@@ -1,0 +1,67 @@
+import clase2.*
+import wollok.game.*
+
+program juego {
+
+    game.title("Juego Ejemplo")
+
+    game.cellSize(32)
+    game.width(12)
+    game.height(12)
+
+    //game.boardGround("background.png")
+
+    game.addVisual(pepita)
+    game.addVisual(manzana)
+    game.addVisual(alpiste)
+
+
+    /*
+   
+    keyboard.right().onPressDo({
+        pepita.position(pepita.position().right(1))
+        // Setter       Getter            Movivimiento
+    })
+
+    keyboard.left().onPressDo({
+        pepita.position(pepita.position().left(1))
+    })
+    */
+
+    keyboard.right().onPressDo({pepita.volar(1, "derecha")})
+    keyboard.left().onPressDo({pepita.volar(1, "izquierda")})
+    keyboard.up().onPressDo({pepita.volar(1, "arriba")})
+
+    
+    keyboard.space().onPressDo({
+        game.say(pepita,
+            if (pepita.estaCansada()) "Estoy cansado jefe"
+            else "Estoy para volar"
+        )
+    })
+
+    keyboard.c().onPressDo({pepita.comerDelSuelo()})
+    
+
+    game.onTick(2000, "gravedad", {pepita.caer()}) 
+    game.start()
+}
+
+/*
+Enunciado - Hacer un juego con pepita que cumpla lo siguiente:
+    Mostrar a pepita
+    Mover (volar) arriba, izquierda, derecha, y que la canse
+    Que caiga cada 2 segundos, sin cansarse
+    Queremos mostrar al alpiste y la manzana 
+
+    EXTRA:
+        Que pepita se pueda comer el alpiste y la manzana (lo que haya donde pepita está) al apretar la tecla c
+            Se necesita usar el mensaje collide()
+
+        Ganar:
+            Si llegás al nido
+
+        Perder:
+            Si te quedás sin energía 
+        
+*/
