@@ -17,7 +17,7 @@ program juego {
 
 
     /*
-   
+    
     keyboard.right().onPressDo({
         pepita.position(pepita.position().right(1))
         // Setter       Getter            Movivimiento
