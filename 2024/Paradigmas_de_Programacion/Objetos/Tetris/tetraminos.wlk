@@ -1,7 +1,41 @@
 import wollok.game.*
 
+object mapa {
+
+    const margenX = 8
+    const margenY = 3
+
+    method esEspacioLibre(pos)
+    {
+        return game.getObjectsIn(pos).isEmpty()
+    }
+
+    method chequearLinea(y)
+    {
+        if(y.between(margenY, margenY + 20 - 1))
+        {
+            const linea = new Range(start = margenX, end = margenX + 10 - 1).map({x => game.at(x, y)})
+            if(linea.all({pos => not self.esEspacioLibre(pos)})) 
+            {
+                self.borrarLinea(linea)
+            }
+        }
+    }
+    method borrarLinea(linea)
+    {
+        linea.forEach({pos => game.removeVisual(game.getObjectsIn(pos).first())})
+        const lineas = new Range(start = linea.first().y(), end = margenY + 20 - 1)
+        linea.forEach({pos => 
+            lineas.forEach({y => 
+                if(not game.getObjectsIn(game.at(pos.x(), y)).isEmpty())
+                    game.getObjectsIn(game.at(pos.x(), y)).first().bajar()
+            })
+        })
+    }
+}
+
 class Bloque {
-    var property position = game.origin()
+    var property position = game.center()
     var image
     method image() = image
     var id
@@ -39,10 +73,13 @@ class Bloque {
 }
 class Pieza
 {
+    const margenX = 8
+    const margenY = 3
+
     var estadoRotacion = 0
     method estadoRotacion() = estadoRotacion
 
-    var position = game.center()
+    var position = game.at(margenX + 5, margenY + 18)
     method position() = position
 
     // Wallkicks para las rotaciones de las piezas J, L, S, T y Z
@@ -96,6 +133,7 @@ class Pieza
         bloques.forEach({bloque => game.removeVisual(bloque)})
     }
 
+
     method crear(bloques, matRot)
     {
         self.actualizarPos(bloques, matRot, estadoRotacion)
@@ -105,18 +143,17 @@ class Pieza
     method poner(bloques, matRot)
     {
         var nuevaPos
-        var encontroPos = false
 
         self.esconder(bloques)
-        const posiblesPosiciones = new Range(start = 1, end = position.y()).forEach(({posY => 
-        if(self.esMovimientoValido(bloques, matRot, game.at(position.x(), posY), estadoRotacion) && not encontroPos)
-        {
-            nuevaPos = game.at(position.x(), posY)
-            encontroPos = true
-        }}))
+        const posiblesPosiciones = new Range(start = margenY - 2, end = position.y()).filter({posY => 
+        not self.esMovimientoValido(bloques, matRot, game.at(position.x(), posY), estadoRotacion)}).map({n => n + 1})
+
+        console.println(posiblesPosiciones)
+        nuevaPos = game.at(position.x(), posiblesPosiciones.max())
+        
         self.mostrar(bloques)
-        position = nuevaPos
-        self.actualizarPos(bloques, matRot, estadoRotacion)
+        self.movete(bloques, matRot, nuevaPos)
+        bloques.forEach({bloque => mapa.chequearLinea(bloque.position().y())})
     }
 
     method actualizarPos(bloques, matRot, rotacion)
@@ -212,29 +249,23 @@ class Pieza
 
     method esEspacioLibre(pos)
     {
-        /* TODO BORRAR
-        const obj = game.getObjectsIn(pos)
-        if(not obj.isEmpty())
-            console.println(obj)
-        */
         return game.getObjectsIn(pos).isEmpty()
     }
     method esPosValida(pos)
     {        
-        const margenX = 3
-        const margenY = 2
-        return pos.x().between(margenX, margenX + 10) and pos.y().between(margenY, margenY + 20)
+        return pos.x().between(margenX, margenX + 10 - 1) and pos.y().between(margenY, margenY + 20 - 1)
     }
 
     method esMovimientoValido(bloques, matRot, nuevaPos, rotacion)
     {
         const pieza = self
+        var pos
         
-        const esValida = self.esPosValida(nuevaPos) && bloques.all({bloque => 
-            pieza.esEspacioLibre(game.at(
+        const esValida = bloques.all({bloque =>
+            pos = game.at(
                 nuevaPos.x() + pieza.aplicarRotacion(matRot, rotacion, bloque.id()).x(),
-                nuevaPos.y() + pieza.aplicarRotacion(matRot, rotacion, bloque.id()).y()
-        ))})
+                nuevaPos.y() + pieza.aplicarRotacion(matRot, rotacion, bloque.id()).y())
+            pieza.esEspacioLibre(pos) && self.esPosValida(pos)})
         //
         return esValida
     }

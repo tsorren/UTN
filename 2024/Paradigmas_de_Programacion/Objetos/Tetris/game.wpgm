@@ -25,24 +25,23 @@ object bagGenerator {
 
 program tetris {
     const cellSize = 32
-    const gameWidth = 16
-    const gameHeight = 24
+    const gameWidth = 26
+    const gameHeight = 26
     game.width(gameWidth)
     game.height(gameHeight)
     game.cellSize(cellSize)
 
-    //game.boardGround("bkg2.png")
+    game.boardGround("tetrisBKG.png")
     game.title("Tetris Trainer")
     game.start()
 
     var piezaActual = bagGenerator.nuevaPieza()
     piezaActual.crear(piezaActual.bloques(), piezaActual.matRot())
 
-    keyboard.enter().onPressDo({
+    keyboard.space().onPressDo({
         piezaActual.poner(piezaActual.bloques(), piezaActual.matRot())
         piezaActual = bagGenerator.nuevaPieza()
-        piezaActual.actualizarPos(piezaActual.bloques(), piezaActual.matRot(), piezaActual.estadoRotacion())
-        piezaActual.mostrar(piezaActual.bloques())
+        piezaActual.crear(piezaActual.bloques(), piezaActual.matRot())
     })
     
     keyboard.right().onPressDo({piezaActual.movete(
@@ -79,6 +78,9 @@ program tetris {
         "izquierda")
     })
 
-    //game.onTick(1000, "movimiento", { piezaActual.bajar() })
+    game.onTick(500, "movimiento", { piezaActual.bajar(
+        piezaActual.bloques(),
+        piezaActual.matRot()
+    )})
 }
 
