@@ -635,10 +635,10 @@ statement:
 ```
 En C23 se complica un poco por los atributos, pero conceptualmente es lo mismo
 
-Sentencia etiquetada:
-- identifier : statement
-- case constant-expression : statement
-- default : statement
+Sentencia etiquetada, tiene 3 posibilidades:
+	identifier : statement
+	case constant-expression : statement
+	default : statement
 Los casos de case y default deben estar dentro de un switch. No es obligatorio que switch contenga algún case o default
 El primer modo es para usar en goto
 
@@ -651,3 +651,209 @@ Sentencia expresión:
 - El ; marca un punto de secuencia
 - Puede ser nula ( solo ; )
 - Si ponés algo como a+b; compila, pero da warning unused value
+
+Sentencias de selección:
+	if ( expression ) statement
+	if ( expresion ) statement else statement
+	switch ( expression ) statement
+La expresión del if debe ser un escalar (numero real)
+La expresión del switch debe ser una constante entera
+	Los switch no son jumps, son etiquetas
+	El switch sigue hasta encontrar un break
+	Los case y default son opcionales, pero el codigo se vuelve inalcanzable.
+	Se pueden declarar pero no definir variables antes del case
+
+Sentencias de Iteración:
+La expresión que controla una iteración debe ser de tipo escalar. Se itera hasta que la expresión de control sea cero
+	while ( expression ) statement
+	do sentencia while ( expression );
+	for ( clausula ; expression ; expression ) statement
+
+El while es la estrella de kleene
+El do while es la clausura positiva
+El for se usa en ciclos predefinidos, cuando conocemos la cantidad de repeticiones
+	Todas sus expresiones son opcionales, la de control se reemplaza por una constante verdadera
+
+Sentencias de Salto:
+	return expression
+	goto tag
+	break
+	continue
+
+La expresión del return sale tiene los mismos requisitos que la asignación, debe ser del mismo tipo de dato o muy parecido
+Los goto deben ser dentro de las mismas funciones, son locales
+	Se puede usar como tratamiento de error para escapar y volver
+El break y continue son goto domados
+	Deben estar dentro de un loop o un switch
+	El break sale del ciclo iterativo o del switch que lo contiene, pasa a ejecutar la sentencia siguiente.
+	El continue salta lo que queda de esa iteración pero vuelve al control del ciclo. En caso de un for vuelve a evaluar la expresión 3 antes de comprobar la expresión de control
+
+## Herramienta FLEX o LEX
+Toma una especificación como entrada para generar un fuente de C con el código del escáner de un compilador
+Lex está descontinuado
+
+#### FLEX
+La especificación de flex tiene el siguiente formato:
+	definiciones
+	\%%
+	reglas
+	\%%
+	código del usuario
+
+La sección de definiciones sirve para dar nombres a ciertas Expresiones Regulares
+La sección de reglas se delimita con \%% y es donde indicamos:
+	Los tokens a reconocer, mediante Expresiones Regulares
+	Las acciones a realizar, en lenguaje C
+La sección de código del usuario es optativa
+	En caso de no estar, el segundo delimitador \%% no es necesario
+
+Todos los identificadores producidos por FLEX comienzan con 'yy'
+##### Variables y Funciones del Fuente Generado
+yylex()
+	Es el escáner
+	Devuelve el token encontrado como un int
+	
+yytext
+	Variable con el lexema encontrado
+	En modo flex es un char* (solo accesible desde flex, se debe copiar en un registro semántico para ser usado en bison)
+	
+yyleng
+	Constante con el largo de yytext
+
+yyin
+	Es el FILE\* de donde el esáner lee la entrada, por defecto es stdin
+
+yyout
+	Es el FILE\* a donde el escáner dirige su salida, por defecto es stdout
+
+#### Definiciones
+La Sintaxis es: nombre definicion
+	El nombre debe estar al comienzo de la linea
+	Debe comenzar con una letra o guión bajo, luego letra, guión bajo/medio o dígito
+	Desde el primer carácter no blanco, luego del nombre hasta el fin de la línea, va a la definición
+	La definición es una ER que puede usar nombres definidos previamente
+
+Para usar un nombre lo coloco entre llaves
+	Se reemplaza {nombre} con (definición)
+	Los paréntesis se añaden para evitar problemas de precedencia
+	Si la definción incluye ^ o $ para indicar principio o fin de línea, la expansión se hace sin paréntesis para preservar el significado
+	A diferencia de Flex, Lex nunca pone paréntesis
+	No reemplaza nombres dentro de un corchete
+	No puede usarse en definición:
+		 \<ci> (condición inicial)
+		 \<\<EOF>>
+		 / (operador de contexto)
+	 
+Ejemplo:
+	digito \[0-9]
+	exponente \[eE]\[+-]?\{digito}+
+
+###### Otros
+Se copia textualmente al fuente resultante:
+	Comentarios C no indentados
+	Texto indentado (código C)
+	Bloques de texto encerrados entre '%{' y  '}%'. Estos delimitadores debe estar NO indentados y solos en su línea. Solo va al fuente
+	Un bloque top, que se delimita %top{ y }, es similar pero se asegura que va al tope del header y del fuente generado. Si hay varios se respeta el orden entre ellos
+
+##### Opciones
+Pueden ir en la zona de definiciones o en la línea de comando que invoca a flex
+
+%option header-file="archivo.h"
+	nombre del .h a generar
+	Comando: --header-file=FILE
+
+%option outfile="archivo.c"
+	nombre del fuente a generar
+	Comando: -o FILE, --outfile=FILE
+
+%option yylineno indica que mantenga el número de línea (en la variable yylineno)
+
+%option noinput, %option nounput, para evitar warnings
+
+#### Reglas
+La Sintáxis es: patrón acción
+
+Patrón:
+	Es una ER que no debe estar indentada
+	Se separa de la acción por el primer blanco (whitespace)
+
+Acción:
+	Es código C que debe comenzar en la misma línea
+
+Emparejamiento:
+Cáda vez que ejecuta el escáner, trata de emparejar el texto entrante con todos los todos patrones
+Si logra emparejar con más de un patrón el orden de precedencia es:
+	El patrón más largo (el que tiene más caracteres). Por ejemplo: patrón for y patrón \[a-z]+ -> forever entra al segundo patrón
+	Si tienen la misma cantidad de caracteres, aplica el que se haya definido primero
+	Por lo que las palabras reservadas deben ser definidas antes que los identificadores
+
+Código adicional en reglas:
+	Si después del inicio de la sección de reglas, y antes de la primer regla, se coloca código indentado, se coloca al inicio de la rutina del escáner
+	Es posible declarar variables locales a la rutina del escáner y/o código
+
+#### Patrones
+Las ER que usa Flex son muy similars a las del programa egrep. 
+Coincidencias:
+
+|          Operador          | Comentario                                     |
+| :------------------------: | ---------------------------------------------- |
+|             .              | Cualquier carácter menos \\n y EOF             |
+|  \\t \\n \\0123 \\x2a etc  | Secuencias de escape propias de C              |
+|    \\+ \\\* \\. \\( etc    | Secuencias de escape para los operadores de ER |
+|             \|             | Pipe para unión                                |
+|            \* +            | Clausura de Kleene, Clausura Positiva          |
+|             ?              | Optativo, repeticion 1 ó 0 veces               |
+|       \[ ] \[^] \[-]       |                                                |
+|       {n} {n,m} {n,}       |                                                |
+|            ( )             |                                                |
+|            ^ $             |                                                |
+| \[:digit:] \[:^digit:] etc |                                                |
+Particularidades
+
+|     Operador      | Comentario                                                                        |
+| :---------------: | --------------------------------------------------------------------------------- |
+|     \<\<EOF>>     | Empareja con end of file                                                          |
+|        r/s        | ER r siempre y cuando esté seguida inmediatamente por la ER s                     |
+|        {-}        | Para restar conjuntos: \[a-z]{-}\[xf] encuentra cualquier minúscula excepto x o f |
+|        {+}        | Para unir conjuntos                                                               |
+|      \<ci>r       | Encuentra r solo si se está en Condicion Inicial ci                               |
+| \<ci1, ci2, ci3>r | Encuentra r si la condición inicial es ci1, ci2 o ci3                             |
+|      \<\*>r       | Encuentra r en cualquier condición inicial                                        |
+|  " . " "a+" etc   | Lo encerrado entre comillas dobles es literal                                     |
+
+#### Acciones
+Indican que hacer cuando se encuentra el patrón asociado a las mismas
+Ejemplo:
+	\\n caracteres++; lineas++;
+	Al encontrar un \\n incrementa dos contadores
+
+Puede ser la sentencia nula o un comentario para indicar que no se hace nada, se descarta el patrón encontrado
+
+Si no se puede emparejar ningún patrón, se aplica la acción por defecto.
+	Esto es tomar el primer carácter de entrada y copiarlo tal cual en la salida
+	
+Para copiar un patrón emparejado, tal cual en la salida, se usa la directiva ECHO ( seguido de un ; )
+
+Si se usa un | (pipe) como acción, se indica que se debe realizar la misma acción que el patrón siguiente
+
+#### Código de Usuario
+Es código que se agregará al final del fuente generado por flex. Podría ser el main que ejecuta el escáner
+
+#### Condiciones Iniciales
+Son constantes que representan números enteros
+Pueden ser exclusivas o inclusivas
+	Inclusiva: %s CODIGO DATOS
+	Exclusiva: %x CADENA
+Para activarlas se usa la directiva BEGIN(condicion)
+
+#### Uso Elemental
+Puede ser desde la terminal, o desde un make
+
+Armo el fuente C con
+	flex prueba.l
+
+Compilo teniendo en cuenta de agregar la biblioteca de lex
+	gcc -o prueba prueba.c -lfl
+
+Ejecuto usando el archivo prueba.txt como entrada
+	./prueba < prueba.txt

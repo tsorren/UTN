@@ -22,6 +22,9 @@
 	- free -> delete
 	- assert
 
+El header math.h es el único que de la biblioteca estándar no se añade por si sola al compilar
+Hay que usar la opción -lm al compilar
+
 ###### No existe la sobrecarga de funciones
 ###### Las arrays son punteros
 

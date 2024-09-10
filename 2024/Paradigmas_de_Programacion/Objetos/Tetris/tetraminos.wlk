@@ -73,8 +73,8 @@ class Bloque {
 }
 class Pieza
 {
-    const margenX = 8
-    const margenY = 3
+    const margenX = 8 // BORRAR son del objeto mapa
+    const margenY = 3 
 
     var estadoRotacion = 0
     method estadoRotacion() = estadoRotacion
@@ -94,7 +94,7 @@ class Pieza
         [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],  // L -> 0 (3 a 0)
         [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]]]     // 0 -> L (0 a 3)
     */
-     const matKicksJLSTZ = [
+    const matKicksJLOSTZ = [
     [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 0 -> R (0 a 1) - Rotaciones "normales"
     [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 0 (1 a 0)
     [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 2 (1 a 2)
@@ -387,7 +387,7 @@ class PiezaO inherits Pieza{
         [[-1, 1], [0, 1], [-1, 0], [0, 0]]
     ]
     method matRot() = matRot
-    method matKicks() = matKicksJLSTZ
+    method matKicks() = matKicksJLOSTZ
 }
 class PiezaS inherits Pieza{
 

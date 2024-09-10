@@ -100,3 +100,136 @@ Se compara contra el Personal Best
 Se guardan las estadísticas
 
 # Relevamiento:
+
+#### Grid:
+Existe el objeto "mapa"
+Sus atributos son:
+
+margenX
+	Constante
+
+margenY
+	Constante
+
+Entiende los siguientes mensajes:
+
+esEspacioLibre(pos)
+	Consulta - REPETIDO
+
+chequearLinea(y)
+	Acción - DELEGAR
+
+borrarLinea(linea)
+	Acción
+
+Las imágenes no se pueden escalar, son representadas en su tamaño de pixeles
+Para centrar el juego utilizamos los margenes de X e Y
+Costados de la grid:
+- En la esquina superior izquierda está el hold para piezas
+- En la esquina superior derecha está la preview de 5 piezas de la bag
+- Etc
+
+#### Animaciones:
+- Evaluar el costo / beneficio de las animaciones, debido al bajo rendimiento
+- Se podría implementar un efecto al limpiar lineas
+- Se podría implementar un efecto al hacer combo
+
+#### Números:
+Utilizar el texto de wollok, las imágenes son muy ineficientes
+
+#### Piezas:
+Existe una clase "Pieza" que contiene todos los mensajes comunes de las piezas.
+
+Sus atributos son:
+- estadoRotacion -> variable
+- position -> variable
+- matKicksJLSTZ -> constante, wallkicks para las piezas J, L, O, S, T, Z
+- matKicksI -> constante, wallkicks para la pieza I
+- margenX -> BORRAR
+- margenY -> BORRAR
+
+Entiende los siguientes mensajes:
+
+estadoRotacion()
+	Consulta
+	Devuelve el estado de rotacion actual
+	
+position()
+	Consulta
+	Devuelve la posicion actual del "centro" de la pieza
+
+mostrar(bloques)
+	Acción
+	
+esconder(bloques)
+	Acción
+	
+crear(bloques, matRot)
+	Acción
+	
+poner(bloques, matRot)
+	Acción
+	
+actualizarPos(bloques, matRot, rotacion)
+	Acción
+	
+aplicarRotacion(matRot, rotacion, id)
+	Acción
+	
+nuevoEstadoRotacion(sentido)
+	Consulta
+	
+calcularIndiceKick(estadoActual, estadoSiguiente)
+	Consulta
+	
+aplicarKick(bloques, matRot, matKicks, nuevoEstado)
+	Consulta y Acción???
+	
+rotar(bloques, matRot, matKicks, sentido)
+	Acción
+	
+esEspacioLibre(pos)
+	Consulta
+	
+esPosValida(pos)
+	Consulta
+	
+esMovimientoValido(bloques, matRot, nuevaPos, rotacion)
+	Consulta
+	
+movete(bliques, matRot, nuevaPos)
+	Acción
+	
+bajar(bloques, matRot)
+	Acción
+	
+randomPos(bloques, matRot)
+	Acción
+
+##### Clases para las piezas
+Existen las siguientes clases, que heredan de la clase "Pieza". Estas son las 7 piezas usables en el juego:
+- PiezaI
+- PiezaJ
+- PiezaL
+- PiezaO
+- PiezaS
+- PiezaT
+- PiezaZ
+
+Cada una define los siguientes atributos:
+- img -> Imagen que deben tener los bloques que la conforman
+- bloques -> Colección de bloques que la conforman
+- matRot -> Lista de Tests de rotación para cada estado de rotación
+
+Cada una entiende los siguientes mensajes:
+bloques()
+	Consulta
+	Devuelve la colección de bloques
+	
+matRot()
+	Consulta
+	Devueve matRot
+	
+matKicks()
+	Consulta
+	Devuelve la Lista de Tests de kicks correspondiente a la pieza
