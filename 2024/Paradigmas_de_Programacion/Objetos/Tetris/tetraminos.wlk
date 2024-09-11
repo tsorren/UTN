@@ -2,29 +2,39 @@ import wollok.game.*
 
 object mapa {
 
-    const margenX = 8
-    const margenY = 3
+    const minX = 8
+    const maxX = minX + 10
 
-    method esEspacioLibre(pos)
-    {
-        return game.getObjectsIn(pos).isEmpty()
-    }
+    const minY = 3
+    const maxY = minY + 20
+
+    method minX() = minX
+    method maxX() = maxX
+    method minY() = minY
+    method maxY() = maxY
+
+    method esEspacioLibre(pos) = game.getObjectsIn(pos).isEmpty()
+
+    method esPosValida(pos) =  pos.x().between(minX, maxX - 1) and pos.y().between(minY, maxY - 1)
+    
+    method esLineaCompleta(linea) = linea.all({pos => not self.esEspacioLibre(pos)})
 
     method chequearLinea(y)
     {
-        if(y.between(margenY, margenY + 20 - 1))
+        if(y.between(minY, maxY - 1))
         {
-            const linea = new Range(start = margenX, end = margenX + 10 - 1).map({x => game.at(x, y)})
-            if(linea.all({pos => not self.esEspacioLibre(pos)})) 
+            const linea = new Range(start = minX, end = maxX - 1).map({x => game.at(x, y)})
+            if(self.esLineaCompleta(linea))
             {
                 self.borrarLinea(linea)
             }
         }
+        
     }
     method borrarLinea(linea)
     {
         linea.forEach({pos => game.removeVisual(game.getObjectsIn(pos).first())})
-        const lineas = new Range(start = linea.first().y(), end = margenY + 20 - 1)
+        const lineas = new Range(start = linea.first().y(), end = maxY - 1)
         linea.forEach({pos => 
             lineas.forEach({y => 
                 if(not game.getObjectsIn(game.at(pos.x(), y)).isEmpty())
@@ -32,11 +42,21 @@ object mapa {
             })
         })
     }
+    
+    method mostrar(bloques) 
+    {
+        bloques.forEach({bloque => game.addVisual(bloque)})
+    }
+
+    method esconder(bloques) 
+    {
+        bloques.forEach({bloque => game.removeVisual(bloque)})
+    }
 }
 
 class Bloque {
     var property position = game.center()
-    var image
+    const image
     method image() = image
     var id
 
@@ -58,33 +78,21 @@ class Bloque {
     }
 
 
-    method movete(nuevaPos) {
-        position = nuevaPos
-    }
-    method randomPos()
+    method movete(nuevaPos) 
     {
-        const x = 3.randomUpTo(game.width() - 3).truncate(0)
-        const y = 3.randomUpTo(game.height() - 3).truncate(0)
-        // otra forma de generar números aleatorios
-        // const x = (0.. game.width()-1).anyOne()
-        // const y = (0.. game.height()-1).anyOne()
-        self.movete(game.at(x, y))
+        position = nuevaPos
     }
 }
 class Pieza
-{
-    const margenX = 8 // BORRAR son del objeto mapa
-    const margenY = 3 
-
-    var estadoRotacion = 0
+{    var estadoRotacion = 0
     method estadoRotacion() = estadoRotacion
 
-    var position = game.at(margenX + 5, margenY + 18)
+    var position = game.at((mapa.minX() + mapa.maxX()) / 2, mapa.maxY() - 2)
     method position() = position
 
     // Wallkicks para las rotaciones de las piezas J, L, S, T y Z
     /*
-    const matKicksJLSTZ = [
+    const matKicksJLOSTZ = [
         [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 0 -> R (0 a 1)
         [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 0 (1 a 0)
         [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 2 (1 a 2)
@@ -94,7 +102,7 @@ class Pieza
         [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],  // L -> 0 (3 a 0)
         [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]]]     // 0 -> L (0 a 3)
     */
-    const matKicksJLOSTZ = [
+    method matKicksJLOSTZ() = [
     [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 0 -> R (0 a 1) - Rotaciones "normales"
     [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 0 (1 a 0)
     [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 2 (1 a 2)
@@ -108,7 +116,7 @@ class Pieza
     [[0, 0], [1, 0]],                              // R -> L (1 a 3)
     [[0, 0], [-1, 0]]]                              // L -> R (3 a 1)
 
-    const matKicksI = [ // Wallkicks para la pieza I
+    method matKicksI() = [ // Wallkicks para la pieza I
         [[0, 0], [-2, 0], [1, 0], [-2, -1], [1, 2]], // 0 -> R (0 a 1)
         [[0, 0], [2, 0], [-1, 0], [2, 1], [-1, -2]], // R -> 0 (1 a 0)
         [[0, 0], [-1, 0], [2, 0], [-1, 2], [2, -1]], // R -> 2 (1 a 2)
@@ -123,35 +131,26 @@ class Pieza
         [[0, 0], [-1, 0]]]                            // L -> R (3 a 1)
         
 
-    method mostrar(bloques) 
-    {
-        bloques.forEach({bloque => game.addVisual(bloque)})
-    }
-
-    method esconder(bloques) 
-    {
-        bloques.forEach({bloque => game.removeVisual(bloque)})
-    }
 
 
     method crear(bloques, matRot)
     {
         self.actualizarPos(bloques, matRot, estadoRotacion)
-        self.mostrar(bloques)
+        mapa.mostrar(bloques)
     }
 
     method poner(bloques, matRot)
     {
         var nuevaPos
 
-        self.esconder(bloques)
-        const posiblesPosiciones = new Range(start = margenY - 2, end = position.y()).filter({posY => 
+        mapa.esconder(bloques)
+        const posiblesPosiciones = new Range(start = mapa.minY() - 2, end = position.y()).filter({posY => 
         not self.esMovimientoValido(bloques, matRot, game.at(position.x(), posY), estadoRotacion)}).map({n => n + 1})
 
-        console.println(posiblesPosiciones)
+        // console.println(posiblesPosiciones)
         nuevaPos = game.at(position.x(), posiblesPosiciones.max())
         
-        self.mostrar(bloques)
+        mapa.mostrar(bloques)
         self.movete(bloques, matRot, nuevaPos)
         bloques.forEach({bloque => mapa.chequearLinea(bloque.position().y())})
     }
@@ -235,25 +234,16 @@ class Pieza
     {
         const nuevoEstado = self.nuevoEstadoRotacion(sentido)
         
-        self.esconder(bloques)
+        mapa.esconder(bloques)
         if(self.aplicarKick(bloques, matRot, matKicks, nuevoEstado))
         {
             estadoRotacion = nuevoEstado
             self.actualizarPos(bloques, matRot, estadoRotacion)
         }
-        self.mostrar(bloques)
+        mapa.mostrar(bloques)
         
         //estadoRotacion = nuevoEstado
         //self.actualizarPos(bloques, matRot, estadoRotacion)
-    }
-
-    method esEspacioLibre(pos)
-    {
-        return game.getObjectsIn(pos).isEmpty()
-    }
-    method esPosValida(pos)
-    {        
-        return pos.x().between(margenX, margenX + 10 - 1) and pos.y().between(margenY, margenY + 20 - 1)
     }
 
     method esMovimientoValido(bloques, matRot, nuevaPos, rotacion)
@@ -265,17 +255,14 @@ class Pieza
             pos = game.at(
                 nuevaPos.x() + pieza.aplicarRotacion(matRot, rotacion, bloque.id()).x(),
                 nuevaPos.y() + pieza.aplicarRotacion(matRot, rotacion, bloque.id()).y())
-            pieza.esEspacioLibre(pos) && self.esPosValida(pos)})
+            mapa.esEspacioLibre(pos) && mapa.esPosValida(pos)})
         //
         return esValida
     }
     
     method movete(bloques, matRot, nuevaPos) 
     {
-        // position = nuevaPos
-        // self.actualizarPos(bloques, matRot, estadoRotacion)
-        
-        self.esconder(bloques)
+        mapa.esconder(bloques)
         
         if(self.esMovimientoValido(bloques, matRot, nuevaPos, estadoRotacion))
         {
@@ -289,7 +276,7 @@ class Pieza
             bloques.forEach({bloque => game.say(bloque, "No me puedo mover ahí")})
         }
         */
-        self.mostrar(bloques)
+        mapa.mostrar(bloques)
     }
     
     method bajar(bloques, matRot)
@@ -306,7 +293,7 @@ class Pieza
 }
 
 class PiezaI inherits Pieza {
-    var img = "cyan.png"
+    const img = "cyan.png"
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -323,11 +310,11 @@ class PiezaI inherits Pieza {
         [[0, 2], [0, 1], [0, 0], [0, -1]]] // Estado 3 (izquierda)
     method matRot() = matRot
 
-    method matKicks() = matKicksI
+    method matKicks() = self.matKicksI()
 }
 
 class PiezaJ inherits Pieza {
-    var img = "blue.png"
+    const img = "blue.png"
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -344,12 +331,12 @@ class PiezaJ inherits Pieza {
         [[-1, -1], [0, -1], [0, 0], [0, 1]]
     ]
     method matRot() = matRot
-    method matKicks() = matKicksJLSTZ
+    method matKicks() = self.matKicksJLOSTZ()
 }
 
 class PiezaL inherits Pieza{
 
-    var img = "orange.png"
+    const img = "orange.png"
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -366,11 +353,11 @@ class PiezaL inherits Pieza{
         [[0, -1], [0, 0], [0, 1], [-1, 1]]
     ]
     method matRot() = matRot
-    method matKicks() = matKicksJLSTZ
+    method matKicks() = self.matKicksJLOSTZ()
 }
 class PiezaO inherits Pieza{
 
-    var img = "yellow.png"
+    const img = "yellow.png"
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -387,11 +374,11 @@ class PiezaO inherits Pieza{
         [[-1, 1], [0, 1], [-1, 0], [0, 0]]
     ]
     method matRot() = matRot
-    method matKicks() = matKicksJLOSTZ
+    method matKicks() = self.matKicksJLOSTZ()
 }
 class PiezaS inherits Pieza{
 
-    var img = "green.png"
+    const img = "green.png"
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -408,11 +395,11 @@ class PiezaS inherits Pieza{
         [[0, -1], [0, 0], [-1, 0], [-1, 1]]
     ]
     method matRot() = matRot
-    method matKicks() = matKicksJLSTZ
+    method matKicks() = self.matKicksJLOSTZ()
 }
 class PiezaT inherits Pieza {
 
-    var img = "purple.png"
+    const img = "purple.png"
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -429,12 +416,12 @@ class PiezaT inherits Pieza {
         [[0, 1], [0, 0], [-1, 0], [0, -1]]
     ]
     method matRot() = matRot
-    method matKicks() = matKicksJLSTZ
+    method matKicks() = self.matKicksJLOSTZ()
 }
 
 class PiezaZ inherits Pieza{
 
-    var img = "red.png"
+    const img = "red.png"
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -451,5 +438,5 @@ class PiezaZ inherits Pieza{
         [[-1, -1], [-1, 0], [0, 0], [0, 1]]
     ]
     method matRot() = matRot
-    method matKicks() = matKicksJLSTZ
+    method matKicks() = self.matKicksJLOSTZ()
 }

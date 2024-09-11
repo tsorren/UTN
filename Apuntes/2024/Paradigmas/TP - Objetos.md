@@ -105,19 +105,27 @@ Se guardan las estadísticas
 Existe el objeto "mapa"
 Sus atributos son:
 
-margenX
+minX
 	Constante
 
-margenY
+maxX
+	Constante
+	
+minY
+	Constante
+
+maxY
 	Constante
 
 Entiende los siguientes mensajes:
-
 esEspacioLibre(pos)
 	Consulta - REPETIDO
 
+esLineaCompleta(linea)
+	Consulta
+
 chequearLinea(y)
-	Acción - DELEGAR
+	Acción
 
 borrarLinea(linea)
 	Acción
@@ -141,14 +149,27 @@ Utilizar el texto de wollok, las imágenes son muy ineficientes
 Existe una clase "Pieza" que contiene todos los mensajes comunes de las piezas.
 
 Sus atributos son:
-- estadoRotacion -> variable
-- position -> variable
-- matKicksJLSTZ -> constante, wallkicks para las piezas J, L, O, S, T, Z
-- matKicksI -> constante, wallkicks para la pieza I
-- margenX -> BORRAR
-- margenY -> BORRAR
+estadoRotacion
+	Variable
+	
+position
+	Variable
+	
+margenX
+	BORRAR
+	
+margenY
+	BORRAR
 
 Entiende los siguientes mensajes:
+
+matKicksJLOSTZ() 
+	Consulta
+	Wallkicks para las piezas J, L, O, S, T, Z
+
+matKicksI
+	Constante
+	Wallkicks para la pieza I
 
 estadoRotacion()
 	Consulta
@@ -217,9 +238,14 @@ Existen las siguientes clases, que heredan de la clase "Pieza". Estas son las 7 
 - PiezaZ
 
 Cada una define los siguientes atributos:
-- img -> Imagen que deben tener los bloques que la conforman
-- bloques -> Colección de bloques que la conforman
-- matRot -> Lista de Tests de rotación para cada estado de rotación
+img
+	Imagen que deben tener los bloques que la conforman
+	
+bloques
+	Colección de bloques que la conforman
+	
+matRot
+	Lista de Tests de rotación para cada estado de rotación
 
 Cada una entiende los siguientes mensajes:
 bloques()
@@ -233,3 +259,30 @@ matRot()
 matKicks()
 	Consulta
 	Devuelve la Lista de Tests de kicks correspondiente a la pieza
+
+##### Objeto Bloque
+Las piezas están compuestas por 4 objetos "bloque"
+
+Tiene tiene lo siguientes atributos:
+- position
+- image
+- id
+
+Entiende los siguientes mensajes:
+image()
+	Consulta
+
+id()
+	Consulta
+
+centrar()
+	Acción
+
+bajar()
+	Acción
+
+movete(nuevaPos)
+	Acción
+
+randomPos() - BORRAR
+	Acción

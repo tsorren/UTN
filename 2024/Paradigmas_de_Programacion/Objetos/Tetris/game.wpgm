@@ -27,6 +27,9 @@ program tetris {
     const cellSize = 32
     const gameWidth = 26
     const gameHeight = 26
+
+    var dasEnabled = false
+
     game.width(gameWidth)
     game.height(gameHeight)
     game.cellSize(cellSize)
@@ -38,26 +41,59 @@ program tetris {
     var piezaActual = bagGenerator.nuevaPieza()
     piezaActual.crear(piezaActual.bloques(), piezaActual.matRot())
 
+    keyboard.control().onPressDo({
+        dasEnabled = not dasEnabled
+    })
     keyboard.space().onPressDo({
         piezaActual.poner(piezaActual.bloques(), piezaActual.matRot())
         piezaActual = bagGenerator.nuevaPieza()
         piezaActual.crear(piezaActual.bloques(), piezaActual.matRot())
     })
     
-    keyboard.right().onPressDo({piezaActual.movete(
-        piezaActual.bloques(),
-        piezaActual.matRot(),
-        piezaActual.position().right(1))
+    keyboard.right().onPressDo({
+        if(dasEnabled)
+        {
+            // TODO CODIFICAR DAS
+            dasEnabled = false
+        }
+        else
+        {
+            piezaActual.movete(
+                piezaActual.bloques(),
+                piezaActual.matRot(),
+                piezaActual.position().right(1)
+            )
+        }
     })
-    keyboard.left().onPressDo({piezaActual.movete(
-        piezaActual.bloques(),
-        piezaActual.matRot(),
-        piezaActual.position().left(1))
+    keyboard.left().onPressDo({
+        if(dasEnabled)
+        {
+            // TODO CODIFICAR DAS
+            dasEnabled = false
+        }
+        else
+        {
+            piezaActual.movete(
+                piezaActual.bloques(),
+                piezaActual.matRot(),
+                piezaActual.position().left(1)
+            )
+        }
     })
-    keyboard.down().onPressDo({piezaActual.movete(
-        piezaActual.bloques(),
-        piezaActual.matRot(),
-        piezaActual.position().down(1))
+    keyboard.down().onPressDo({
+        if(dasEnabled)
+        {
+            // TODO CODIFICAR DAS
+            dasEnabled = false
+        }
+        else
+        {
+            piezaActual.movete(
+                piezaActual.bloques(),
+                piezaActual.matRot(),
+                piezaActual.position().down(1)
+                )
+        }
     })
     keyboard.c().onPressDo({piezaActual.rotar(
         piezaActual.bloques(),
