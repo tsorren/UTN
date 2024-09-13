@@ -21,10 +21,10 @@ object pepita {
     method position() = position
     method image(){
         if(self.estaCansada()){
-            return "pepita_muerta.png"
+            return "pepita_dead.png"
         }
         else{
-            return "pepita_viva.png"
+            return "pepita.png"
         }
     }
     method comer(comida){
@@ -43,11 +43,9 @@ object pepita {
         if(position.y() > 0)
             position = position.down(1)
     }
-    method comerDelSuelo(){
-        if(not game.colliders(self).isEmpty()){
-            self.comer(game.colliders(self).first())
-            game.removeVisual(game.colliders(self).first())
-        }
+    method comerDelSuelo(comida){
+        self.comer(comida)
+        game.removeVisual(comida)
 
     }
 }
@@ -57,7 +55,9 @@ object alpiste {
 
     const position = game.at(0.randomUpTo(game.width()), 0.randomUpTo(game.height()))
     method position() = position
-    method image() = "alpiste.png"
+    method image() = "birdseed.png"
+
+    method esComida() = true
 }
 
 object manzana {
@@ -65,7 +65,7 @@ object manzana {
     const energiaInicial = 50
     const position = game.at(0.randomUpTo(game.width()), 0.randomUpTo(game.height()))
     
-    method image() = "manzana.png"
+    method image() = "apple.png"
 	method position() = position
 
 	method energia() 
@@ -91,4 +91,12 @@ object manzana {
 	}
     method estaPudriendose() = madurez >= 100 && madurez < 150
     method estaPodrida() = madurez >= 150
+    method esComida() = true
+}
+
+object nido {
+    const position = game.at(0.randomUpTo(game.width()), 0.randomUpTo(game.height()))
+    method position() = position
+    method image() = "neest.png"
+    method esComida() = false
 }

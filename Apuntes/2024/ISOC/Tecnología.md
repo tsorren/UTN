@@ -88,7 +88,7 @@ Innovaciones Radicales
 - Por ejemplo: La Revolución Industrial
 
 #### Evaluación Tecnológica
-Comienz previa a la fase industrial y se mantiene en las etapas
+Comienza previa a la fase industrial y se mantiene en las etapas
 Interna:
 - Factibilidad - Si se puede hacer
 	- Material - Si cumple las leyes de la física

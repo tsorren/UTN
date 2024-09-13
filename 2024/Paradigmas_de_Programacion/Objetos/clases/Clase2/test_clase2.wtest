@@ -1,4 +1,4 @@
-/*
+
 import clase2.*
 
 test "Al iniciar pepita no está cansada" {
@@ -91,4 +91,3 @@ test "En ningún caso la manzana podrida puede otorgar menos de 0 calorías." {
     manzana.madurar()
     assert.equals(0, manzana.energia())
 }
-*/

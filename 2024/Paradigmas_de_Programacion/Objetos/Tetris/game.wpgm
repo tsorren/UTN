@@ -2,52 +2,95 @@ import wollok.game.*
 import tetraminos.*
 
 object bagGenerator {
-    var piezasDisponibles = self.nuevaBag()
+    var piezasDisponibles = self.nuevaBag() + self.nuevaBag()
     var piezaActual = null
 
     method nuevaBag() = [new PiezaI(), new PiezaJ(), new PiezaL(), new PiezaO(), new PiezaS(), new PiezaT(), new PiezaZ()].randomized()
 
-    method nuevaPieza(){
+    method siguientesPiezas() = piezasDisponibles.take(5)
+
+    method nuevaPieza()
+    {
         piezaActual = piezasDisponibles.first()
         piezasDisponibles.remove(piezaActual)
-
-        //console.println(piezasDisponibles)
+        game.addVisual(piezasDisponibles.get(4))
         
-        if(piezasDisponibles.isEmpty())
+        if(piezasDisponibles.size() <= 7)
         {
-            piezasDisponibles = self.nuevaBag()
+            piezasDisponibles = piezasDisponibles + self.nuevaBag()
         }
 
+        game.removeVisual(piezaActual)
+        self.previewBag()
         return piezaActual
     } 
+
+    method initBagPreview()
+    {
+        game.addVisual(piezasDisponibles.get(0))
+        game.addVisual(piezasDisponibles.get(1))
+        game.addVisual(piezasDisponibles.get(2))
+        game.addVisual(piezasDisponibles.get(3))
+        self.previewBag()
+    }
+
+    method previewBag() 
+    {
+        const indices = new Range(start = 0, end = 4)
+        const piezas = self.siguientesPiezas()
+        var pieza
+        indices.forEach({indice => 
+            pieza = piezas.get(indice)
+            pieza.movete(game.at(27, 18 - indice * 3))
+            //console.println(pieza)
+        })
+    }
 
 }
 
 program tetris {
     const cellSize = 32
-    const gameWidth = 26
-    const gameHeight = 26
+    const gameWidth = 40
+    const gameHeight = 24
 
     var dasEnabled = false
+    var canHold = true
 
     game.width(gameWidth)
     game.height(gameHeight)
     game.cellSize(cellSize)
 
-    game.boardGround("tetrisBKG.png")
+    game.boardGround("TetrainerBackground.png")
     game.title("Tetris Trainer")
     game.start()
 
     var piezaActual = bagGenerator.nuevaPieza()
     piezaActual.crear(piezaActual.bloques(), piezaActual.matRot())
 
+    bagGenerator.initBagPreview()
     keyboard.control().onPressDo({
         dasEnabled = not dasEnabled
     })
     keyboard.space().onPressDo({
         piezaActual.poner(piezaActual.bloques(), piezaActual.matRot())
+        game.removeVisual(piezaActual)
         piezaActual = bagGenerator.nuevaPieza()
         piezaActual.crear(piezaActual.bloques(), piezaActual.matRot())
+        canHold = true
+    })
+    keyboard.shift().onPressDo({
+        if(canHold)
+        {
+            const valorRetorno = mapa.hacerHold(piezaActual)  
+            if(valorRetorno == null)
+            {
+                piezaActual = bagGenerator.nuevaPieza()
+                piezaActual.crear(piezaActual.bloques(), piezaActual.matRot())
+            }
+            else
+                piezaActual = valorRetorno
+            canHold = false
+        }
     })
     
     keyboard.right().onPressDo({

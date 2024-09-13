@@ -2,16 +2,18 @@ import wollok.game.*
 
 object mapa {
 
-    const minX = 8
+    const minX = 15
     const maxX = minX + 10
 
-    const minY = 3
+    const minY = 2
     const maxY = minY + 20
 
     method minX() = minX
     method maxX() = maxX
     method minY() = minY
     method maxY() = maxY
+
+    var holdPiece = null
 
     method esEspacioLibre(pos) = game.getObjectsIn(pos).isEmpty()
 
@@ -42,6 +44,36 @@ object mapa {
             })
         })
     }
+
+    method hacerTransformacionHold(piezaActual)
+    {
+        self.esconder(piezaActual.bloques())
+        holdPiece = piezaActual
+        holdPiece.resetearRotacion()
+        //holdPiece.cambiarImagen(holdPiece.imagenHold())
+        holdPiece.movete(game.at(8, 18))
+        //holdPiece.actualizarPos(holdPiece.bloques(), holdPiece.matRot(), holdPiece.estadoRotacion())
+        game.addVisual(holdPiece)
+    }
+
+    method hacerHold(piezaActual) {
+        
+        if(holdPiece == null)
+        {
+            self.hacerTransformacionHold(piezaActual)
+            return null
+        }
+        else
+        {
+            const aux = holdPiece
+            aux.cambiarImagen(aux.imagenOriginal())
+            game.removeVisual(aux)
+            self.hacerTransformacionHold(piezaActual)
+            aux.crear(aux.bloques(), aux.matRot())
+            return aux
+
+        }
+    }
     
     method mostrar(bloques) 
     {
@@ -56,9 +88,12 @@ object mapa {
 
 class Bloque {
     var property position = game.center()
-    const image
-    method image() = image
     var id
+    var property image
+    method cambiarImagen(imagen)
+    {
+        image = imagen
+    }
 
     method inicializarID(identificador)
     {
@@ -84,11 +119,22 @@ class Bloque {
     }
 }
 class Pieza
-{    var estadoRotacion = 0
+{
+    var estadoRotacion = 0
     method estadoRotacion() = estadoRotacion
+    method resetearRotacion()
+    {
+        estadoRotacion = 0
+    }
 
-    var position = game.at((mapa.minX() + mapa.maxX()) / 2, mapa.maxY() - 2)
+    const posInicial = game.at((mapa.minX() + mapa.maxX()) / 2, mapa.maxY() - 2)
+
+    var position = posInicial
     method position() = position
+    method movete(pos)
+    {
+        position = pos
+    } 
 
     // Wallkicks para las rotaciones de las piezas J, L, S, T y Z
     /*
@@ -103,18 +149,18 @@ class Pieza
         [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]]]     // 0 -> L (0 a 3)
     */
     method matKicksJLOSTZ() = [
-    [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 0 -> R (0 a 1) - Rotaciones "normales"
-    [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 0 (1 a 0)
-    [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 2 (1 a 2)
-    [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 2 -> R (2 a 1)
-    [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]],    // 2 -> L (2 a 3)
-    [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],  // L -> 2 (3 a 2)
-    [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],  // L -> 0 (3 a 0)
-    [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]],    // 0 -> L (0 a 3)
-    [[0, 0], [0, 1]],                              // 0 -> 2 (0 a 2) - Rotaciones Invertidas
-    [[0, 0], [0, -1]],                             // 2 -> 0 (2 a 0)
-    [[0, 0], [1, 0]],                              // R -> L (1 a 3)
-    [[0, 0], [-1, 0]]]                              // L -> R (3 a 1)
+        [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 0 -> R (0 a 1) - Rotaciones "normales"
+        [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 0 (1 a 0)
+        [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 2 (1 a 2)
+        [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 2 -> R (2 a 1)
+        [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]],    // 2 -> L (2 a 3)
+        [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],  // L -> 2 (3 a 2)
+        [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],  // L -> 0 (3 a 0)
+        [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]],    // 0 -> L (0 a 3)
+        [[0, 0], [0, 1]],                              // 0 -> 2 (0 a 2) - Rotaciones Invertidas
+        [[0, 0], [0, -1]],                             // 2 -> 0 (2 a 0)
+        [[0, 0], [1, 0]],                              // R -> L (1 a 3)
+        [[0, 0], [-1, 0]]]                              // L -> R (3 a 1)
 
     method matKicksI() = [ // Wallkicks para la pieza I
         [[0, 0], [-2, 0], [1, 0], [-2, -1], [1, 2]], // 0 -> R (0 a 1)
@@ -131,27 +177,29 @@ class Pieza
         [[0, 0], [-1, 0]]]                            // L -> R (3 a 1)
         
 
-
-
     method crear(bloques, matRot)
     {
+        position = posInicial
         self.actualizarPos(bloques, matRot, estadoRotacion)
         mapa.mostrar(bloques)
     }
 
-    method poner(bloques, matRot)
-    {
-        var nuevaPos
-
-        mapa.esconder(bloques)
+    method irAlPiso(bloques, matRot)
+    {        
         const posiblesPosiciones = new Range(start = mapa.minY() - 2, end = position.y()).filter({posY => 
         not self.esMovimientoValido(bloques, matRot, game.at(position.x(), posY), estadoRotacion)}).map({n => n + 1})
 
         // console.println(posiblesPosiciones)
-        nuevaPos = game.at(position.x(), posiblesPosiciones.max())
+        const nuevaPos = game.at(position.x(), posiblesPosiciones.max())
         
         mapa.mostrar(bloques)
         self.movete(bloques, matRot, nuevaPos)
+    }
+
+    method poner(bloques, matRot)
+    {
+        mapa.esconder(bloques)
+        self.irAlPiso(bloques, matRot)
         bloques.forEach({bloque => mapa.chequearLinea(bloque.position().y())})
     }
 
@@ -293,7 +341,15 @@ class Pieza
 }
 
 class PiezaI inherits Pieza {
+    var property image = self.imagenOriginal()
+    method cambiarImagen(imagen)
+    {
+        image = imagen
+    }
+
     const img = "cyan.png"
+    method imagenOriginal() = "PiezaI.png"
+    method imagenHold() = "Hold" + self.imagenOriginal()
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -314,7 +370,16 @@ class PiezaI inherits Pieza {
 }
 
 class PiezaJ inherits Pieza {
+    var property image = self.imagenOriginal()
+    method cambiarImagen(imagen)
+    {
+        image = imagen
+    }
+
     const img = "blue.png"
+
+    method imagenOriginal() = "PiezaJ.png"
+    method imagenHold() = "Hold" + self.imagenOriginal()
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -335,8 +400,15 @@ class PiezaJ inherits Pieza {
 }
 
 class PiezaL inherits Pieza{
+    var property image = self.imagenOriginal()
+    method cambiarImagen(imagen)
+    {
+        image = imagen
+    }
 
     const img = "orange.png"
+    method imagenOriginal() = "PiezaL.png"
+    method imagenHold() = "Hold" + self.imagenOriginal()
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -356,8 +428,15 @@ class PiezaL inherits Pieza{
     method matKicks() = self.matKicksJLOSTZ()
 }
 class PiezaO inherits Pieza{
+    var property image = self.imagenOriginal()
+    method cambiarImagen(imagen)
+    {
+        image = imagen
+    }
 
     const img = "yellow.png"
+    method imagenOriginal() = "PiezaO.png"
+    method imagenHold() = "Hold" + self.imagenOriginal()
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -377,8 +456,15 @@ class PiezaO inherits Pieza{
     method matKicks() = self.matKicksJLOSTZ()
 }
 class PiezaS inherits Pieza{
+    var property image = self.imagenOriginal()
+    method cambiarImagen(imagen)
+    {
+        image = imagen
+    }
 
     const img = "green.png"
+    method imagenOriginal() = "PiezaS.png"
+    method imagenHold() = "Hold" + self.imagenOriginal()
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -398,8 +484,15 @@ class PiezaS inherits Pieza{
     method matKicks() = self.matKicksJLOSTZ()
 }
 class PiezaT inherits Pieza {
+    var property image = self.imagenOriginal()
+    method cambiarImagen(imagen)
+    {
+        image = imagen
+    }
 
     const img = "purple.png"
+    method imagenOriginal() = "PiezaT.png"
+    method imagenHold() = "Hold" + self.imagenOriginal()
 
     const bloques = #{
         new Bloque(id = 0, image = img),
@@ -420,8 +513,15 @@ class PiezaT inherits Pieza {
 }
 
 class PiezaZ inherits Pieza{
+    var property image = self.imagenOriginal()
+    method cambiarImagen(imagen)
+    {
+        image = imagen
+    }
 
     const img = "red.png"
+    method imagenOriginal() = "PiezaZ.png"
+    method imagenHold() = "Hold" + self.imagenOriginal()
 
     const bloques = #{
         new Bloque(id = 0, image = img),

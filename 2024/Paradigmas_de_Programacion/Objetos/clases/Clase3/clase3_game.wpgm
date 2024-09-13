@@ -1,19 +1,20 @@
-import clase2.*
+import clase3_pepita.*
 import wollok.game.*
 
 program juego {
 
     game.title("Juego Ejemplo")
 
-    game.cellSize(32)
+    game.cellSize(128)
     game.width(12)
     game.height(12)
 
-    //game.boardGround("background.png")
+    game.boardGround("jungle_bkg.png")
 
     game.addVisual(pepita)
     game.addVisual(manzana)
     game.addVisual(alpiste)
+    game.addVisual(nido)
 
 
     /*
@@ -40,8 +41,12 @@ program juego {
         )
     })
 
-    keyboard.c().onPressDo({pepita.comerDelSuelo()})
+    game.onCollideDo(pepita, { objeto =>
+        console.println(objeto)
+        if(objeto.esComida()) pepita.comerDelSuelo(objeto)
     
+        else game.stop()
+    })
 
     game.onTick(2000, "gravedad", {pepita.caer()}) 
     game.start()
