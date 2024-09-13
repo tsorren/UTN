@@ -41,12 +41,9 @@ program juego {
         )
     })
 
-    game.onCollideDo(pepita, { objeto =>
+    game.onCollideDo(pepita, {objeto => 
         console.println(objeto)
-        if(objeto.esComida()) pepita.comerDelSuelo(objeto)
-    
-        else game.stop()
-    })
+        objeto.reaccionar(pepita)})
 
     game.onTick(2000, "gravedad", {pepita.caer()}) 
     game.start()

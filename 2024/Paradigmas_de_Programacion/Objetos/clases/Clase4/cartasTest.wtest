@@ -1,0 +1,57 @@
+import cartas.*
+
+describe "Carlitos" {
+    test "Carlitos consigue una carta" 
+    {
+        carlitos.conseguirCarta(exodia)
+        assert.that(carlitos.tieneCarta(exodia))
+    }
+    test "Carlitos no consigue una carta"
+    {
+        carlitos.conseguirCarta(exodia)
+        assert.notThat(carlitos.tieneCarta(pikachu))
+    }
+    test "Carlitos vende a pikachu"
+    {
+        assert.equals(0, carlitos.cuantoDinero())
+        carlitos.conseguirCarta(pikachu)
+        carlitos.vender()
+        assert.equals(10, carlitos.cuantoDinero())
+    }
+    test "Carlitos consigue y vende varias cartas"
+    {
+        carlitos.conseguirCarta(pikachu)
+        carlitos.conseguirCarta(anchoDeEspadas)
+        carlitos.conseguirCarta(exodia)
+        carlitos.vender()
+        carlitos.vender()
+        assert.equals(710, carlitos.cuantoDinero())
+        assert.notThat(carlitos.tieneCarta(pikachu))
+        assert.notThat(carlitos.tieneCarta(anchoDeEspadas))
+        assert.that(carlitos.tieneCarta(exodia))
+    }
+    test "Carlitos cotiza sus cartas"
+    {
+        carlitos.conseguirCarta(pikachu)
+        carlitos.conseguirCarta(anchoDeEspadas)
+        carlitos.conseguirCarta(exodia)
+        assert.equals(810, carlitos.cotizacion())
+    }
+    test "Carlitos tiene alguna carta valiosa"
+    {
+        carlitos.conseguirCarta(pikachu)
+        carlitos.conseguirCarta(anchoDeEspadas)
+        carlitos.conseguirCarta(exodia)
+        assert.that(carlitos.tieneCartaValiosa())
+    }
+}
+
+describe "Cartas"
+{
+    test "Exodia se revaloriza"
+    {
+        assert.equals(100, exodia.valor())
+        exodia.revalorizar()
+        assert.equals(110, exodia.valor())
+    }
+}

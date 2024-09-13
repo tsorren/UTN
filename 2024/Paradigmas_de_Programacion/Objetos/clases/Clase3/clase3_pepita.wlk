@@ -1,4 +1,5 @@
-object pepita {
+object pepita
+{
     var energia = 100
 
     var position = game.at(0.randomUpTo(game.width()), 0.randomUpTo(game.height()))
@@ -6,7 +7,8 @@ object pepita {
     method volar(distancia, direccion){
         energia -= 10 * distancia
 
-        if(not self.estaCansada()){
+        if(not self.estaCansada())
+        {
             if(direccion == "arriba") {
                 position = position.up(1)
             }
@@ -20,10 +22,12 @@ object pepita {
     }
     method position() = position
     method image(){
-        if(self.estaCansada()){
+        if(self.estaCansada())
+        {
             return "pepita_dead.png"
         }
-        else{
+        else
+        {
             return "pepita.png"
         }
     }
@@ -56,11 +60,12 @@ object alpiste {
     const position = game.at(0.randomUpTo(game.width()), 0.randomUpTo(game.height()))
     method position() = position
     method image() = "birdseed.png"
-
-    method esComida() = true
+    
+    method reaccionar(alguien) = {alguien.comerDelSuelo(self)}
 }
 
-object manzana {
+object manzana 
+{
 	var madurez = 0
     const energiaInicial = 50
     const position = game.at(0.randomUpTo(game.width()), 0.randomUpTo(game.height()))
@@ -91,12 +96,21 @@ object manzana {
 	}
     method estaPudriendose() = madurez >= 100 && madurez < 150
     method estaPodrida() = madurez >= 150
-    method esComida() = true
+
+    method reaccionar(alguien) = {alguien.comerDelSuelo(self)}
 }
 
-object nido {
+object nido 
+{
     const position = game.at(0.randomUpTo(game.width()), 0.randomUpTo(game.height()))
     method position() = position
     method image() = "neest.png"
     method esComida() = false
+
+    method reaccionar(alguien) 
+    {
+        game.say(self, "Ganaste!")
+        game.removeTickEvent("gravedad")
+        game.schedule(3000, {game.stop()})
+    }
 }

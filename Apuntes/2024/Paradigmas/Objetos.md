@@ -198,4 +198,17 @@ Entiende los mensajes:
 
 No entiende los mensajes:
 	mantener apretado -> al recibir ctrl, el siguiente movimiento es con DAS
-	
+
+#### Objeto Colección
+
+Entiende los mensajes:
+	objeto.add(elemento)
+	objeto.contains(elemento)
+	objeto.first()
+	objeto.remove(elemento) 
+	objeto.size()
+	objeto.sum(action)
+	objeto.any(action)
+	objeto.map(action)
+	objeto.max(action)
+	objeto.forEach(action)
