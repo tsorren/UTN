@@ -857,3 +857,171 @@ Compilo teniendo en cuenta de agregar la biblioteca de lex
 
 Ejecuto usando el archivo prueba.txt como entrada
 	./prueba < prueba.txt
+
+Los errores deben ir abajo de lo que se quería reconocer
+Flex siempre devuelve 0 como token al encontrar EOF
+
+#### Gramática Sintáctica
+
+Se usa una EBNF para asemejarse al algorítmo que lo describe
+```
+<programa> -> inicio <listaSentencias> fin
+<listaSentencias> -> <sentencia> {<sentencia>}
+<sentencia> -> <identificador> := <expresion>; |
+				leer( <listaIdentificadores> ); |
+				escribir( <listaExpresiones> );
+<listaIdentificadores> -> <identificador>{, <identificador>}
+<listaExpresiones> -> <expresion> {, <expresion>}
+<expresion> -> <primaria> {<operadorAditivo> <primaria>}
+<primaria> -> <identificador> | <constante> | ( <expresion> )
+```
+
+#### Parser
+Hay varios tipos, de top-down o bottom-up
+El Árbol de Análisis Sintáctico queda con terminales en las hojas y no terminales en los nodos interiores
+El AAS no siempre es una estructura de datos.
+
+Usaremos el Análisis Sintáctico Descendente Recursivo (ADSR)
+	Es del tipo top-down
+	Parte del axioma
+	Arma el Árbol de Análisis Sintáctico consistente con una derivación izquierda
+	El Árbol es virtualmente armado por los llamados recursivos entre funciones (en el Stack Frame)
+
+Otros parsers, de bottom-up, parten de los terminales (hojas) y van reduciendo hacia el axioma
+
+#### ADSR
+Cada No Terminal tiene un Procedimiento de Análisis Sintáctico (PAS) que lo implementa, usando el mismo nombre
+Si el No Terminal tiene una única producción
+	Por cada No Terminal llamamos a la PAS correspondiente (recursividad)
+	Por cada Terminal llamamos a la función Match(t), que comprueba que el terminal del scanner coincida con la que la producción prevé
+Si el No Terminal tiene más de una producción
+	Se agrega código adicional para manejar la situación
+	Símbolo de Pre-análisis (un espía)
+	Función Proximo Token (PT)
+
+Primero agregamos un nuevo axioma que incluya el FDT
+También reemplazamos los Terminales por las enumeraciones que los representas (no necesario)
+IMPORTANTE: Match pertenece al scanner y es la única función que hace avanzar al mismo
+	Compara el token a coincidir con el proximo símbolo a entregar por el scanner
+	Si coinciden se sigue el análisis sin problemas
+	Si no coinciden implica un error sintáctico
+	En ambos casos habilita al scanner a avanzar leyendo un nuevo token
+
+
+Gramática Sintáctica modificada
+```
+<objetivo> -> <programa> FDT
+<programa> -> INICIO <listaSentencias> FIN
+<listaSentencias> -> <sentencia> {<sentencia>}
+<sentencia> -> ID ASIGNACION <expresion> PUNTOYCOMA |
+				LEER PARENIZQUIERDO <listaIdentificadores> PARENDERECHO PUNTOYCOMA  |
+				ESCRIBIR PARENIZQUIERDO  <listaExpresiones> PARENDERECHO PUNTOYCOMA
+<listaIdentificadores> -> ID {COMA ID}
+<listaExpresiones> -> <expresion> {COMA <expresion>}
+<expresion> -> <primaria> {<operadorAditivo> <primaria>}
+<primaria> -> ID | CONSTANTE | PARENIZQUIERDO <expresion> PARENDERECHO
+<operadorAditivo> → uno de SUMA RESTA
+```
+
+#### PAS
+
+Producciones Simples:
+Por cada no terminal llamamos al PAS correspondiente y por cada Terminal llamamos a Match(Terminal)
+```c
+void Objetivo(void) // <objetivo> -> <programa> FDT
+{
+	Programa();
+	Match(FDT);
+}
+
+void Programa(void) // <programa> -> INICIO <listaSentencias> FIN
+{
+	Match(INICIO);
+	ListaSentencias();
+	Match(FiN);
+}
+```
+
+Producciones con Repeticiones
+En los casos como listaSentencias o como listaIdentificadores:
+	Tenemos un comienzo simple
+	Luego se puede repetir opcionalmente una cantidad desconocida de veces
+
+Para saber si debemos repetir o no usaremos la función ProximoToken()
+	Devuelve cuál es el token siguiente (sin avanzar el scanner, que solo avanza con la función Match)
+	
+El ejemplo que estamos viendo tiene una particularidad en su GIC y es que es de tipo LL(1)
+	Permite que viendo solamente el próximo token se pueda tomar la decisión
+
+ListaSentencias:
+```c
+void ListaSentencias(void)
+{
+	Sentencia();
+	while(1)
+	{
+		switch(ProximoToken())
+		{
+			case ID:
+			case LEER:
+			case ESCRIBIR:
+				Sentencia();
+				break;
+			default:
+				return;
+		}
+	}
+}
+```
+
+Producciones con Opciones:
+Si el No Terminal Tiene varias producciones:
+	Hay que verificar si lo que sigue coincide con una de ellas (y determinar cuál de todas).
+Dado que la gramática que usamos es LL(1) podemos saberlo leyendo un token por adelantado con ProximoToken()
+Si el token leído no es ninguno de los esperados, entonces se produce un error sintáctico
+
+Sentencia:
+```c
+void Sentencia(void)
+{
+	TOKEN tok = ProximoToken();
+	switch(tok)
+	{
+		case ID:
+			Match(ID); Match(ASIGNACION);
+			Expresion(); Match(PUNTOYCOMA);
+			break;
+		case LEER:
+			Match(LEER); Match(PARENIZQUIERDO);
+			ListaIdentificadores();
+			Match(PARENDERECHO); Match(PUNTOYCOMA);
+			break;
+		case ESCRIBIR:
+			Match(ESCRIBIR); Match(PARENIZQUIERDO);
+			ListaExpresiones();
+			Match(PARENDERECHO); Match(PUNTOYCOMA);
+			break;
+		default:
+			ErrorSintactico(tok);
+			break;
+	}
+}
+```
+
+#### Análisis Semántico
+El analizador semántico, o generador de código intermedio, se encarga de:
+	Hacer los controles que son propios de una gramática sensible al contexto:
+	- Comprobar si las variables están definidas
+	- Comprobar el tipo de las variables
+	- Comprobar tipo y cantidad de parámetros de una función
+	- etc
+	Ir generando código de una máquina virtual (MV) que el compilador usa como intermedio antes de generar código para una arquitectura de procesador específica
+
+El parser es quien va llamando al analizador semántico en momentos determinados, de modo similar a como hace con el escáner
+
+
+#### Rutinas Semánticas
+Donde ubicar las rutinas semánticas
+	Donde haya que hacer chequeos de semántica estática
+	Donde haya que generar código
+	Donde haya que trasmitir / recibir / procesar datos (registros semánticos)
