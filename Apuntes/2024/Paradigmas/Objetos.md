@@ -212,3 +212,8 @@ Entiende los mensajes:
 	objeto.map(action)
 	objeto.max(action)
 	objeto.forEach(action)
+
+#### Clases
+Permite dar estructura a objetos que deben parecerse.
+
+Constructor
