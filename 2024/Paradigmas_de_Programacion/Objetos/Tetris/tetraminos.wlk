@@ -13,13 +13,37 @@ object mapa {
     method minY() = minY
     method maxY() = maxY
 
-    var holdPiece = null
-
-    method esEspacioLibre(pos) = game.getObjectsIn(pos).isEmpty()
+    var ultimoIdAsignado = 0
+    
+    method asignarIds(bloques)
+    {
+        bloques.forEach({bloque => 
+            bloque.inicializarMapID(ultimoIdAsignado)
+        })
+        ultimoIdAsignado = ultimoIdAsignado + 1
+    }
+    
+    method esEspacioLibre(nuevaPos, bloque) = game.getObjectsIn(nuevaPos).isEmpty() or (game.getObjectsIn(nuevaPos).first().mapId() == bloque.mapId())
 
     method esPosValida(pos) =  pos.x().between(minX, maxX - 1) and pos.y().between(minY, maxY - 1)
+
+    method esMovimientoValido(pieza, nuevaPos, rotacion)
+    {
+        var pos
+        
+        const esValida = pieza.bloques().all({bloque =>
+            pos = game.at(
+                nuevaPos.x() + pieza.aplicarRotacion(rotacion, bloque.id()).x(),
+                nuevaPos.y() + pieza.aplicarRotacion(rotacion, bloque.id()).y())
+            self.esEspacioLibre(pos, bloque) && self.esPosValida(pos)})
+
+        // console.println(nuevaPos)
+        // console.println(esValida)
+        return esValida
+    }
     
-    method esLineaCompleta(linea) = linea.all({pos => not self.esEspacioLibre(pos)})
+    
+    method esLineaCompleta(linea) = linea.all({pos => not game.getObjectsIn(pos).isEmpty()})
 
     method chequearLinea(y)
     {
@@ -29,50 +53,25 @@ object mapa {
             if(self.esLineaCompleta(linea))
             {
                 self.borrarLinea(linea)
+                self.bajarDemasBloques(y)
+                return 1
             }
-        }
-        
+            else
+            {
+                return 0 
+            }
+        }   
     }
     method borrarLinea(linea)
     {
         linea.forEach({pos => game.removeVisual(game.getObjectsIn(pos).first())})
-        const lineas = new Range(start = linea.first().y(), end = maxY - 1)
-        linea.forEach({pos => 
-            lineas.forEach({y => 
-                if(not game.getObjectsIn(game.at(pos.x(), y)).isEmpty())
-                    game.getObjectsIn(game.at(pos.x(), y)).first().bajar()
-            })
-        })
     }
 
-    method hacerTransformacionHold(piezaActual)
+    method bajarDemasBloques(linea)
     {
-        self.esconder(piezaActual.bloques())
-        holdPiece = piezaActual
-        holdPiece.resetearRotacion()
-        //holdPiece.cambiarImagen(holdPiece.imagenHold())
-        holdPiece.movete(game.at(8, 18))
-        //holdPiece.actualizarPos(holdPiece.bloques(), holdPiece.matRot(), holdPiece.estadoRotacion())
-        game.addVisual(holdPiece)
-    }
-
-    method hacerHold(piezaActual) {
-        
-        if(holdPiece == null)
-        {
-            self.hacerTransformacionHold(piezaActual)
-            return null
-        }
-        else
-        {
-            const aux = holdPiece
-            aux.cambiarImagen(aux.imagenOriginal())
-            game.removeVisual(aux)
-            self.hacerTransformacionHold(piezaActual)
-            aux.crear(aux.bloques(), aux.matRot())
-            return aux
-
-        }
+        game.allVisuals().forEach({visual => 
+            if(visual.esBloque() and visual.position().y() > linea) visual.bajar()
+        })
     }
     
     method mostrar(bloques) 
@@ -84,23 +83,206 @@ object mapa {
     {
         bloques.forEach({bloque => game.removeVisual(bloque)})
     }
+
 }
+
+object eventos
+{
+    var property image = null
+    var property position = game.at(mapa.minX() - 11, mapa.maxY() - 9)
+
+    const imagenes = [null, "eSINGLE.png", "eDOUBLE.png", "eTRIPLE.png", "eQUAD.png"]
+
+    method esBloque() = false
+
+    method cambiarImagen(nuevaImagen) {image = nuevaImagen}
+    method mostrarLineasBorradas(cantidad)
+    {
+        self.cambiarImagen(imagenes.get(cantidad))
+        // console.println(image)
+        if(not game.hasVisual(self)) game.addVisual(self)
+        game.schedule(2000, {if(game.hasVisual(self)) game.removeVisual(self)})
+    }
+}
+
+object bagGenerator {
+    var piezasDisponibles = self.nuevaBag() + self.nuevaBag()
+    var piezaActual = null
+
+    method nuevaBag() = [new PiezaI(), new PiezaJ(), new PiezaL(), new PiezaO(), new PiezaS(), new PiezaT(), new PiezaZ()].randomized()
+
+    method siguientesPiezas() = piezasDisponibles.take(5)
+
+    method nuevaPieza()
+    {
+        piezaActual = piezasDisponibles.first()
+        piezasDisponibles.remove(piezaActual)
+        game.addVisual(piezasDisponibles.get(4))
+        
+        if(piezasDisponibles.size() <= 7)
+        {
+            piezasDisponibles = piezasDisponibles + self.nuevaBag()
+        }
+
+        game.removeVisual(piezaActual)
+        self.previewBag()
+        return piezaActual
+    } 
+
+    method initBagPreview()
+    {
+        game.addVisual(piezasDisponibles.get(0))
+        game.addVisual(piezasDisponibles.get(1))
+        game.addVisual(piezasDisponibles.get(2))
+        game.addVisual(piezasDisponibles.get(3))
+        self.previewBag()
+    }
+
+    method previewBag() 
+    {
+        const indices = new Range(start = 0, end = 4)
+        const piezas = self.siguientesPiezas()
+        var pieza
+        indices.forEach({indice => 
+            pieza = piezas.get(indice)
+            pieza.setPos(game.at(27, 18 - indice * 3))
+            //console.println(pieza)
+        })
+    }
+}
+
+object juego
+{
+    var holdPiece = null
+    var property holdDisponible = true
+    var property dasEncendido = false
+
+    var property piezaActual = bagGenerator.nuevaPieza()
+
+    //const sonidoPonerPieza = new Sound(file = "T:/Rata/Documents/UTN/Carrera/2024/Paradigmas_de_Programacion/Objetos/Tetris/assets/poner.mp3")
+
+    method iniciarJuego()
+    {
+        piezaActual.crear()
+        bagGenerator.initBagPreview()
+
+    }
+
+    method ponerPieza()
+    {
+        piezaActual.poner()
+        game.removeVisual(piezaActual)
+        piezaActual = bagGenerator.nuevaPieza()
+        piezaActual.crear()
+        holdDisponible = true
+        //sonidoPonerPieza.play()
+    }
+
+    method rotarPieza(sentido) {piezaActual.rotar(sentido)}
+
+    method aplicarGravedad() {
+        if(self.puedeBajar())
+            piezaActual.bajar()
+        else
+            game.schedule(500, {if(not self.puedeBajar()) self.ponerPieza()})
+    }
+
+    method puedeBajar() = mapa.esMovimientoValido(piezaActual, piezaActual.position().down(1), piezaActual.estadoRotacion())
+
+    method intentarHold()
+    {
+        if(holdDisponible)
+        {
+            const piezaRetorno = self.hacerHold()  
+            if(piezaRetorno == null)
+            {
+                piezaActual = bagGenerator.nuevaPieza()
+                piezaActual.crear()
+            }
+            else
+                piezaActual = piezaRetorno
+
+            holdDisponible = false
+        }
+    }
+
+    method moverPieza(direccion)
+    {
+        var cantidadDesplazamiento = 1
+        var nuevaPos 
+
+        if(dasEncendido)
+        {
+            // TODO CODIFICAR DAS
+            dasEncendido = false
+        }
+
+        if(direccion == "izquierda") nuevaPos = piezaActual.position().left(cantidadDesplazamiento)
+        else if(direccion == "derecha") nuevaPos = piezaActual.position().right(cantidadDesplazamiento)
+        else if(direccion == "abajo") nuevaPos = piezaActual.position().down(cantidadDesplazamiento)
+
+        piezaActual.movete(nuevaPos)
+        
+    }
+    method hacerTransformacionHold()
+    {
+        mapa.esconder(piezaActual.bloques())
+        holdPiece = piezaActual
+        holdPiece.resetearRotacion()
+
+        //holdPiece.cambiarImagen(holdPiece.imagenHold())
+        holdPiece.setPos(game.at(8, 18))
+
+        game.addVisual(holdPiece)
+    }
+
+    method hacerHold() {
+        
+        if(holdPiece == null)
+        {
+            self.hacerTransformacionHold()
+            return null
+        }
+        else
+        {
+            const aux = holdPiece
+            aux.cambiarImagen(aux.imagenOriginal())
+            game.removeVisual(aux)
+            self.hacerTransformacionHold()
+            aux.crear()
+            return aux
+
+        }
+    }
+}
+
+
 
 class Bloque {
     var property position = game.center()
-    var id
     var property image
+    var id
+    var mapId = -1
+
+    method esBloque() = true
+
     method cambiarImagen(imagen)
     {
         image = imagen
     }
 
+    method id() = id
     method inicializarID(identificador)
     {
         id = identificador
     }
 
-    method id() = id
+    method mapId() = mapId
+    method inicializarMapID(identificadorMapa)
+    {
+        mapId = identificadorMapa
+    }
+
 
     method centrar() 
     {
@@ -131,25 +313,16 @@ class Pieza
 
     var position = posInicial
     method position() = position
-    method movete(pos)
-    {
-        position = pos
-    } 
+    method setPos(pos) {position = pos}
 
-    // Wallkicks para las rotaciones de las piezas J, L, S, T y Z
-    /*
-    const matKicksJLOSTZ = [
-        [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 0 -> R (0 a 1)
-        [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 0 (1 a 0)
-        [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 2 (1 a 2)
-        [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 2 -> R (2 a 1)
-        [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]],    // 2 -> L (2 a 3)
-        [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],  // L -> 2 (3 a 2)
-        [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],  // L -> 0 (3 a 0)
-        [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]]]     // 0 -> L (0 a 3)
-    */
-    method matKicksJLOSTZ() = [
-        [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 0 -> R (0 a 1) - Rotaciones "normales"
+    method bloques() = null
+    method matRot() = null
+    method matKicks() = null
+    method esBloque() = false
+
+    
+    method matKicksJLOSTZ() = [ // Wallkicks para las rotaciones de las piezas J, L, S, T y Z
+        [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 0 -> R (0 a 1) - Rotaciones Normales
         [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 0 (1 a 0)
         [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],     // R -> 2 (1 a 2)
         [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]], // 2 -> R (2 a 1)
@@ -160,10 +333,10 @@ class Pieza
         [[0, 0], [0, 1]],                              // 0 -> 2 (0 a 2) - Rotaciones Invertidas
         [[0, 0], [0, -1]],                             // 2 -> 0 (2 a 0)
         [[0, 0], [1, 0]],                              // R -> L (1 a 3)
-        [[0, 0], [-1, 0]]]                              // L -> R (3 a 1)
+        [[0, 0], [-1, 0]]]                             // L -> R (3 a 1)
 
     method matKicksI() = [ // Wallkicks para la pieza I
-        [[0, 0], [-2, 0], [1, 0], [-2, -1], [1, 2]], // 0 -> R (0 a 1)
+        [[0, 0], [-2, 0], [1, 0], [-2, -1], [1, 2]], // 0 -> R (0 a 1) - Rotaciones Normales
         [[0, 0], [2, 0], [-1, 0], [2, 1], [-1, -2]], // R -> 0 (1 a 0)
         [[0, 0], [-1, 0], [2, 0], [-1, 2], [2, -1]], // R -> 2 (1 a 2)
         [[0, 0], [1, 0], [-2, 0], [1, -2], [-2, 1]], // 2 -> R (2 a 1)
@@ -174,47 +347,50 @@ class Pieza
         [[0, 0], [0, 1]],                            // 0 -> 2 (0 a 2) - Rotaciones Invertidas
         [[0, 0], [0, -1]],                           // 2 -> 0 (2 a 0)
         [[0, 0], [1, 0]],                            // R -> L (1 a 3)
-        [[0, 0], [-1, 0]]]                            // L -> R (3 a 1)
+        [[0, 0], [-1, 0]]]                           // L -> R (3 a 1)
         
 
-    method crear(bloques, matRot)
+    method crear()
     {
         position = posInicial
-        self.actualizarPos(bloques, matRot, estadoRotacion)
-        mapa.mostrar(bloques)
+        self.actualizarPos(estadoRotacion)
+        mapa.mostrar(self.bloques())
+        mapa.asignarIds(self.bloques())
     }
 
-    method irAlPiso(bloques, matRot)
+    method irAlPiso()
     {        
         const posiblesPosiciones = new Range(start = mapa.minY() - 2, end = position.y()).filter({posY => 
-        not self.esMovimientoValido(bloques, matRot, game.at(position.x(), posY), estadoRotacion)}).map({n => n + 1})
+        not mapa.esMovimientoValido(self, game.at(position.x(), posY), estadoRotacion)}).map({n => n + 1})
 
         // console.println(posiblesPosiciones)
         const nuevaPos = game.at(position.x(), posiblesPosiciones.max())
         
-        mapa.mostrar(bloques)
-        self.movete(bloques, matRot, nuevaPos)
+        self.movete(nuevaPos)
     }
 
-    method poner(bloques, matRot)
+    method poner()
     {
-        mapa.esconder(bloques)
-        self.irAlPiso(bloques, matRot)
-        bloques.forEach({bloque => mapa.chequearLinea(bloque.position().y())})
+        var contador = 0
+        self.irAlPiso()
+        self.bloques().forEach({bloque => 
+            contador = contador + mapa.chequearLinea(bloque.position().y())
+        })
+        if(contador > 0) eventos.mostrarLineasBorradas(contador)
     }
 
-    method actualizarPos(bloques, matRot, rotacion)
+    method actualizarPos(rotacion)
     {
         const pieza = self
-        bloques.forEach({bloque => bloque.movete(game.at(
-            position.x() + pieza.aplicarRotacion(matRot, rotacion, bloque.id()).x(),
-            position.y() + pieza.aplicarRotacion(matRot, rotacion, bloque.id()).y()
+        self.bloques().forEach({bloque => bloque.movete(game.at(
+            position.x() + pieza.aplicarRotacion(rotacion, bloque.id()).x(),
+            position.y() + pieza.aplicarRotacion(rotacion, bloque.id()).y()
         ))})
     }
 
-    method aplicarRotacion(matRot, rotacion, id)
+    method aplicarRotacion(rotacion, id)
     {
-        return game.at(matRot.get(rotacion).get(id).get(0), matRot.get(rotacion).get(id).get(1))
+        return game.at(self.matRot().get(rotacion).get(id).get(0), self.matRot().get(rotacion).get(id).get(1))
     }
     
     method nuevoEstadoRotacion(sentido)
@@ -256,18 +432,17 @@ class Pieza
         return indices.get(estadoActual).get(estadoSiguiente)
     }
 
-    method aplicarKick(bloques, matRot, matKicks, nuevoEstado)
+    method aplicarKick(nuevoEstado)
     {
-        //var indice = ((estadoRotacion * 2 + (nuevoEstado - estadoRotacion + 4) % 4) % 8) - 1
         const indice = self.calcularIndiceKick(estadoRotacion, nuevoEstado)
         //console.println(indice)
         
-        var posicionesDeKick = matKicks.get(indice).map({vec =>
+        var posicionesDeKick = self.matKicks().get(indice).map({vec =>
             game.at(position.x() + vec.get(0), position.y() + vec.get(1))})
             
         // console.println(posicionesDeKick)
         posicionesDeKick = posicionesDeKick.filter({
-                posKick => self.esMovimientoValido(bloques, matRot, posKick, nuevoEstado)})
+                posKick => mapa.esMovimientoValido(self, posKick, nuevoEstado)})
                 
         if(not posicionesDeKick.isEmpty())
         {
@@ -278,66 +453,42 @@ class Pieza
         return not posicionesDeKick.isEmpty()
     }
     
-    method rotar(bloques, matRot, matKicks, sentido)
+    method rotar(sentido)
     {
         const nuevoEstado = self.nuevoEstadoRotacion(sentido)
         
-        mapa.esconder(bloques)
-        if(self.aplicarKick(bloques, matRot, matKicks, nuevoEstado))
+        if(self.aplicarKick(nuevoEstado))
         {
             estadoRotacion = nuevoEstado
-            self.actualizarPos(bloques, matRot, estadoRotacion)
+            self.actualizarPos(estadoRotacion)
         }
-        mapa.mostrar(bloques)
         
-        //estadoRotacion = nuevoEstado
-        //self.actualizarPos(bloques, matRot, estadoRotacion)
     }
 
-    method esMovimientoValido(bloques, matRot, nuevaPos, rotacion)
+    method movete(nuevaPos) 
     {
-        const pieza = self
-        var pos
         
-        const esValida = bloques.all({bloque =>
-            pos = game.at(
-                nuevaPos.x() + pieza.aplicarRotacion(matRot, rotacion, bloque.id()).x(),
-                nuevaPos.y() + pieza.aplicarRotacion(matRot, rotacion, bloque.id()).y())
-            mapa.esEspacioLibre(pos) && mapa.esPosValida(pos)})
-        //
-        return esValida
-    }
-    
-    method movete(bloques, matRot, nuevaPos) 
-    {
-        mapa.esconder(bloques)
-        
-        if(self.esMovimientoValido(bloques, matRot, nuevaPos, estadoRotacion))
+        if(mapa.esMovimientoValido(self, nuevaPos, estadoRotacion))
         {
             position = nuevaPos
-            self.actualizarPos(bloques, matRot, estadoRotacion)
+            self.actualizarPos(estadoRotacion)
         }
-        /*
-        else
-        {
-            self.movete(bloques, matRot, game.center())
-            bloques.forEach({bloque => game.say(bloque, "No me puedo mover ahí")})
-        }
-        */
-        mapa.mostrar(bloques)
     }
     
-    method bajar(bloques, matRot)
+    method bajar()
     {
-        self.movete(bloques, matRot, position.down((1)))
+        position = position.down(1)
+        self.actualizarPos(estadoRotacion)
     }
     
+    /*
     method randomPos(bloques, matRot)
     {
         const x = 3.randomUpTo(game.width() - 3).truncate(0)
         const y = 3.randomUpTo(game.height() - 3).truncate(0)
-        self.movete(bloques, matRot, game.at(x, y))
+        self.movete(game.at(x, y))
     }
+    */
 }
 
 class PiezaI inherits Pieza {
@@ -357,16 +508,16 @@ class PiezaI inherits Pieza {
         new Bloque(id = 2, image = img),
         new Bloque(id = 3, image = img)
     }
-    method bloques() = bloques
+    override method bloques() = bloques
     
     const matRot = [
         [[-1, 1], [0, 1], [1, 1], [2, 1]], // Estado 0
         [[1, 2], [1, 1], [1, 0], [1, -1]], // Estado 1 (derecha)
         [[-1, 0], [0, 0], [1, 0], [2, 0]], // Estado 2 (invertido)
         [[0, 2], [0, 1], [0, 0], [0, -1]]] // Estado 3 (izquierda)
-    method matRot() = matRot
+    override method matRot() = matRot
 
-    method matKicks() = self.matKicksI()
+    override method matKicks() = self.matKicksI()
 }
 
 class PiezaJ inherits Pieza {
@@ -387,7 +538,7 @@ class PiezaJ inherits Pieza {
         new Bloque(id = 2, image = img),
         new Bloque(id = 3, image = img)
     }
-    method bloques() = bloques
+    override method bloques() = bloques
 
     const matRot = [
         [[-1, 1], [-1, 0], [0, 0], [1, 0]],
@@ -395,8 +546,8 @@ class PiezaJ inherits Pieza {
         [[1, -1], [1, 0], [0, 0], [-1, 0]],
         [[-1, -1], [0, -1], [0, 0], [0, 1]]
     ]
-    method matRot() = matRot
-    method matKicks() = self.matKicksJLOSTZ()
+    override method matRot() = matRot
+    override method matKicks() = self.matKicksJLOSTZ()
 }
 
 class PiezaL inherits Pieza{
@@ -416,7 +567,7 @@ class PiezaL inherits Pieza{
         new Bloque(id = 2, image = img),
         new Bloque(id = 3, image = img)
     }
-    method bloques() = bloques
+    override method bloques() = bloques
 
     const matRot = [
         [[-1, 0], [0, 0], [1, 0], [1, 1]],
@@ -424,8 +575,8 @@ class PiezaL inherits Pieza{
         [[1, 0], [0, 0], [-1, 0], [-1, -1]],
         [[0, -1], [0, 0], [0, 1], [-1, 1]]
     ]
-    method matRot() = matRot
-    method matKicks() = self.matKicksJLOSTZ()
+    override method matRot() = matRot
+    override method matKicks() = self.matKicksJLOSTZ()
 }
 class PiezaO inherits Pieza{
     var property image = self.imagenOriginal()
@@ -444,7 +595,7 @@ class PiezaO inherits Pieza{
         new Bloque(id = 2, image = img),
         new Bloque(id = 3, image = img)
     }
-    method bloques() = bloques
+    override method bloques() = bloques
 
     const matRot = [
         [[-1, 1], [0, 1], [-1, 0], [0, 0]],
@@ -452,8 +603,8 @@ class PiezaO inherits Pieza{
         [[-1, 1], [0, 1], [-1, 0], [0, 0]],
         [[-1, 1], [0, 1], [-1, 0], [0, 0]]
     ]
-    method matRot() = matRot
-    method matKicks() = self.matKicksJLOSTZ()
+    override method matRot() = matRot
+    override method matKicks() = self.matKicksJLOSTZ()
 }
 class PiezaS inherits Pieza{
     var property image = self.imagenOriginal()
@@ -472,7 +623,7 @@ class PiezaS inherits Pieza{
         new Bloque(id = 2, image = img),
         new Bloque(id = 3, image = img)
     }
-    method bloques() = bloques
+    override method bloques() = bloques
 
     const matRot = [
         [[-1, 0], [0, 0], [0, 1], [1, 1]],
@@ -480,8 +631,8 @@ class PiezaS inherits Pieza{
         [[1, 0], [0, 0], [0, -1], [-1, -1]],
         [[0, -1], [0, 0], [-1, 0], [-1, 1]]
     ]
-    method matRot() = matRot
-    method matKicks() = self.matKicksJLOSTZ()
+    override method matRot() = matRot
+    override method matKicks() = self.matKicksJLOSTZ()
 }
 class PiezaT inherits Pieza {
     var property image = self.imagenOriginal()
@@ -500,7 +651,7 @@ class PiezaT inherits Pieza {
         new Bloque(id = 2, image = img),
         new Bloque(id = 3, image = img)
     }
-    method bloques() = bloques
+    override method bloques() = bloques
 
     const matRot = [
         [[-1, 0], [0, 0], [0, 1], [1, 0]],
@@ -508,8 +659,8 @@ class PiezaT inherits Pieza {
         [[-1, 0], [0, 0], [0, -1], [1, 0]],
         [[0, 1], [0, 0], [-1, 0], [0, -1]]
     ]
-    method matRot() = matRot
-    method matKicks() = self.matKicksJLOSTZ()
+    override method matRot() = matRot
+    override method matKicks() = self.matKicksJLOSTZ()
 }
 
 class PiezaZ inherits Pieza{
@@ -529,7 +680,7 @@ class PiezaZ inherits Pieza{
         new Bloque(id = 2, image = img),
         new Bloque(id = 3, image = img)
     }
-    method bloques() = bloques
+    override method bloques() = bloques
 
     const matRot = [
         [[-1, 1], [0, 1], [0, 0], [1, 0]],
@@ -537,6 +688,6 @@ class PiezaZ inherits Pieza{
         [[-1, 0], [0, 0], [0, -1], [1, -1]],
         [[-1, -1], [-1, 0], [0, 0], [0, 1]]
     ]
-    method matRot() = matRot
-    method matKicks() = self.matKicksJLOSTZ()
+    override method matRot() = matRot
+    override method matKicks() = self.matKicksJLOSTZ()
 }

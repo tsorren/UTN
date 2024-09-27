@@ -1,60 +1,11 @@
 import wollok.game.*
 import tetraminos.*
 
-object bagGenerator {
-    var piezasDisponibles = self.nuevaBag() + self.nuevaBag()
-    var piezaActual = null
-
-    method nuevaBag() = [new PiezaI(), new PiezaJ(), new PiezaL(), new PiezaO(), new PiezaS(), new PiezaT(), new PiezaZ()].randomized()
-
-    method siguientesPiezas() = piezasDisponibles.take(5)
-
-    method nuevaPieza()
-    {
-        piezaActual = piezasDisponibles.first()
-        piezasDisponibles.remove(piezaActual)
-        game.addVisual(piezasDisponibles.get(4))
-        
-        if(piezasDisponibles.size() <= 7)
-        {
-            piezasDisponibles = piezasDisponibles + self.nuevaBag()
-        }
-
-        game.removeVisual(piezaActual)
-        self.previewBag()
-        return piezaActual
-    } 
-
-    method initBagPreview()
-    {
-        game.addVisual(piezasDisponibles.get(0))
-        game.addVisual(piezasDisponibles.get(1))
-        game.addVisual(piezasDisponibles.get(2))
-        game.addVisual(piezasDisponibles.get(3))
-        self.previewBag()
-    }
-
-    method previewBag() 
-    {
-        const indices = new Range(start = 0, end = 4)
-        const piezas = self.siguientesPiezas()
-        var pieza
-        indices.forEach({indice => 
-            pieza = piezas.get(indice)
-            pieza.movete(game.at(27, 18 - indice * 3))
-            //console.println(pieza)
-        })
-    }
-
-}
-
 program tetris {
     const cellSize = 32
     const gameWidth = 40
     const gameHeight = 24
 
-    var dasEnabled = false
-    var canHold = true
 
     game.width(gameWidth)
     game.height(gameHeight)
@@ -64,102 +15,20 @@ program tetris {
     game.title("Tetris Trainer")
     game.start()
 
-    var piezaActual = bagGenerator.nuevaPieza()
-    piezaActual.crear(piezaActual.bloques(), piezaActual.matRot())
+    juego.iniciarJuego()
 
-    bagGenerator.initBagPreview()
-    keyboard.control().onPressDo({
-        dasEnabled = not dasEnabled
-    })
-    keyboard.space().onPressDo({
-        piezaActual.poner(piezaActual.bloques(), piezaActual.matRot())
-        game.removeVisual(piezaActual)
-        piezaActual = bagGenerator.nuevaPieza()
-        piezaActual.crear(piezaActual.bloques(), piezaActual.matRot())
-        canHold = true
-    })
-    keyboard.shift().onPressDo({
-        if(canHold)
-        {
-            const valorRetorno = mapa.hacerHold(piezaActual)  
-            if(valorRetorno == null)
-            {
-                piezaActual = bagGenerator.nuevaPieza()
-                piezaActual.crear(piezaActual.bloques(), piezaActual.matRot())
-            }
-            else
-                piezaActual = valorRetorno
-            canHold = false
-        }
-    })
+    //keyboard.control().onPressDo({dasEnabled = not dasEnabled})
+    keyboard.space().onPressDo({juego.ponerPieza()})
+    keyboard.shift().onPressDo({juego.intentarHold()})
     
-    keyboard.right().onPressDo({
-        if(dasEnabled)
-        {
-            // TODO CODIFICAR DAS
-            dasEnabled = false
-        }
-        else
-        {
-            piezaActual.movete(
-                piezaActual.bloques(),
-                piezaActual.matRot(),
-                piezaActual.position().right(1)
-            )
-        }
-    })
-    keyboard.left().onPressDo({
-        if(dasEnabled)
-        {
-            // TODO CODIFICAR DAS
-            dasEnabled = false
-        }
-        else
-        {
-            piezaActual.movete(
-                piezaActual.bloques(),
-                piezaActual.matRot(),
-                piezaActual.position().left(1)
-            )
-        }
-    })
-    keyboard.down().onPressDo({
-        if(dasEnabled)
-        {
-            // TODO CODIFICAR DAS
-            dasEnabled = false
-        }
-        else
-        {
-            piezaActual.movete(
-                piezaActual.bloques(),
-                piezaActual.matRot(),
-                piezaActual.position().down(1)
-                )
-        }
-    })
-    keyboard.c().onPressDo({piezaActual.rotar(
-        piezaActual.bloques(),
-        piezaActual.matRot(),
-        piezaActual.matKicks(),
-        "derecha")
-    })
-    keyboard.x().onPressDo({piezaActual.rotar(
-        piezaActual.bloques(),
-        piezaActual.matRot(),
-        piezaActual.matKicks(),
-        "opuesto")
-    })
-    keyboard.z().onPressDo({piezaActual.rotar(
-        piezaActual.bloques(),
-        piezaActual.matRot(),
-        piezaActual.matKicks(),
-        "izquierda")
-    })
+    keyboard.right().onPressDo({juego.moverPieza("derecha")})
+    keyboard.left().onPressDo({juego.moverPieza("izquierda")})
+    keyboard.down().onPressDo({juego.moverPieza("abajo")})
 
-    game.onTick(500, "movimiento", { piezaActual.bajar(
-        piezaActual.bloques(),
-        piezaActual.matRot()
-    )})
+    keyboard.c().onPressDo({juego.rotarPieza("derecha")})
+    keyboard.x().onPressDo({juego.rotarPieza("opuesto")})
+    keyboard.z().onPressDo({juego.rotarPieza("izquierda")})
+
+    game.onTick(500, "movimiento", {juego.aplicarGravedad()})
 }
 
