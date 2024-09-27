@@ -70,7 +70,7 @@ object mapa {
     method bajarDemasBloques(linea)
     {
         game.allVisuals().forEach({visual => 
-            if(visual.esBloque() and visual.position().y() > linea) visual.bajar()
+            if(visual.position().y() > linea) visual.aplicarGravedad()
         })
     }
     
@@ -93,7 +93,7 @@ object eventos
 
     const imagenes = [null, "eSINGLE.png", "eDOUBLE.png", "eTRIPLE.png", "eQUAD.png"]
 
-    method esBloque() = false
+    method aplicarGravedad() {} 
 
     method cambiarImagen(nuevaImagen) {image = nuevaImagen}
     method mostrarLineasBorradas(cantidad)
@@ -159,8 +159,6 @@ object juego
 
     var property piezaActual = bagGenerator.nuevaPieza()
 
-    //const sonidoPonerPieza = new Sound(file = "T:/Rata/Documents/UTN/Carrera/2024/Paradigmas_de_Programacion/Objetos/Tetris/assets/poner.mp3")
-
     method iniciarJuego()
     {
         piezaActual.crear()
@@ -175,7 +173,7 @@ object juego
         piezaActual = bagGenerator.nuevaPieza()
         piezaActual.crear()
         holdDisponible = true
-        //sonidoPonerPieza.play()
+        game.sound("poner.mp3").play()
     }
 
     method rotarPieza(sentido) {piezaActual.rotar(sentido)}
@@ -256,15 +254,13 @@ object juego
     }
 }
 
-
-
 class Bloque {
     var property position = game.center()
     var property image
     var id
     var mapId = -1
 
-    method esBloque() = true
+    method aplicarGravedad() {self.bajar()}
 
     method cambiarImagen(imagen)
     {
@@ -318,7 +314,7 @@ class Pieza
     method bloques() = null
     method matRot() = null
     method matKicks() = null
-    method esBloque() = false
+    method aplicarGravedad() {}
 
     
     method matKicksJLOSTZ() = [ // Wallkicks para las rotaciones de las piezas J, L, S, T y Z
