@@ -1,5 +1,33 @@
 import wollok.game.*
 
+class Linea {
+    const y
+
+    var bloquesLinea = #{}
+
+    method y() = y
+
+    method bloques() = bloquesLinea
+
+    method agregarBloque(bloque) {bloquesLinea.add(bloque)}
+    method quitarBloque(bloque) {bloquesLinea.remove(bloque)}
+
+    method bajarBloques() {bloquesLinea.forEach({bloque => bloque.bajar()})}
+
+    method recibirBloquesDeArriba(nuevosElementos) {bloquesLinea = nuevosElementos}
+
+    method estaCompleta() = bloquesLinea.size() == 10
+
+    method borrarLinea() 
+    {
+        bloquesLinea.forEach({bloque => game.removeVisual(bloque)})
+        bloquesLinea.clear()
+    }
+    method estaLibre(posicion, bloqueActual) = bloquesLinea.isEmpty() || bloquesLinea.map(
+        {bloque => [bloque.position().x(), bloque.mapId()]}).all(
+        {datos => datos.first() != posicion || datos.last() == bloqueActual.mapId()})
+}
+
 object mapa {
 
     const minX = 15
@@ -15,6 +43,20 @@ object mapa {
 
     var ultimoIdAsignado = 0
     
+    const lineas = []
+    method lineas() = lineas
+
+    const piso = #{}
+
+    method piso() = piso
+
+    method inicializar()
+    {
+        20.times({num => lineas.add(new Linea(y = num - 1 + minY))})
+        10.times({num => piso.add(game.at(minX + num, minY))})
+        console.println(piso)
+    }
+
     method asignarIds(bloques)
     {
         bloques.forEach({bloque => 
@@ -22,8 +64,34 @@ object mapa {
         })
         ultimoIdAsignado = ultimoIdAsignado + 1
     }
+
+    method actualizarPiso(bloque)
+    {
+        if(self.esPosValida(bloque.position()))
+        {
+            console.println(piso)
+            const pisoActual = piso.find({pos => pos.x() == bloque.position().x()})
+            if(pisoActual.y() < bloque.position().y())
+            {
+                piso.remove(pisoActual)
+                piso.add(bloque.position())
+            }
+        }
+    }
+
+    method agregarBloque(bloque)
+    {
+        lineas.get(bloque.position().y() - minY).agregarBloque(bloque)
+    }
     
-    method esEspacioLibre(nuevaPos, bloque) = game.getObjectsIn(nuevaPos).isEmpty() or (game.getObjectsIn(nuevaPos).first().mapId() == bloque.mapId())
+    // method esEspacioLibre(nuevaPos, bloque) = game.getObjectsIn(nuevaPos).isEmpty() or (game.getObjectsIn(nuevaPos).first().mapId() == bloque.mapId())
+    
+    method esEspacioLibre(nuevaPos, bloque) 
+    {
+        const lineaHallada = lineas.find({linea => linea.y() == nuevaPos.y()})
+        
+        return lineaHallada.estaLibre(nuevaPos.x(), bloque)
+    }
 
     method esPosValida(pos) =  pos.x().between(minX, maxX - 1) and pos.y().between(minY, maxY - 1)
 
@@ -41,18 +109,30 @@ object mapa {
         // console.println(esValida)
         return esValida
     }
+
+    method quitarBloque(bloque)
+    {
+        lineas.find({linea => linea.y() == bloque.position().y()}).bloques().remove(bloque)
+    }
+    /*
+    method bajarBloque(bloque)
+    {
+        lineas.find({linea => linea.y() == bloque.position().y()}).bloques().remove(bloque)
+        bloque.bajar()
+        self.agregarBloque(bloque)
+    } 
+    */
     
     
-    method esLineaCompleta(linea) = linea.all({pos => not game.getObjectsIn(pos).isEmpty()})
+    method esLineaCompleta(yLinea) = lineas.find({linea => linea.y() == yLinea}).estaCompleta()
 
     method chequearLinea(y)
     {
         if(y.between(minY, maxY - 1))
         {
-            const linea = new Range(start = minX, end = maxX - 1).map({x => game.at(x, y)})
-            if(self.esLineaCompleta(linea))
+            if(self.esLineaCompleta(y))
             {
-                self.borrarLinea(linea)
+                self.borrarLinea(y)
                 self.bajarDemasBloques(y)
                 return 1
             }
@@ -62,16 +142,30 @@ object mapa {
             }
         }   
     }
-    method borrarLinea(linea)
+    method borrarLinea(yLinea)
     {
-        linea.forEach({pos => game.removeVisual(game.getObjectsIn(pos).first())})
+        lineas.find({linea => linea.y() == yLinea}).borrarLinea()
     }
 
-    method bajarDemasBloques(linea)
+    method bajarDemasBloques(yLinea)
     {
-        game.allVisuals().forEach({visual => 
-            if(visual.position().y() > linea) visual.aplicarGravedad()
+        const lineasModificar = lineas.filter({linea => linea.y() >= yLinea})
+        (19 - (yLinea - minY)).times({indice => 
+            lineasModificar.get(indice + 1).bajarBloques()
+            lineasModificar.get(indice).recibirBloquesDeArriba(lineasModificar.get(indice + 1).bloques())})
+
+    }
+
+    method bloquesDebajoDe(bloque)
+    {
+        var bloquesDebajo = #{}
+        lineas.forEach({linea => 
+            bloquesDebajo = bloquesDebajo.union(linea.bloques().filter({b =>
+                b.position().x() == bloque.position().x() and b.position().y() < bloque.position().y() and b.mapId() != bloque.mapId()
+            }))
         })
+        //console.println(bloquesDebajo)
+        return bloquesDebajo
     }
     
     method mostrar(bloques) 
@@ -161,6 +255,7 @@ object juego
 
     method iniciarJuego()
     {
+        mapa.inicializar()
         piezaActual.crear()
         bagGenerator.initBagPreview()
 
@@ -169,6 +264,7 @@ object juego
     method ponerPieza()
     {
         piezaActual.poner()
+        piezaActual.bloques().forEach({bloque => mapa.actualizarPiso(bloque)})
         game.removeVisual(piezaActual)
         piezaActual = bagGenerator.nuevaPieza()
         piezaActual.crear()
@@ -180,7 +276,9 @@ object juego
 
     method aplicarGravedad() {
         if(self.puedeBajar())
+        {
             piezaActual.bajar()
+        }
         else
             game.schedule(500, {if(not self.puedeBajar()) self.ponerPieza()})
     }
@@ -293,7 +391,9 @@ class Bloque {
 
     method movete(nuevaPos) 
     {
+        mapa.quitarBloque(self)
         position = nuevaPos
+        mapa.agregarBloque(self)
     }
 }
 class Pieza
@@ -354,13 +454,36 @@ class Pieza
         mapa.asignarIds(self.bloques())
     }
 
+    /*
+    method irAlPiso()
+    {
+        var alturas = #{mapa.minY() - 1}
+        self.bloques().forEach({bloque => alturas = alturas.union(mapa.bloquesDebajoDe(bloque)
+        .map({bloque => bloque.position().y()}))})
+
+
+        //console.println(alturas)
+        const nuevaPos = game.at(position.x(), alturas.map({n => n + 1}).filter({pos =>
+            mapa.esMovimientoValido(self, game.at(self.position().x(), pos), estadoRotacion)}).max())
+        
+        self.movete(nuevaPos)
+    }
+    */
     method irAlPiso()
     {        
-        const posiblesPosiciones = new Range(start = mapa.minY() - 2, end = position.y()).filter({posY => 
-        not mapa.esMovimientoValido(self, game.at(position.x(), posY), estadoRotacion)}).map({n => n + 1})
+        var posiblesPosiciones = #{}
+        //console.println(position)
+        //console.println(mapa.piso())
+        const pisoMapa = mapa.piso().find({pos => pos.x() == position.x()})
+        console.println(pisoMapa)
+        (mapa.maxY() - pisoMapa.y()).times({number => posiblesPosiciones.add(pisoMapa.up(number - 1))})
 
-        // console.println(posiblesPosiciones)
-        const nuevaPos = game.at(position.x(), posiblesPosiciones.max())
+        console.println(posiblesPosiciones)
+        posiblesPosiciones = posiblesPosiciones.filter({pos =>
+            mapa.esMovimientoValido(self, pos, estadoRotacion)})
+        console.println(posiblesPosiciones)
+
+        const nuevaPos = posiblesPosiciones.first()
         
         self.movete(nuevaPos)
     }
@@ -371,6 +494,7 @@ class Pieza
         self.irAlPiso()
         self.bloques().forEach({bloque => 
             contador = contador + mapa.chequearLinea(bloque.position().y())
+            //mapa.agregarBloque(bloque)
         })
         if(contador > 0) eventos.mostrarLineasBorradas(contador)
     }

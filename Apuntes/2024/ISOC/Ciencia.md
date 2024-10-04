@@ -7,14 +7,14 @@ Opinión fundamentada vs opinión no fundamentada
 #### Conocimiento científico vs. Conocimiento común:
 Para que un conocimiento sea considerado científico, debe seguir el método científico
 
-|      Conocimiento Cientifico      |            Conocimiento Común            |
-| :-------------------------------: | :--------------------------------------: |
-|             metódico              |            sin método propio             |
-|             racional              |                 racional                 |
-|           "verificable"           |              no verificable              |
-|         crítico (probado)         |       dogmático (no cuestionable)        |
-| sistemático (consistencia lógica) |                asistémico                |
-|      "objetivo" (minimizar)       | "subjetivo" (no se da cuenta del sesgoA) |
+|      Conocimiento Cientifico      |           Conocimiento Común            |
+| :-------------------------------: | :-------------------------------------: |
+|             metódico              |            sin método propio            |
+|             racional              |                racional                 |
+|           "verificable"           |             no verificable              |
+|         crítico (probado)         |       dogmático (no cuestionable)       |
+| sistemático (consistencia lógica) |               asistémico                |
+|   "objetivo" (minimizar sesgo)    | "subjetivo" (no se da cuenta del sesgo) |
 
 Las demostraciones solo pueden ser matemáticas o lógicas, en todos los demás ámbitos
 ## Definiciones:
@@ -115,7 +115,7 @@ Los ingenieros son los sacerdotes de los nuevos paradigmas tecnológicos
 | Tipo de Procedimientos | deductivos                                           | deductivos, inductivos, empíricos      |
 
 ## Método Científico - Hipotético Deductivo:
-Toda investigación comienza con al determinar un problema (algo que no se conoce en la comunidad de investigadores), debe aportar conocimientos nuevos a la comunidad
+Toda investigación comienza al determinar un problema (algo que no se conoce en la comunidad de investigadores), debe aportar conocimientos nuevos a la comunidad
 
 Pasos:
 1. Enunciar preguntas bien formuladas, que aún no tengan respuestas dentro del marco teórico.

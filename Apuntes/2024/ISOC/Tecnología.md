@@ -116,14 +116,14 @@ Se combinan sistemáticamente:
 	Procesos de Evaluación - Interna y Externa
 
 El desarrollo tecnológico a través de programas de I + D repercute en las relaciones entre ciencia y tecnología:
-- Investigación Básica: Conociimiento Escencial
+- Investigación Básica: Conocimiento Esencial
 	- Estratégica
 	- No orientada
 - Investigación Aplicada: 
 	- A Objetivos Centíficos 
 	- A Objetivos Tecnológicos
 
-Los límites entre investigación científica aplicada e investigación tecnológica son  difusos
+Los límites entre investigación científica aplicada e investigación tecnológica son difusos
 
 Las relaciones entre distintos tipos de investigación en programas de I+D puede verse:
 - De abajo hacia arriba:
