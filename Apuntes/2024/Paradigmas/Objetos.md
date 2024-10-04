@@ -217,3 +217,7 @@ Entiende los mensajes:
 Permite dar estructura a objetos que deben parecerse.
 
 Constructor
+
+#### Excepciones
+No usamos valores de retorno para las fallas controladas.
+throw new DomainException(message="mensaje")
