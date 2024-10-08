@@ -56,7 +56,7 @@ Introduce:
 	Migración hacia ciudades
 John Kay 1733
 
-## Revolución Industrial 1770 - 1840
+## Segunda Etapa de la Revolución Industrial (Vapor) 1770 - 1840
 Introduce:
 	Maquina a vapor usando carbon
 	Industria textil y metalurgica
@@ -71,6 +71,6 @@ Conclusión:
 ##### Conceptos Principales:
 Industria Textil
 Maquina a vapor y ferrocarril
-Hidráuloca vapor
+Hidráulica - vapor
 Producción Mecánica
 Sistema Fabril
