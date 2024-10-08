@@ -1025,3 +1025,16 @@ Donde ubicar las rutinas semánticas
 	Donde haya que hacer chequeos de semántica estática
 	Donde haya que generar código
 	Donde haya que trasmitir / recibir / procesar datos (registros semánticos)
+
+#### Nota del typedef
+size_t es un typedef (alias) al entero que corresponde al entero de largo utilizado por la implementación
+
+typedef TIPO nombreNuevo;
+
+#### Nota del sizeof
+El operador sizeof toma como operando un tipo de datos COMPLETO entre paréntesis, o una expresión que puede no tener paréntesis
+El operador sizeof se calcula en tiempo de compilación, salvo para arreglos de largo variable
+
+#### Punteros Genéricos:
+Puntero a void, almacena una dirección de memoria.
+No se pueden desreferenciar sin hacer casting
