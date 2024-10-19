@@ -145,3 +145,10 @@ Se debe normalizar los valores
 
 Se debe seguír la metodología para realizar mediciones teniendo en cuenta los siguientes criterios:
 - Las pruebas deben ser repetibles y iguales para todos
+
+Respuesta de por qué no se puede verificar hipótesis científicas:
+Falacia de afirmación del consecuente
+
+las ciencias formales resuelven problemas LÓGICOS
+
+los diseños NO SIEMPRE TIENEN INNOVACIONES
