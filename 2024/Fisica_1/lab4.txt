@@ -1,0 +1,100 @@
+Péndulo Físico:
+Cualquier cuerpo rigido que puede oscilar desde un eje fijo que no pasa por su centro de masa
+
+Apartamos el cuerpo de su posición de equilibrio (no es masa puntual, es cuerpo)
+Quiere decir tomar la base y apartar un ángulo pequeño, luego soltar
+Por acción de la fuerza peso, el cuerpo comenzará a oscilar. Esta fuerza se aplica en el centro de masa
+Se genera un momento rotaciónal alrededor del eje a partir de la fuerza peso. También hay una fuerza de sosten pero no aplica momento
+Fuerza por distancia al eje de rotacional
+El momento tiene la "acción restauradora"
+
+El objetivo es encontrar los momentos de inercia en 3 objetivos distintos (Resistencia al cambio, cuán dificil es hacerlo rotar)
+El primer escenario es con la lámina sola
+El segundo escenario es la lámina con un cilindro agregado al centro de masa de la lámina
+El tercer escenario es la lámina, con la misma masa pero alejada del centro de masa de la lámina. Tenderemos a colocarla en un extremo (diagonal)
+
+
+Para nuestra experiencia nos basaremo en la siguiente ecuación:
+El momento de inercia total es:
+(MasaTotal * g * DistEjeCm * T^2) / (4pi^2) [Kgm^2]
+
+It = It0 + deltaIt
+
+Experiencias:
+1 -> 2 Cambia la masa del cuerpo
+2 -> 3 Cambia el centro de masa, por lo que cambia la distancia del eje de rotación al centro de masa
+
+Procedimiento:
+Medir la masa de la lámina y del cilindro
+
+Colgar lámina desde un punto, NO CAMBIARLO DURANTE LAS EXPERIENCIAS PARA NO MODIFICAR EL EJE
+
+Medir la distancia del centro de masa, forma irregular.
+    Forramos la lámina con una hoja para poder trazar lineas
+    Para hallar el CM utilizaremos un péndulo o plomada
+    Colgamos el péndulo desde el eje y esperamos a que quede en equilibrio
+    Colocamos una hoja al rededor de la lámina
+    Trazamos la vertical
+    Cambiamos en punto de agarre de la lámina y trazamos la vertical
+    Donde se cruzan las lineas en la hoja que forra la lámina, se encuentra el centro de masa
+
+
+
+En los 3 escenarios:
+Medir tiempo de 10 períodos de oscilación (Desde el comienzo de la medición), el error es el doble del tiempo de reacción
+Luego hallamos t minúscula, T/10, el período de una oscilación
+
+Luego verificar si el momento de la tercera experiencia cumple con la aditividad de los momentos
+
+Mediciones de peso:
+    Error: 0,0001Kg
+    Lámina: 0,477kg
+    Masa: 0,184kg
+
+Mediciones de distancia:
+    Error de distancia: 0,003m
+    d0: 0,433m
+    d1: 0,538m
+    d2: 0,772m
+
+    Error de calibre: 0,000001m
+    dcil: 0,02555m
+
+Mediciones de tiempo:
+    Error de tiempo: 0,4s -> 0,04s por oscilación
+    1: 15,05s -> 1,505s por oscilación
+    2: 14,60s -> 1,460s por oscilación
+    3: 16,28s -> 1,628s por oscilación
+
+Propagación de error:
+Il = Il0 +- delta Il
+
+Para hallar delta Il:
+    Operación principal: División -> Error relativo
+    EIl = Eml + Eg + Ed + E(T^2) + E(4) + E(pi^2)
+    EIl = Eml + Eg (tiende a cero) + Ed + 2ET + 0 + 2E(pi) (tiende a 0)
+    EIl = E(ml) + E(d) + 2E(T)
+    deltaIl / Il0 = deltaMl / m0 + deltaD / d0 + 2 deltaT / T0
+
+    Entonces deltaIl = (deltaMl / ml0 + deltaD /d0 + 2 deltaT / T0) * Il0
+
+    Il = 0,1161 Kgm
+    Ia = 0,1514 kgm
+    Ib = 0,2339 Kgm
+
+
+Aditividad de los momentos de inercia:
+    Calculamos el momento de la lámina, y el cuerpo del cilindro aparte.
+    Ib2 = Il0 + 1/2 mcil * Rcil^2 + mcil * d2^2
+    Rcil = dcil / 2
+
+    Rcil = 0,0128
+    ERcil = 0,00005m
+
+Escala Kg m^2 / cm
+
+    deltaIb2 = deltaIl0 + delta(1/2 * mcil Rcil^2) + delta(mcil * d2^2)
+    deltaIb2 = deltaIl0 + [E(1/2 * mcil * Rcil^2)] * (1/2 * mcil * Rcil^2) + [E(mcil * E(d2^2)] * (mcil * d2^2)
+    deltaIb2 = deltaIl0 + [E(1/2) + E(mcil) + E(Rcil^2)] * (1/2 * mcil * Rcil^2) + [E(mcil) + E(d2^2)] * (mcil * d2^2)
+    deltaIb2 = deltaIl0 + [0 + deltaMcil / mcil0 + 2E(Rcil)] * (1/2 * mcil * Rcil^2) + [deltaMcil / mcil0 + 2E(d2)] * (mcil * d2^2)
+
