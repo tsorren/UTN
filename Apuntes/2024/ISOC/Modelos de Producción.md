@@ -45,7 +45,7 @@ Si bien existe la producción en masa, se enfoca en las necesidades del mercado 
 Sustituye al modelo fordista ya que la crisis del petróleo afecto el principal insumo de las industrias.
 Japón crece económicamente mientras occidente tiene problemas de inflación y falta de innovación.
 Toyotismo:
-- Flexibilización laboral
+- Flexibilización productiva - metodología ágil
 - Produce según demanda, no a gran escala
 - Se involucra el trabajador en el proceso productivo
 - Fuerte utilización de tecnologías y producción con capital
@@ -55,6 +55,23 @@ Toyotismo:
 Requisitos:
 - Necesitaba trabajadores flexibles, capacitados y con mayor participación
 - El Estado interviene en el mercado
+
+Hoy en día se utiliza la metodología ágil
+
+###### Vía Japonesa: 
+- Se prima el beneficio de la nación a la hora de trabajar en equipo
+###### Vía Sueca:
+- Modelo más democratico
+- Se prima el beneficio individual a la hora de trabajar en equipo
+
+#### Triángulo de Sábato:
+Empresas, Sector Científico / Tecnológico
+
+Cuadernillo Polticas de Ciencia, tecnología e innovación: Página 15
+
+Terminar de leer Arocena
+Luego comenzaremos con Argentina
+
 
 #### Exposición
 
