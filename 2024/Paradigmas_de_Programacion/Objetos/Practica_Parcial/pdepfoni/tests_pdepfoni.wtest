@@ -1,0 +1,48 @@
+import pdepfoni.*
+
+describe "Tests"
+{
+    test "Efecto correcto"
+    {
+        const lineaPedrito = new Linea(nroTel = "1130309929")
+        lineaPedrito.agregarPack(new MBsLibres(consumoDisponible = 100))
+        lineaPedrito.agregarPack(new CreditoDisponible(consumoDisponible = 150))
+
+        assert.equals(0, lineaPedrito.gastoMensual())
+        lineaPedrito.consumirInternet(20)
+        assert.equals(empresaTelefonica.consumoInternet(20), lineaPedrito.gastoMensual())
+
+        assert.equals(new Date(), lineaPedrito.consumos().last().fecha())
+        assert.equals(empresaTelefonica.consumoInternet(20), lineaPedrito.consumos().last().costo())
+    }
+    test "Accion imposible"
+    {
+        const lineaPedrito = new Linea(nroTel = "1130309929")
+        
+        assert.throwsExceptionWithType(new DomainException(), {lineaPedrito.consumirInternet(20)})
+    }
+    test "Devuelve correctamente"
+    {
+        const lineaPedrito = new Linea(nroTel = "1130309929")
+        lineaPedrito.agregarPack(new MBsLibres(consumoDisponible = 100))
+        lineaPedrito.agregarPack(new CreditoDisponible(consumoDisponible = 150))
+
+        assert.equals(0, lineaPedrito.gastoMensual())
+
+        lineaPedrito.consumirInternet(20)
+        lineaPedrito.consumirInternet(15)
+        lineaPedrito.consumirInternet(30)
+        lineaPedrito.consumirInternet(5)
+        
+        lineaPedrito.consumirLlamada(120)
+        lineaPedrito.consumirLlamada(45)
+
+        lineaPedrito.agregarPack(new LlamadasGratis(consumoDisponible = 0))
+        lineaPedrito.consumirLlamada(120)
+
+        var costoEsperado = 0
+        costoEsperado += [20, 15, 30, 5].sum({mb => empresaTelefonica.consumoInternet(mb)})
+        costoEsperado += [120, 45].sum({segundos => empresaTelefonica.consumoLlamada(segundos)})
+        assert.equals(costoEsperado / lineaPedrito.consumos().size(), lineaPedrito.gastoPromedioEntre(new Date().minusDays(1), new Date()))
+    }
+}

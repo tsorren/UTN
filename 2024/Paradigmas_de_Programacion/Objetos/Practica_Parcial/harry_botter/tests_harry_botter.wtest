@@ -1,0 +1,126 @@
+import harry_botter.*
+
+describe "Tests"
+{
+    test "Grupo Estudiantes"
+    {
+        const harryBotter = new Estudiante(cargaElectrica = 80, esAceitePuro = true)
+        const dracoMalfoy = new Estudiante(cargaElectrica = 100, esAceitePuro = true)
+        const boty = new Estudiante(cargaElectrica = 60, esAceitePuro = false)
+        const chatGPT = new Estudiante(cargaElectrica = 60, esAceitePuro = true)
+        const hermioneGranger = new Estudiante(cargaElectrica = 100, esAceitePuro = false)
+
+        const grupoInicial = new GrupoEstudiantes(estudiantes = [harryBotter, dracoMalfoy, boty, chatGPT, hermioneGranger])
+
+        grupoInicial.ingresarHogwarts()
+
+        assert.equals(gryffindor, harryBotter.casa())
+        assert.equals(slytherin, dracoMalfoy.casa())
+        assert.equals(ravenclaw, boty.casa())
+        assert.equals(hufflepuff, chatGPT.casa())
+        assert.equals(gryffindor, hermioneGranger.casa())
+
+        const defensaContraLosHackeosOscuros = new Materia(hechizoCorrespondiente = inmobilus)
+        const defensaDePropiedadPrivada = new Materia(hechizoCorrespondiente = sectumSempra)
+        const artesOscuras = new Materia(hechizoCorrespondiente = avadakedabra)
+        const anatomancia = new Materia(hechizoCorrespondiente = vulneraSanentur)
+
+        const explosion = new HechizoComun(carga = 10)
+        const fisica1 = new Materia(hechizoCorrespondiente = explosion)
+
+        const severus = new Profesor(cargaElectrica = 100, esAceitePuro = true)
+
+        const albus = new Profesor(cargaElectrica = 100, esAceitePuro = true)
+
+        severus.dictarMateria(defensaContraLosHackeosOscuros)
+        severus.dictarMateria(defensaDePropiedadPrivada)
+        severus.dictarMateria(defensaContraLosHackeosOscuros)
+
+        albus.dictarMateria(anatomancia)
+        albus.dictarMateria(fisica1)
+
+        assert.that(dracoMalfoy.esAceitePuro())
+
+        
+        assert.equals(0, harryBotter.hechizos().size())
+
+        harryBotter.cursarMateria(defensaContraLosHackeosOscuros)
+        harryBotter.cursarMateria(defensaDePropiedadPrivada)
+        harryBotter.cursarMateria(artesOscuras)
+        harryBotter.cursarMateria(anatomancia)
+        harryBotter.cursarMateria(fisica1)
+
+        assert.that(dracoMalfoy.esAceitePuro())
+        harryBotter.lanzarHechizo(sectumSempra, dracoMalfoy)
+        assert.notThat(dracoMalfoy.esAceitePuro())
+
+        assert.that(sombreroSeleccionador.esAceitePuro())
+        harryBotter.lanzarHechizo(sectumSempra, sombreroSeleccionador)
+        assert.that(sombreroSeleccionador.esAceitePuro())
+        
+    }
+
+    test "Draco vs Albus"
+    {
+        
+        const harryBotter = new Estudiante(cargaElectrica = 80, esAceitePuro = true)
+        const dracoMalfoy = new Estudiante(cargaElectrica = 100, esAceitePuro = true)
+        const boty = new Estudiante(cargaElectrica = 60, esAceitePuro = false)
+        const chatGPT = new Estudiante(cargaElectrica = 60, esAceitePuro = true)
+        const hermioneGranger = new Estudiante(cargaElectrica = 100, esAceitePuro = false)
+
+        const grupoInicial = new GrupoEstudiantes(estudiantes = [harryBotter, dracoMalfoy, boty, chatGPT, hermioneGranger])
+
+        grupoInicial.ingresarHogwarts()
+
+        assert.equals(gryffindor, harryBotter.casa())
+        assert.equals(slytherin, dracoMalfoy.casa())
+        assert.equals(ravenclaw, boty.casa())
+        assert.equals(hufflepuff, chatGPT.casa())
+        assert.equals(gryffindor, hermioneGranger.casa())
+
+        const defensaContraLosHackeosOscuros = new Materia(hechizoCorrespondiente = inmobilus)
+        const defensaDePropiedadPrivada = new Materia(hechizoCorrespondiente = sectumSempra)
+        const artesOscuras = new Materia(hechizoCorrespondiente = avadakedabra)
+
+        const anatomancia = new Materia(hechizoCorrespondiente = vulneraSanentur)
+
+        const explosion = new HechizoComun(carga = 10)
+        const fisica1 = new Materia(hechizoCorrespondiente = explosion)
+
+        const severus = new Profesor(cargaElectrica = 100, esAceitePuro = true)
+
+        const bolaDeFuego = new HechizoComun(carga = 60)
+        const albus = new Profesor(
+            cargaElectrica = 100,
+            esAceitePuro = true,
+            hechizos = [inmobilus, sectumSempra, vulneraSanentur, explosion, avadakedabra, bolaDeFuego]
+        )
+
+        severus.dictarMateria(defensaContraLosHackeosOscuros)
+        severus.dictarMateria(defensaDePropiedadPrivada)
+        severus.dictarMateria(artesOscuras)
+
+        albus.dictarMateria(anatomancia)
+        albus.dictarMateria(fisica1)
+
+        dracoMalfoy.cursarMateria(defensaContraLosHackeosOscuros)
+        dracoMalfoy.cursarMateria(defensaDePropiedadPrivada)
+        dracoMalfoy.cursarMateria(artesOscuras)
+        dracoMalfoy.cursarMateria(anatomancia)
+        dracoMalfoy.cursarMateria(fisica1)
+
+        assert.equals(100, dracoMalfoy.cargaElectrica())
+        albus.lanzarHechizo(albus.hechizos().last(), dracoMalfoy)
+        assert.equals(40, dracoMalfoy.cargaElectrica())
+
+        assert.equals(100, albus.cargaElectrica())
+        dracoMalfoy.lanzarHechizo(avadakedabra, albus)
+        assert.equals(50, albus.cargaElectrica())
+
+        assert.equals(40, dracoMalfoy.cargaElectrica())
+        albus.lanzarHechizo(albus.hechizos().last(), dracoMalfoy)
+        assert.equals(40, dracoMalfoy.cargaElectrica())
+
+    }
+}

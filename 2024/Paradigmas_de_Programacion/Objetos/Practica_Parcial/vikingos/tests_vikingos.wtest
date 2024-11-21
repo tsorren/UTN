@@ -1,0 +1,122 @@
+import vikingos.*
+import profesiones.*
+import expediciones.*
+
+describe "Tests"
+{
+    test "No poder subir a expedicion"
+    {
+        const ragnar = new Vikingo(
+            profesion = soldado,
+            clase = karl,
+            cantHijos = 2,
+            hectareas = 10,
+            vidasCobradas = 3,
+            cantArmas = 5,
+            botin = 0
+        )
+
+        const capital = new Capital(cantDefensores = 10, factorRiqueza = 3)
+        const expedicion = new Expedicion(objetivos = [capital])
+
+        assert.equals(0, expedicion.cantVikingos())
+        assert.throwsException({ragnar.intentarSubir(expedicion)})
+        assert.equals(0, expedicion.cantVikingos())
+    }
+    
+    test "Saber si expedicion vale la pena"
+    {
+        const ragnar = new Vikingo(
+            profesion = soldado,
+            clase = karl,
+            cantHijos = 2,
+            hectareas = 10,
+            vidasCobradas = 25,
+            cantArmas = 5,
+            botin = 0
+        )
+
+        const floki = new Vikingo(
+            profesion = soldado,
+            clase = karl,
+            cantHijos = 0,
+            hectareas = 3,
+            vidasCobradas = 21,
+            cantArmas = 20,
+            botin = 0
+        )
+
+        const londres = new Capital(cantDefensores = 5, factorRiqueza = 4)
+        const paris = new Capital(cantDefensores = 3, factorRiqueza = 5)
+        const aldeaInglesa = new Aldea(cantCrucifijos = 50)
+
+        const expedicion = new Expedicion(objetivos = [londres, paris, aldeaInglesa])
+        ragnar.intentarSubir(expedicion)
+        floki.intentarSubir(expedicion)
+
+        assert.that(aldeaInglesa.valeLaPena(expedicion))
+    }
+    test "Realizar una expedición"
+    {
+        const ragnar = new Vikingo(
+            profesion = soldado,
+            clase = karl,
+            cantHijos = 2,
+            hectareas = 10,
+            vidasCobradas = 25,
+            cantArmas = 5,
+            botin = 0
+        )
+
+        const floki = new Vikingo(
+            profesion = soldado,
+            clase = karl,
+            cantHijos = 0,
+            hectareas = 3,
+            vidasCobradas = 21,
+            cantArmas = 20,
+            botin = 0
+        )
+
+        const londres = new Capital(cantDefensores = 5, factorRiqueza = 4)
+        const paris = new Capital(cantDefensores = 3, factorRiqueza = 5)
+        const aldeaInglesa = new Aldea(cantCrucifijos = 50)
+
+        const expedicion = new Expedicion(objetivos = [londres, paris, aldeaInglesa])
+        ragnar.intentarSubir(expedicion)
+        floki.intentarSubir(expedicion)
+
+        assert.that(aldeaInglesa.valeLaPena(expedicion))
+
+        assert.equals(0, ragnar.botin())
+        assert.equals(0, floki.botin())
+        
+        expedicion.realizarInvasion()
+
+        assert.equals(expedicion.botinAdquirido() / expedicion.cantVikingos(), ragnar.botin())
+        assert.equals(expedicion.botinAdquirido() / expedicion.cantVikingos(), floki.botin())
+
+        assert.equals(25 + 2, ragnar.vidasCobradas())
+        assert.equals(21 + 2, floki.vidasCobradas())
+
+        assert.equals(5 - 2, londres.cantDefensores())
+        assert.equals(3 - 2, paris.cantDefensores())
+        assert.equals(0, aldeaInglesa.cantCrucifijos())
+    }
+    test "Ascender socialmente"
+    {
+        const ragnar = new Vikingo(
+            profesion = soldado,
+            clase = karl,
+            cantHijos = 2,
+            hectareas = 10,
+            vidasCobradas = 25,
+            cantArmas = 5,
+            botin = 0
+        )
+
+        assert.equals(karl, ragnar.clase())
+        ragnar.ascenderClase()
+        assert.equals(thrall, ragnar.clase())
+    }
+}

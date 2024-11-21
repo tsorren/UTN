@@ -1,0 +1,55 @@
+import planetas_universo.*
+
+describe "Tests"
+{
+    test "Planetas"
+    {
+        const mur1 = new Muralla(longitud = 5)
+        const mur2 = new Muralla(longitud = 7)
+
+        const mus1 = new Museo(superficie = 8, nivel = 3)
+
+        const gaia = new Planeta()
+
+        gaia.nuevaConstruccion(mur1)
+        gaia.nuevaConstruccion(mur2)
+        gaia.nuevaConstruccion(mus1)
+
+        const h1 = new Persona(edad = 10, planetaHogar = gaia, region = llanura)
+        const h2 = new Persona(edad = 15, planetaHogar = gaia, region = llanura)
+        const h3 = new Persona(edad = 30, planetaHogar = gaia, region = llanura)
+        const h4 = new Persona(edad = 40, planetaHogar = gaia, region = llanura)
+
+        gaia.nuevoHabitante(h1)
+        gaia.nuevoHabitante(h2)
+        gaia.nuevoHabitante(h3)
+        gaia.nuevoHabitante(h4)
+
+        assert.equals(3, gaia.delegacionDiplomatica().size())
+        assert.that(gaia.esValioso())
+        
+        const marte = new Planeta()
+        marte.nuevoHabitante(h1)
+        marte.nuevaConstruccion(mur1)
+
+        assert.notThat(marte.esValioso())
+    }
+    test "Trabajo"
+    {
+        const gaia = new Planeta()
+        const h1 = new Persona(edad = 10, planetaHogar = gaia, region = volcanica)
+
+        assert.equals([ningunaProfesion], h1.profesionesDisponibles())
+        h1.aprenderConstruccion(100)
+        assert.equals(2, h1.profesionesDisponibles().size())
+        console.println(h1.profesionesDisponibles())
+
+        h1.cambiarProfesionActual(h1.profesionesDisponibles().last())
+        console.println(h1.profesionActual())
+
+        h1.trabajarEn(gaia, 10)
+        assert.equals(1, gaia.construcciones().size())
+        console.println(gaia.construcciones())
+        console.println(gaia.valorDeConstrucciones())
+    }
+}
