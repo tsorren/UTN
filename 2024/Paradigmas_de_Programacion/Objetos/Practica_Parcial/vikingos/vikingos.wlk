@@ -1,5 +1,8 @@
 /*
     19:09
+    20:34
+
+    1 hora 25 minutos
 */
 import profesiones.*
 import expediciones.*
